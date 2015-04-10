@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Durak.iml" filepath="$PROJECT_DIR$/Durak.iml" />
+      <module fileurl="file://$PROJECT_DIR$/de.htwg.se.durak/de.htwg.se.durak.iml" filepath="$PROJECT_DIR$/de.htwg.se.durak/de.htwg.se.durak.iml" />
     </modules>
   </component>
 </project>
