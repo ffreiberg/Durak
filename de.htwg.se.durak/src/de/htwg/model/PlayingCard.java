@@ -20,4 +20,8 @@ public class PlayingCard {
     public PlayingCardColor getColor() {
         return color;
     }
+
+    public String toString(){
+        return color.toString() + value.toString();
+    }
 }
