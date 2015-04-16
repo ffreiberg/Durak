@@ -14,7 +14,7 @@ public class Player {
     private List<PlayingCard> hand;
 
     public Player(){
-        hand = new LinkedList<PlayingCard>();
+        hand = new LinkedList<>();
     }
 
     public PlayingCard playCard(){
