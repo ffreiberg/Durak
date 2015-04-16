@@ -8,7 +8,7 @@ import de.htwg.view.TUI;
 public class Durak {
 
     public static void main(String args[]){
-        DurakController controller = new DurakController();
+        DurakController controller = new DurakController(2);
         TUI tui = new TUI(controller);
 
         Deck deck = new Deck();
