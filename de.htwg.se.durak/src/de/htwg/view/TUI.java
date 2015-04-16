@@ -22,6 +22,10 @@ public class TUI implements IObserver {
 
     @Override
     public void update() {
+        printTUI();
+    }
+
+    public void printTUI(){
         throw new NotImplementedException();
     }
 }
