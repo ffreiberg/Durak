@@ -1,6 +1,5 @@
 package de.htwg.model;
 
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,6 +18,5 @@ public abstract class Player implements IPlayer {
 
     public void drawCard(PlayingCard card){
         hand.add(card);
-        //hand.sort(Comparator.<PlayingCard>naturalOrder());
     }
 }
