@@ -43,12 +43,25 @@ public class DurakController extends Observable {
         trump = trumpCard.getColor();
         deck.addCard(trumpCard);
 
+        //search lowest trump card and set first leftAttacker
         PlayingCard lowestTrumpCard = new PlayingCard(PlayingCardValue.ACE, trump);
         for(Player player: players){
-            for(PlayingCard card: player.hand){
-                //if(card.getColor() == trump && lowestTrumpCard.getValue() >= card.getValue()){}
+            for(PlayingCard card: player.hand) {
+                if (card.getColor() == trump &&
+                        lowestTrumpCard.getValue().ordinal() >= card.getValue().ordinal()) {
+                    lowestTrumpCard = card;
+                    attackerLeft = player;
+                }
             }
         }
+
+        /* Test Output
+        System.out.println("Trump: " + trump.toString());
+        for(Player p: players){
+            System.out.println(p.hashCode() + "\t" + p.toString());
+        }
+        System.out.println(attackerLeft.hashCode() + "\t" + lowestTrumpCard.toString());
+        */
     }
 
 
