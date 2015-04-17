@@ -2,6 +2,8 @@ package de.htwg.model;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
+
 import static java.util.Collections.*;
 
 /**
@@ -24,6 +26,10 @@ public class Deck {
 
     public int getDeckSize(){
         return deck.size();
+    }
+
+    public PlayingCard drawCard() throws NoSuchElementException{
+        return deck.remove(0);
     }
 
     @Override
