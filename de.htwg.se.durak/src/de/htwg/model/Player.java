@@ -24,7 +24,7 @@ public abstract class Player implements IPlayer {
     public String toString(){
         String str = "";
         for(PlayingCard card: hand){
-            str += card.toString() + "-";
+            str += card.toString() + "\t";
         }
         return str;
     }
