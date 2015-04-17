@@ -11,8 +11,5 @@ public class Durak {
         DurakController controller = new DurakController(2);
         TUI tui = new TUI(controller);
 
-        Deck deck = new Deck();
-
-        System.out.println(deck.toString());
     }
 }

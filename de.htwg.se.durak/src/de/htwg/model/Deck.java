@@ -32,6 +32,10 @@ public class Deck {
         return deck.remove(0);
     }
 
+    public void addCard(PlayingCard card) {
+        deck.add(card);
+    }
+
     @Override
     public String toString(){
         String str = "";

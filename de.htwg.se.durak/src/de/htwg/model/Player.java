@@ -19,4 +19,13 @@ public abstract class Player implements IPlayer {
     public void drawCard(PlayingCard card){
         hand.add(card);
     }
+
+    @Override
+    public String toString(){
+        String str = "";
+        for(PlayingCard card: hand){
+            str += card.toString() + "-";
+        }
+        return str;
+    }
 }

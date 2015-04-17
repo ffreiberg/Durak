@@ -1,9 +1,11 @@
 package de.htwg.view;
 
 import de.htwg.controller.DurakController;
+import de.htwg.model.Player;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import util.IObserver;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -18,6 +20,7 @@ public class TUI implements IObserver {
         this.controller = controller;
         controller.addObserver(this);
         scanner = new Scanner(System.in);
+
     }
 
     @Override
