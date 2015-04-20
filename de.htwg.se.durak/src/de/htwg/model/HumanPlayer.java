@@ -5,6 +5,10 @@ package de.htwg.model;
  */
 public class HumanPlayer extends Player {
 
+    public HumanPlayer(){
+        playerName = "HumanPlayer";
+    }
+
     @Override
     public PlayingCard playCard() {
         return null;

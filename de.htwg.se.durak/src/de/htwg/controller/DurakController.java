@@ -66,7 +66,7 @@ public class DurakController extends Observable {
     public String getPlayersHand(){
         String str = "";
         for(Player p: players){
-            str += (p.hashCode() + "\t" + p.toString() + "\n");
+            str += (p.getPlayerName() + "\t" + p.toString() + "\n");
         }
         return str;
     }

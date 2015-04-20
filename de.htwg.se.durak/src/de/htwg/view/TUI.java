@@ -24,14 +24,12 @@ public class TUI implements Observer {
     }
 
     private boolean handleInput(String input) {
-        boolean quit = false;
-
         if(input.equalsIgnoreCase("q")) {
-            quit = true;
+            return true;
         }
         controller.playRound();
 
-        return quit;
+        return false;
     }
 
     public void printTUI(){

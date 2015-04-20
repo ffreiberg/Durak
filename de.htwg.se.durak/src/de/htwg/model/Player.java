@@ -9,6 +9,7 @@ import java.util.List;
 public abstract class Player implements IPlayer {
 
     public List<PlayingCard> hand;
+    public String playerName;
 
     public Player(){
         hand = new LinkedList<>();
@@ -18,6 +19,10 @@ public abstract class Player implements IPlayer {
 
     public void drawCard(PlayingCard card){
         hand.add(card);
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 
     @Override
