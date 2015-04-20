@@ -1,8 +1,7 @@
 package de.htwg.controller;
 
 import de.htwg.model.*;
-import util.Observable;
-
+import java.util.Observable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,6 +10,9 @@ import java.util.List;
  */
 public class DurakController extends Observable {
 
+    private static final int startNumOfCards = 6;
+    private static final int minNumOfComputerPlayers = 1;
+
     private Deck deck;
     private List<Player> players;
     private PlayingCardColor trump;
@@ -18,7 +20,7 @@ public class DurakController extends Observable {
     private Player defender, attackerLeft, attackerRight;
 
     public DurakController(int numOfComputerPlayers) throws IllegalArgumentException {
-        if(numOfComputerPlayers < 1){
+        if(numOfComputerPlayers < minNumOfComputerPlayers){
             throw new IllegalArgumentException();
         }
 
@@ -33,7 +35,7 @@ public class DurakController extends Observable {
 
         //deal out cards
         for(Player player: players){
-            for(int i=0; i<6; ++i){
+            for(int i=0; i<startNumOfCards; ++i){
                 player.drawCard(deck.drawCard());
             }
         }
@@ -54,16 +56,19 @@ public class DurakController extends Observable {
                 }
             }
         }
-
-        /* Test Output
-        System.out.println("Trump: " + trump.toString());
-        for(Player p: players){
-            System.out.println(p.hashCode() + "\t" + p.toString());
-        }
-        System.out.println(attackerLeft.hashCode() + "\t" + lowestTrumpCard.toString());
-        */
     }
 
+    public void playRound() {
+        setChanged();
+        notifyObservers();
+    }
 
+    public String getPlayersHand(){
+        String str = "";
+        for(Player p: players){
+            str += (p.hashCode() + "\t" + p.toString() + "\n");
+        }
+        return str;
+    }
 
 }

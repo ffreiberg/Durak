@@ -1,5 +1,6 @@
 package util;
 
+import java.util.Iterator;
 import java.util.Vector;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Vector;
  */
 public class Observable {
 
-    protected Vector<IObserver> subscribers = new Vector<>(2);
+    protected Vector<IObserver> subscribers = new Vector<IObserver>(2);
 
     public void addObserver(IObserver s) {
         subscribers.addElement(s);
@@ -22,8 +23,13 @@ public class Observable {
     }
 
     public void notifyObservers() {
-        for( IObserver iObserver: subscribers){
-            iObserver.update();
+        for(Iterator<IObserver> iter = subscribers.iterator(); iter.hasNext();){
+            IObserver observer = iter.next();
+            observer.update();
         }
+
+        /*for( IObserver iObserver: subscribers){
+            iObserver.update();
+        }*/
     }
 }

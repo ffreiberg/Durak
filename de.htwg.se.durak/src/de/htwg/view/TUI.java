@@ -1,17 +1,14 @@
 package de.htwg.view;
 
 import de.htwg.controller.DurakController;
-import de.htwg.model.Player;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import util.IObserver;
-
-import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
 /**
  * Created by fafreibe on 10.04.2015.
  */
-public class TUI implements IObserver {
+public class TUI implements Observer {
 
     private DurakController controller;
     Scanner scanner;
@@ -20,15 +17,29 @@ public class TUI implements IObserver {
         this.controller = controller;
         controller.addObserver(this);
         scanner = new Scanner(System.in);
-
     }
 
-    @Override
-    public void update() {
-        printTUI();
+    public boolean iterate(){
+        return handleInput(scanner.next());
+    }
+
+    private boolean handleInput(String input) {
+        boolean quit = false;
+
+        if(input.equalsIgnoreCase("q")) {
+            quit = true;
+        }
+        controller.playRound();
+
+        return quit;
     }
 
     public void printTUI(){
-        throw new NotImplementedException();
+        System.out.println(controller.getPlayersHand());
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        printTUI();
     }
 }

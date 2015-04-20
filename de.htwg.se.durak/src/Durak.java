@@ -1,5 +1,4 @@
 import de.htwg.controller.DurakController;
-import de.htwg.model.Deck;
 import de.htwg.view.TUI;
 
 /**
@@ -11,5 +10,8 @@ public class Durak {
         DurakController controller = new DurakController(2);
         TUI tui = new TUI(controller);
 
+        tui.printTUI();
+
+        while(!tui.iterate());
     }
 }
