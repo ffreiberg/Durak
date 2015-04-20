@@ -1,8 +1,6 @@
 package de.htwg.model;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.LinkedList;
 import java.util.Random;
 
 /**
