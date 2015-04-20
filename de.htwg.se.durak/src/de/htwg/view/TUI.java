@@ -1,5 +1,6 @@
 package de.htwg.view;
 
+import com.sun.org.apache.xpath.internal.functions.FuncFalse;
 import de.htwg.controller.DurakController;
 import java.util.Observable;
 import java.util.Observer;
@@ -24,16 +25,25 @@ public class TUI implements Observer {
     }
 
     private boolean handleInput(String input) {
-        if(input.equalsIgnoreCase("q")) {
-            return true;
-        }
-        controller.playRound();
 
+        switch (input){
+            case "q":
+            case "Q":
+                return true;
+            case "w":
+            case "W":
+                controller.playRound();
+                break;
+            default:
+                controller.playRound();
+
+        }
         return false;
     }
 
     public void printTUI(){
-        System.out.println(controller.getPlayersHand());
+        System.out.println(controller.getPlayerRoles());
+        //System.out.println(controller.getPlayersHand());
     }
 
     @Override
