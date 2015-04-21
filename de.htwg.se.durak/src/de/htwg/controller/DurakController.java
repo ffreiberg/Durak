@@ -16,6 +16,7 @@ public class DurakController extends Observable {
 
     private Deck deck;
     private List<Player> players;
+    private List<PlayingCard> currentField;
     private PlayingCardColor trump;
 
     private Player defender, attackerLeft, attackerRight;
@@ -27,26 +28,16 @@ public class DurakController extends Observable {
 
         deck = new Deck();
         players = new LinkedList<>();
+        currentField = new LinkedList<>();
 
-        //Add players
-        players.add(new HumanPlayer());
-        for(int i=0; i<numOfComputerPlayers; ++i){
-            players.add(new ComputerPlayer());
-        }
+        addPlayers(numOfComputerPlayers);
+        dealOutCards();
+        setTrump();
+        searchFirstAttacker();
+    }
 
-        //deal out cards
-        for(Player player: players){
-            for(int i=0; i<startNumOfCards; ++i){
-                player.drawCard(deck.drawCard());
-            }
-        }
-
-        //Set trump
-        PlayingCard trumpCard = deck.drawCard();
-        trump = trumpCard.getColor();
-        deck.addCard(trumpCard);
-
-        //search lowest trump card and set first leftAttacker
+    private void searchFirstAttacker() {
+        //search lowest trump card and set first rightAttacker
         PlayingCard lowestTrumpCard = new PlayingCard(PlayingCardValue.ACE, trump);
         int i=0, lowestTrumpIndex=0;
         for(Player player: players){
@@ -71,6 +62,30 @@ public class DurakController extends Observable {
         attackerRight = players.get(0);
         defender = players.get(1);
         attackerLeft = players.get(2);
+    }
+
+    private void setTrump() {
+        //Set trump
+        PlayingCard trumpCard = deck.drawCard();
+        trump = trumpCard.getColor();
+        deck.addCard(trumpCard);
+    }
+
+    private void dealOutCards() {
+        //deal out cards
+        for(Player player: players){
+            for(int i=0; i<startNumOfCards; ++i){
+                player.drawCard(deck.drawCard());
+            }
+        }
+    }
+
+    private void addPlayers(int numOfComputerPlayers) {
+        //Add players
+        players.add(new HumanPlayer());
+        for(int i=0; i<numOfComputerPlayers; ++i){
+            players.add(new ComputerPlayer());
+        }
     }
 
     private void setNewPlayerRole(boolean skip) {
