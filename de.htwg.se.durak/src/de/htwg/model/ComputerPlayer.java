@@ -12,7 +12,7 @@ public class ComputerPlayer extends Player {
             "Karma", "Vladi", "Mustafa", "Yildirim", "Lothar", "Roland", "CR7", "Mausi96", "Allah"};
 
     public ComputerPlayer(){
-        playerName = names[new Random().nextInt(names.length - 1)];
+        playerName = "BOT " + names[new Random().nextInt(names.length - 1)];
     }
     @Override
     public PlayingCard playCard() {

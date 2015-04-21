@@ -5,7 +5,7 @@ package de.htwg.controller;
  */
 public class BotController {
 
-    public BotController(){
+    //public BotController(){    }
 
-    }
+
 }
