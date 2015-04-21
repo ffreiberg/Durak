@@ -15,7 +15,7 @@ public class ComputerPlayer extends Player {
         playerName = "BOT " + names[new Random().nextInt(names.length - 1)];
     }
     @Override
-    public PlayingCard playCard() {
+    public PlayingCard[] playCard() {
         throw new NotImplementedException();
     }
 }

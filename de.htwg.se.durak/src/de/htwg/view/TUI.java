@@ -29,10 +29,10 @@ public class TUI implements Observer {
             case "q":
                 return true;
             case "w":
-                controller.playRound();
+                controller.playerMove(null);
                 break;
             default:
-                controller.playRound();
+                controller.playerMove(null);
 
         }
         return false;

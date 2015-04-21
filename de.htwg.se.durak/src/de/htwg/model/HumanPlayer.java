@@ -10,7 +10,7 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public PlayingCard playCard() {
+    public PlayingCard[] playCard() {
         return null;
     }
 }

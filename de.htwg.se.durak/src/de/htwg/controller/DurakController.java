@@ -5,6 +5,8 @@ import java.util.Observable;
 import java.util.LinkedList;
 import java.util.List;
 
+import static de.htwg.controller.DurakCommands.*;
+
 /**
  * Created by jawaigel on 16.04.2015.
  */
@@ -15,6 +17,7 @@ public class DurakController extends Observable {
     private static final int maxNumOfComputerPlayers = 4;
 
     private Deck deck;
+    private Player activePlayer;
     private List<Player> players;
     private List<PlayingCard> currentField;
     private PlayingCardColor trump;
@@ -62,6 +65,8 @@ public class DurakController extends Observable {
         attackerRight = players.get(0);
         defender = players.get(1);
         attackerLeft = players.get(2);
+
+        activePlayer = attackerRight;
     }
 
     private void setTrump() {
@@ -102,12 +107,35 @@ public class DurakController extends Observable {
         attackerLeft = players.get(2);
     }
 
-    public void playRound() {
+    public void playerMove(DurakCommands cmd) throws IllegalArgumentException{
 
+        switch (cmd) {
+            case ATTACK:
+                if(activePlayer.equals(defender)) throw new IllegalArgumentException("Zug nicht möglich");
+                PlayingCard cards[] = activePlayer.playCard();
+                for(PlayingCard card: cards) currentField.add(card);
+                activePlayer = defender;
+                break;
+            case SKIP:
+                break;
+            case TAKE:
+                if(!activePlayer.equals(defender)) throw new IllegalArgumentException("Zug nicht möglich");
+                for(PlayingCard card: currentField){
+                    defender.drawCard(card);
+                }
+                setNewPlayerRole(true);
+                break;
+            case BEAT:
+                defender.playCard();
+                break;
+            default:
+                break;
+        }
 
+        if(activePlayer.equals(attackerRight)) activePlayer = defender;
+        else if(activePlayer.equals(defender)) activePlayer = attackerLeft;
+        else activePlayer = attackerRight;
 
-
-        setNewPlayerRole(false);
         setChanged();
         notifyObservers();
     }

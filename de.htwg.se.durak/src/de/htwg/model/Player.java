@@ -15,7 +15,7 @@ public abstract class Player implements IPlayer {
         hand = new LinkedList<>();
     }
 
-    public abstract PlayingCard playCard();
+    public abstract PlayingCard[] playCard();
 
     public void drawCard(PlayingCard card){
         hand.add(card);
