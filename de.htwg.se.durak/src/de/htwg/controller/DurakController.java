@@ -109,6 +109,17 @@ public class DurakController extends Observable {
 
     public void playerMove(DurakCommands cmd) throws IllegalArgumentException{
 
+        /**
+         * Rundenablauf:
+         * attackerRight muss angreifen,
+         * attackerLeft kann angreifen oder skippen
+         * defender kann schlagen, aufnehmen oder skippen
+         * attackerRight kann angreifen oder skippen
+         * attackerLeft ...
+         * ...
+         * runde endet wenn defender aufgenommen oder alle karten auf dem feld (max. 6) gestochen hat
+         */
+
         switch (cmd) {
             case ATTACK:
                 if(activePlayer.equals(defender)) throw new IllegalArgumentException("Zug nicht möglich");
