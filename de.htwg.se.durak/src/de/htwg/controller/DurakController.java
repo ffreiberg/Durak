@@ -109,9 +109,9 @@ public class DurakController extends Observable {
     //DEBUG
     public String getPlayerRoles(){
         String str = "";
-        str += "Right: " + attackerRight.getPlayerName() + "\t" + attackerRight.toString() + "\n";
-        str += "Defender: " + defender.getPlayerName() + "\t" + defender.toString() + "\n";
-        str += "Left: " + attackerLeft.getPlayerName() + "\t" + attackerLeft.toString() + "\n";
+        str += "Right:\t\t" + attackerRight.toString() + "\n";
+        str += "Defender:\t"  + defender.toString() + "\n";
+        str += "Left:\t\t" + attackerLeft.toString() + "\n";
         return str;
     }
 

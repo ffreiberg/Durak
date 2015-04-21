@@ -27,7 +27,7 @@ public abstract class Player implements IPlayer {
 
     @Override
     public String toString(){
-        String str = "";
+        String str = playerName + "\t";
         for(PlayingCard card: hand){
             str += card.toString() + "\t";
         }
