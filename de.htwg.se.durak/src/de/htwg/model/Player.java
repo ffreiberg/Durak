@@ -52,7 +52,12 @@ public abstract class Player implements IPlayer {
     }
 
     public void setTrumpOnHand(PlayingCardColor trump){
+        for (PlayingCard cardOnHand : hand) {
+            if (cardOnHand.getValue().equals(trump)) {
+                cardOnHand.setTrump();
+            }
 
+        }
     }
 
     /**
