@@ -1,5 +1,6 @@
 package de.htwg.controller;
 
+import com.sun.xml.internal.bind.v2.runtime.AttributeAccessor;
 import de.htwg.model.*;
 import java.util.Observable;
 import java.util.LinkedList;
@@ -21,6 +22,7 @@ public class DurakController extends Observable {
     private List<Player> players;
     private List<PlayingCard> currentField;
     private PlayingCardColor trump;
+    private boolean attackerRightFirstMove;
 
     private Player defender, attackerLeft, attackerRight;
 
@@ -38,6 +40,7 @@ public class DurakController extends Observable {
         deck = new Deck();
         players = new LinkedList<>();
         currentField = new LinkedList<>();
+        attackerRightFirstMove = true;
 
         addPlayers(numOfComputerPlayers);
         dealOutCards();
@@ -116,7 +119,7 @@ public class DurakController extends Observable {
     /**
      * Player move.
      *
-     * @param cmd the cmd
+     * @param cmd the command
      * @throws IllegalArgumentException the illegal argument exception
      */
     public void playerMove(DurakCommands cmd) throws IllegalArgumentException{
@@ -132,7 +135,20 @@ public class DurakController extends Observable {
          * runde endet wenn defender aufgenommen oder alle karten auf dem feld (max. 6) gestochen hat
          */
 
-        switch (cmd) {
+        if(activePlayer.equals(attackerRight)){
+            attack(cmd);
+            activePlayer = attackerLeft;
+        } else if (activePlayer.equals(attackerLeft)) {
+            attack(cmd);
+            activePlayer = defender;
+        } else if (activePlayer.equals(defender)) {
+            defend(cmd);
+            activePlayer = attackerRight;
+        } else {
+            throw new IllegalArgumentException();
+        }
+
+        /*switch (cmd) {
             case ATTACK:
                 if(activePlayer.equals(defender)) throw new IllegalArgumentException("Zug nicht möglich");
                 PlayingCard cards[] = activePlayer.playCard();
@@ -153,14 +169,28 @@ public class DurakController extends Observable {
                 break;
             default:
                 break;
-        }
-
-        if(activePlayer.equals(attackerRight)) activePlayer = defender;
-        else if(activePlayer.equals(defender)) activePlayer = attackerLeft;
-        else activePlayer = attackerRight;
+        }*/
 
         setChanged();
         notifyObservers();
+    }
+
+    private void defend(DurakCommands cmd) {
+    }
+
+    private void attack(DurakCommands cmd) {
+         if (activePlayer.equals(attackerRight) && attackerRightFirstMove){
+            cmd = ATTACK;
+            attackerRightFirstMove = false;
+         }
+
+        if(cmd != ATTACK) return;
+
+        PlayingCard[] cards = activePlayer.playCard((PlayingCard[]) currentField.toArray());
+
+        for(PlayingCard card: cards){
+            currentField.add(card);
+        }
     }
 
     /**
