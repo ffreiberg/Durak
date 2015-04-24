@@ -12,7 +12,9 @@ public interface IPlayer {
      *
      * @return the playing card [ ]
      */
-    public LinkedList<PlayingCard> playCard(LinkedList<PlayingCard> currentField);
+    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> currentField);
+
+    public LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField);
 
     /**
      * Draw card.

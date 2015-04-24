@@ -29,7 +29,12 @@ public class ComputerPlayer extends Player {
      * @return the playing card [ ]
      */
     @Override
-    public LinkedList<PlayingCard> playCard(LinkedList<PlayingCard> currentField) {
+    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> currentField) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField) {
         throw new NotImplementedException();
     }
 }

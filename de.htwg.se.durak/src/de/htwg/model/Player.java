@@ -18,18 +18,20 @@ public abstract class Player implements IPlayer {
     public String playerName;
 
     /**
+     * Play card.
+     *
+     * @return the playing card [ ]
+     */
+    public abstract LinkedList<PlayingCard> attack(LinkedList<PlayingCard> currentField);
+
+    public abstract LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField);
+
+    /**
      * Instantiates a new Player.
      */
     public Player(){
         hand = new LinkedList<>();
     }
-
-    /**
-     * Play card.
-     *
-     * @return the playing card [ ]
-     */
-    public abstract LinkedList<PlayingCard> playCard(LinkedList<PlayingCard> currentField);
 
     /**
      * Draw card.
