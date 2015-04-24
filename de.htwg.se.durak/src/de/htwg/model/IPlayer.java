@@ -1,5 +1,7 @@
 package de.htwg.model;
 
+import java.util.LinkedList;
+
 /**
  * Created by jawaigel on 10.04.2015.
  */
@@ -10,7 +12,7 @@ public interface IPlayer {
      *
      * @return the playing card [ ]
      */
-    public PlayingCard[] playCard(PlayingCard[] currentField);
+    public LinkedList<PlayingCard> playCard(LinkedList<PlayingCard> currentField);
 
     /**
      * Draw card.

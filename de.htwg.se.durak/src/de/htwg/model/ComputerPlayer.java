@@ -1,6 +1,8 @@
 package de.htwg.model;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.LinkedList;
 import java.util.Random;
 
 /**
@@ -27,7 +29,7 @@ public class ComputerPlayer extends Player {
      * @return the playing card [ ]
      */
     @Override
-    public PlayingCard[] playCard(PlayingCard[] currentField) {
+    public LinkedList<PlayingCard> playCard(LinkedList<PlayingCard> currentField) {
         throw new NotImplementedException();
     }
 }

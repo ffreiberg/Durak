@@ -1,5 +1,7 @@
 package de.htwg.model;
 
+import java.util.LinkedList;
+
 /**
  * Created by jan-erikwaigel on 16.04.15.
  */
@@ -18,7 +20,7 @@ public class HumanPlayer extends Player {
      * @return the playing card [ ]
      */
     @Override
-    public PlayingCard[] playCard(PlayingCard[] currentField) {
+    public LinkedList<PlayingCard> playCard(LinkedList<PlayingCard> currentField) {
         return null;
     }
 }
