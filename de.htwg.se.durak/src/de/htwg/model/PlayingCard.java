@@ -7,6 +7,7 @@ public class PlayingCard {
 
     private PlayingCardValue value;
     private PlayingCardColor color;
+    private boolean trump;
 
     /**
      * Instantiates a new Playing card.
@@ -17,6 +18,7 @@ public class PlayingCard {
     public PlayingCard(PlayingCardValue value, PlayingCardColor color){
         this.value = value;
         this.color = color;
+        this.trump = false;
     }
 
     /**
@@ -36,6 +38,8 @@ public class PlayingCard {
     public PlayingCardColor getColor() {
         return color;
     }
+
+    public void setTrump() { this.trump = true; }
 
     /**
      * To string.

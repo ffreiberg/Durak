@@ -23,6 +23,8 @@ public interface IPlayer {
      */
     public void drawCard(PlayingCard card);
 
+    public void setTrumpOnHand(PlayingCardColor trump);
+
     /**
      * Gets player name.
      *

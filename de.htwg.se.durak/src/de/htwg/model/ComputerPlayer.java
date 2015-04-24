@@ -30,11 +30,37 @@ public class ComputerPlayer extends Player {
      */
     @Override
     public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> currentField) {
-        throw new NotImplementedException();
+        LinkedList<PlayingCard> cardsToPlay = new LinkedList<PlayingCard>();
+        for (PlayingCard cardOnField : currentField)
+        {
+            for (PlayingCard cardOnHand : hand) {
+                if (cardOnField.equals(cardOnHand))
+                {
+                    cardsToPlay.add(cardOnHand);
+                    return cardsToPlay;
+                }
+            }
+        }
+        return null;
+        //throw new NotImplementedException();
     }
 
     @Override
     public LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField) {
+
+
         throw new NotImplementedException();
+    }
+
+    public LinkedList<PlayingCard> scanField(LinkedList<PlayingCard> currentField) {
+        LinkedList<PlayingCard> validCards = new LinkedList<PlayingCard>();
+
+        for (PlayingCard cardOnField : currentField) {
+            for (PlayingCard cardOnHand : hand) {
+                //TODO:
+            }
+        }
+
+        return validCards;
     }
 }

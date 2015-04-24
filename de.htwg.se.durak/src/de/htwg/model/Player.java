@@ -51,6 +51,10 @@ public abstract class Player implements IPlayer {
         return playerName;
     }
 
+    public void setTrumpOnHand(PlayingCardColor trump){
+
+    }
+
     /**
      * To string.
      *
