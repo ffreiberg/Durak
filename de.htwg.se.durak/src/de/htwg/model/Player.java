@@ -29,7 +29,7 @@ public abstract class Player implements IPlayer {
      *
      * @return the playing card [ ]
      */
-    public abstract PlayingCard[] playCard();
+    public abstract PlayingCard[] playCard(PlayingCard[] currentField);
 
     /**
      * Draw card.

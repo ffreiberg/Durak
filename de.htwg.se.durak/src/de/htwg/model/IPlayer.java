@@ -10,7 +10,7 @@ public interface IPlayer {
      *
      * @return the playing card [ ]
      */
-    public PlayingCard[] playCard();
+    public PlayingCard[] playCard(PlayingCard[] currentField);
 
     /**
      * Draw card.

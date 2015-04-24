@@ -18,7 +18,7 @@ public class HumanPlayer extends Player {
      * @return the playing card [ ]
      */
     @Override
-    public PlayingCard[] playCard() {
+    public PlayingCard[] playCard(PlayingCard[] currentField) {
         return null;
     }
 }

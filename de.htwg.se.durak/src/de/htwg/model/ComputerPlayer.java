@@ -27,7 +27,7 @@ public class ComputerPlayer extends Player {
      * @return the playing card [ ]
      */
     @Override
-    public PlayingCard[] playCard() {
+    public PlayingCard[] playCard(PlayingCard[] currentField) {
         throw new NotImplementedException();
     }
 }
