@@ -5,8 +5,24 @@ package de.htwg.model;
  */
 public interface IPlayer {
 
+    /**
+     * Play card.
+     *
+     * @return the playing card [ ]
+     */
     public PlayingCard[] playCard();
 
+    /**
+     * Draw card.
+     *
+     * @param card the card
+     */
     public void drawCard(PlayingCard card);
+
+    /**
+     * Gets player name.
+     *
+     * @return the player name
+     */
     public String getPlayerName();
 }

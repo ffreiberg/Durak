@@ -5,10 +5,18 @@ package de.htwg.model;
  */
 public class HumanPlayer extends Player {
 
+    /**
+     * Instantiates a new Human player.
+     */
     public HumanPlayer(){
         playerName = "HumanPlayer";
     }
 
+    /**
+     * Play card.
+     *
+     * @return the playing card [ ]
+     */
     @Override
     public PlayingCard[] playCard() {
         return null;

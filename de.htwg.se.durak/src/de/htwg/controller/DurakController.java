@@ -24,6 +24,12 @@ public class DurakController extends Observable {
 
     private Player defender, attackerLeft, attackerRight;
 
+    /**
+     * Instantiates a new Durak controller.
+     *
+     * @param numOfComputerPlayers the num of computer players
+     * @throws IllegalArgumentException the illegal argument exception
+     */
     public DurakController(int numOfComputerPlayers) throws IllegalArgumentException {
         if(numOfComputerPlayers < minNumOfComputerPlayers && numOfComputerPlayers > maxNumOfComputerPlayers){
             throw new IllegalArgumentException();
@@ -107,6 +113,12 @@ public class DurakController extends Observable {
         attackerLeft = players.get(2);
     }
 
+    /**
+     * Player move.
+     *
+     * @param cmd the cmd
+     * @throws IllegalArgumentException the illegal argument exception
+     */
     public void playerMove(DurakCommands cmd) throws IllegalArgumentException{
 
         /**
@@ -151,7 +163,12 @@ public class DurakController extends Observable {
         notifyObservers();
     }
 
-    //DEBUG
+    /**
+     * Get players hand.
+     * (DEBUG)
+     *
+     * @return the string
+     */
     public String getPlayersHand(){
         String str = "";
         for(Player p: players){
@@ -160,7 +177,12 @@ public class DurakController extends Observable {
         return str;
     }
 
-    //DEBUG
+    /**
+     * Get player roles.
+     *(DEBUG)
+     *
+     * @return the string
+     */
     public String getPlayerRoles(){
         String str = "";
         str += "Right:\t\t" + attackerRight.toString() + "\n";
