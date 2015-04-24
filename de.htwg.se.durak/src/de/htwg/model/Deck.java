@@ -27,6 +27,12 @@ public class Deck {
         shuffle(deck);
     }
 
+    public void setTrump(PlayingCardColor trump){
+        for(PlayingCard card: deck) {
+            if(card.getColor() == trump) card.setTrump();
+        }
+    }
+
     /**
      * Get deck size.
      *
