@@ -13,9 +13,9 @@ public interface IPlayer {
      * @return the playing card [ ]
      * @param cardsOnField
      */
-    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> cardsOnField);
+    public PlayingCard attack(LinkedList<PlayingCard> cardsOnField);
 
-    public LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField);
+    public PlayingCard defend(PlayingCard cardToBeat);
 
     /**
      * Draw card.

@@ -21,12 +21,12 @@ public class HumanPlayer extends Player {
      * @param cardsOnField
      */
     @Override
-    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> cardsOnField) {
+    public PlayingCard attack(LinkedList<PlayingCard> cardsOnField) {
         return null;
     }
 
     @Override
-    public LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField) {
+    public PlayingCard defend(PlayingCard cardToBeat) {
         return null;
     }
 }

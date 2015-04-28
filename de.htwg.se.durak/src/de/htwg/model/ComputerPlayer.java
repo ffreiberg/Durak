@@ -1,7 +1,5 @@
 package de.htwg.model;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -30,43 +28,40 @@ public class ComputerPlayer extends Player {
      * @param cardsOnField
      */
     @Override
-    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> cardsOnField) {
+    public PlayingCard attack(LinkedList<PlayingCard> cardsOnField) {
 
-        LinkedList<PlayingCard> cardsToPlay = scanFieldAttack(cardsOnField);
+        this.sortHand();
+        if (cardsOnField.isEmpty()) return hand.get(0);
 
-        if (cardsOnField.isEmpty()) getLowestCard();
-
-        return null;
-        //throw new NotImplementedException();
-    }
-
-    private PlayingCard getLowestCard() {
-        PlayingCard lowestCard = hand.get(0);
-
-        for (PlayingCard cardOnHand : hand)
-        {
-            if (lowestCard.getValue().ordinal() < cardOnHand.getValue().ordinal())
-                lowestCard = cardOnHand;
-        }
-
-        return lowestCard;
+        return scanField(cardsOnField);
     }
 
     @Override
-    public LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField) {
-        throw new NotImplementedException();
+    public PlayingCard defend(PlayingCard cardToBeat) {
+        PlayingCard cardDefend = null;
+
+        for (PlayingCard cardOnHand : hand){
+            if ((cardOnHand.getColor() == cardToBeat.getColor()
+                    && (cardOnHand.getValue().ordinal() > cardToBeat.getValue().ordinal()))) {
+                 return cardOnHand;
+            }
+            else if (cardOnHand.isTrump()) {
+                cardDefend = cardOnHand;
+            }
+        }
+
+        return cardDefend;
     }
 
-    public LinkedList<PlayingCard> scanFieldAttack(LinkedList<PlayingCard> currentField) {
-        LinkedList<PlayingCard> validCards = new LinkedList<PlayingCard>();
+    public PlayingCard scanField(LinkedList<PlayingCard> currentField) {
 
         for (PlayingCard cardOnField : currentField) {
             for (PlayingCard cardOnHand : hand) {
                 if (cardOnHand.getValue() == cardOnField.getValue())
-                    validCards.add(cardOnHand);
+                    return cardOnHand;
             }
         }
 
-        return validCards;
+        return null;
     }
 }

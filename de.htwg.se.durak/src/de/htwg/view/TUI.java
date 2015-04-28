@@ -48,3 +48,12 @@ public class TUI implements Observer {
         printTUI();
     }
 }
+
+/**
+ * Computer: |*| |*| |*| |*|
+ * 1. Zug: herz 8   herz 9
+ * 2. Zug:
+ * 3. Zug:
+ * ...
+ * Spieler: |herz 10|
+ */

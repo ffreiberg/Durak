@@ -25,9 +25,9 @@ public abstract class Player implements IPlayer {
      * @return the playing card [ ]
      * @param cardsOnField
      */
-    public abstract LinkedList<PlayingCard> attack(LinkedList<PlayingCard> cardsOnField);
+    public abstract PlayingCard attack(LinkedList<PlayingCard> cardsOnField);
 
-    public abstract LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField);
+    public abstract PlayingCard defend(PlayingCard cardToBeat);
 
     /**
      * Instantiates a new Player.
