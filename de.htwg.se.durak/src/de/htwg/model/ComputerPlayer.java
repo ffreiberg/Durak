@@ -27,9 +27,10 @@ public class ComputerPlayer extends Player {
      * Play card.
      *
      * @return the playing card [ ]
+     * @param cardsOnField
      */
     @Override
-    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> attackerField, LinkedList<PlayingCard> defenderField) {
+    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> cardsOnField) {
         LinkedList<PlayingCard> cardsToPlay = new LinkedList<PlayingCard>();
         for (PlayingCard cardOnField : defenderField)
         {
