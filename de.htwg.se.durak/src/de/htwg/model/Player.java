@@ -83,7 +83,7 @@ public abstract class Player implements IPlayer {
         return str;
     }
 
-    class CardComparator implements Comparator<PlayingCard> {
+    private class CardComparator implements Comparator<PlayingCard> {
         @Override
         public int compare(PlayingCard card1, PlayingCard card2)
         {

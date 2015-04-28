@@ -39,8 +39,7 @@ public class TUI implements Observer {
     }
 
     public void printTUI(){
-        System.out.println(controller.getPlayerRoles());
-        //System.out.println(controller.getPlayersHand());
+
     }
 
     @Override

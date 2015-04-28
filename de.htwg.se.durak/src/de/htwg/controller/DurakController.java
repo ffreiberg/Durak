@@ -1,12 +1,9 @@
 package de.htwg.controller;
 
-import com.sun.xml.internal.bind.v2.runtime.AttributeAccessor;
 import de.htwg.model.*;
 
-import java.text.AttributedCharacterIterator;
 import java.util.Observable;
 import java.util.LinkedList;
-import java.util.List;
 
 import static de.htwg.controller.DurakCommands.*;
 
@@ -16,37 +13,34 @@ import static de.htwg.controller.DurakCommands.*;
 public class DurakController extends Observable {
 
     private static final int startNumOfCards = 6;
-    private static final int minNumOfComputerPlayers = 2;
-    private static final int maxNumOfComputerPlayers = 4;
-    private static final int maxNumOfAttackerCards = 6;
+    private static final int maxNumOfCards = 12;
 
     private Deck deck;
     private Player activePlayer;
     private LinkedList<Player> players;
-    private LinkedList<PlayingCard> attackerField, defenderField;
+    private LinkedList<PlayingCard> field;
+    private PlayingCard attackerCard;
     private PlayingCardColor trump;
-    private boolean attackerRightFirstMove;
 
-    private Player defender, attackerLeft, attackerRight;
+    private Player defender, attacker;
 
     /**
      * Instantiates a new Durak controller.
      *
-     * @param numOfComputerPlayers the num of computer players
      * @throws IllegalArgumentException the illegal argument exception
      */
-    public DurakController(int numOfComputerPlayers) throws IllegalArgumentException {
-        if(numOfComputerPlayers < minNumOfComputerPlayers && numOfComputerPlayers > maxNumOfComputerPlayers){
+    public DurakController() throws IllegalArgumentException {
+        /*if(numOfComputerPlayers < minNumOfComputerPlayers && numOfComputerPlayers > maxNumOfComputerPlayers){
             throw new IllegalArgumentException();
-        }
+        }*/
 
         deck = new Deck();
         players = new LinkedList<>();
-        attackerField = new LinkedList<>();
-        defenderField = new LinkedList<>();
-        attackerRightFirstMove = true;
+        field = new LinkedList<>();
 
-        addPlayers(numOfComputerPlayers);
+        players.add(new HumanPlayer());
+        players.add(new ComputerPlayer());
+
         dealOutCards();
         setTrump();
         searchFirstAttacker();
@@ -75,11 +69,10 @@ public class DurakController extends Observable {
         }
 
         //set player roles
-        attackerRight = players.get(0);
+        attacker = players.get(0);
         defender = players.get(1);
-        attackerLeft = players.get(2);
 
-        activePlayer = attackerRight;
+        activePlayer = attacker;
     }
 
     private void setTrump() {
@@ -101,15 +94,9 @@ public class DurakController extends Observable {
         }
     }
 
-    private void addPlayers(int numOfComputerPlayers) {
-        //Add players
-        players.add(new HumanPlayer());
-        for(int i=0; i<numOfComputerPlayers; ++i){
-            players.add(new ComputerPlayer());
-        }
-    }
-
     private void setNewPlayerRole(boolean skip) {
+        //TODO: TUI neue Runde kennzeichnen
+
         Player p = players.remove(0);
         players.add(p);
 
@@ -118,9 +105,8 @@ public class DurakController extends Observable {
             players.add(p);
         }
 
-        attackerRight = players.get(0);
+        attacker = players.get(0);
         defender = players.get(1);
-        attackerLeft = players.get(2);
     }
 
     /**
@@ -131,31 +117,19 @@ public class DurakController extends Observable {
      */
     public void playerMove(DurakCommands cmd) throws IllegalArgumentException{
 
-        /**
-         * Rundenablauf:
-         * attackerRight muss angreifen,
-         * attackerLeft kann angreifen oder skippen
-         * defender kann schlagen, aufnehmen oder skippen
-         * attackerRight kann angreifen oder skippen
-         * attackerLeft ...
-         * ...
-         * runde endet wenn defender aufgenommen oder alle karten auf dem feld (max. 6) gestochen hat
-         */
-
-        //TODO: setNewPlayerRole benutzen
-        //TODO: unterscheiden ob HumanPlayer an der Reihe ist -> Übergabe welche Karten gespielt werden sollen
-
-        if(activePlayer.equals(attackerRight)){
-            attack(cmd);
-            activePlayer = attackerLeft;
-        } else if (activePlayer.equals(attackerLeft)) {
-            attack(cmd);
+        if(activePlayer.equals(attacker)){
+            if(activePlayer.getClass().equals(ComputerPlayer.class))
+                attack(ATTACK);
+            else
+                attack(cmd);
             activePlayer = defender;
-        } else if (activePlayer.equals(defender)) {
-            defend(cmd);
-            activePlayer = attackerRight;
-        } else {
-            throw new IllegalArgumentException();
+        }
+        else {
+            if(activePlayer.getClass().equals(ComputerPlayer.class))
+               defend(BEAT);
+            else
+                defend(cmd);
+            activePlayer = attacker;
         }
 
         setChanged();
@@ -163,38 +137,37 @@ public class DurakController extends Observable {
     }
 
     private void defend(DurakCommands cmd) {
-        LinkedList<PlayingCard> defenderCards = activePlayer.defend(attackerField);
+        if(cmd == TAKE){
+            for(PlayingCard card: field) activePlayer.drawCard(card);
+            setNewPlayerRole(true);
+        }
 
-        if(defenderCards == null){
-            for(PlayingCard card: defenderField) activePlayer.drawCard(card);
-            for(PlayingCard card: attackerField) activePlayer.drawCard(card);
-            defenderField.clear();
-            attackerField.clear();
+        PlayingCard defenderCard = activePlayer.defend(attackerCard);
+
+        if(defenderCard == null){
+            for(PlayingCard card: field) activePlayer.drawCard(card);
             return;
         }
 
-        for(PlayingCard card: attackerField) defenderField.add(card);
-        for(PlayingCard card: defenderCards) defenderField.add(card);
+        field.add(defenderCard);
     }
 
     private void attack(DurakCommands cmd) {
 
         //TODO: Ausgabe dass zu viele Karten auf dem attackerField sind
-        if(attackerField.size() >= maxNumOfAttackerCards) return;
+        if(field.size() >= maxNumOfCards) return;
 
-        if (activePlayer.equals(attackerRight) && attackerRightFirstMove){
+        if (activePlayer.equals(attacker) && field.isEmpty())
             cmd = ATTACK;
-            attackerRightFirstMove = false;
-         }
 
         if(cmd != ATTACK) return;
 
-        LinkedList<PlayingCard> allCardsOnField = new LinkedList<>();
-        allCardsOnField.addAll(attackerField);
-        allCardsOnField.addAll(defenderField);
-
-        LinkedList<PlayingCard> cards = activePlayer.attack(allCardsOnField);
-        for(PlayingCard card: cards) attackerField.add(card);
+        PlayingCard attackingCard = activePlayer.attack(field);
+        if(attackingCard == null) {
+            setNewPlayerRole(false);
+            return;
+        }
+        field.add(attackingCard);
     }
 
     /**
@@ -208,20 +181,6 @@ public class DurakController extends Observable {
         for(Player p: players){
             str += (p.getPlayerName() + "\t" + p.toString() + "\n");
         }
-        return str;
-    }
-
-    /**
-     * Get player roles.
-     *(DEBUG)
-     *
-     * @return the string
-     */
-    public String getPlayerRoles(){
-        String str = "";
-        str += "Right:\t\t" + attackerRight.toString() + "\n";
-        str += "Defender:\t"  + defender.toString() + "\n";
-        str += "Left:\t\t" + attackerLeft.toString() + "\n";
         return str;
     }
 
