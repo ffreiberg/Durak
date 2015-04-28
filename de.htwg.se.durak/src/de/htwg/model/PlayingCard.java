@@ -41,6 +41,10 @@ public class PlayingCard {
 
     public void setTrump() { this.trump = true; }
 
+    public boolean isTrump() {
+        return trump;
+    }
+
     /**
      * To string.
      *

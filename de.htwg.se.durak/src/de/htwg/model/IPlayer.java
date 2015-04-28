@@ -26,6 +26,8 @@ public interface IPlayer {
 
     public void setTrumpOnHand(PlayingCardColor trump);
 
+    public void sortHand();
+
     /**
      * Gets player name.
      *

@@ -31,19 +31,25 @@ public class ComputerPlayer extends Player {
      */
     @Override
     public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> cardsOnField) {
-        LinkedList<PlayingCard> cardsToPlay = new LinkedList<PlayingCard>();
-        for (PlayingCard cardOnField : defenderField)
-        {
-            for (PlayingCard cardOnHand : hand) {
-                if (cardOnField.equals(cardOnHand))
-                {
-                    cardsToPlay.add(cardOnHand);
-                    return cardsToPlay;
-                }
-            }
-        }
+
+        LinkedList<PlayingCard> cardsToPlay = scanFieldAttack(cardsOnField);
+
+        if (cardsOnField.isEmpty()) getLowestCard();
+
         return null;
         //throw new NotImplementedException();
+    }
+
+    private PlayingCard getLowestCard() {
+        PlayingCard lowestCard = hand.get(0);
+
+        for (PlayingCard cardOnHand : hand)
+        {
+            if (lowestCard.getValue().ordinal() < cardOnHand.getValue().ordinal())
+                lowestCard = cardOnHand;
+        }
+
+        return lowestCard;
     }
 
     @Override
@@ -51,12 +57,13 @@ public class ComputerPlayer extends Player {
         throw new NotImplementedException();
     }
 
-    public LinkedList<PlayingCard> scanField(LinkedList<PlayingCard> currentField) {
+    public LinkedList<PlayingCard> scanFieldAttack(LinkedList<PlayingCard> currentField) {
         LinkedList<PlayingCard> validCards = new LinkedList<PlayingCard>();
 
         for (PlayingCard cardOnField : currentField) {
             for (PlayingCard cardOnHand : hand) {
-                //TODO:
+                if (cardOnHand.getValue() == cardOnField.getValue())
+                    validCards.add(cardOnHand);
             }
         }
 

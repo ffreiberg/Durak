@@ -1,5 +1,7 @@
 package de.htwg.model;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -61,6 +63,12 @@ public abstract class Player implements IPlayer {
         }
     }
 
+    @Override
+    public void sortHand() {
+        Collections.sort(hand, new CardComparator());
+        System.out.println(this.toString());
+    }
+
     /**
      * To string.
      *
@@ -73,5 +81,13 @@ public abstract class Player implements IPlayer {
             str += card.toString() + "\t";
         }
         return str;
+    }
+
+    class CardComparator implements Comparator<PlayingCard> {
+        @Override
+        public int compare(PlayingCard card1, PlayingCard card2)
+        {
+            return card1.getValue().ordinal() - card2.getValue().ordinal();
+        }
     }
 }
