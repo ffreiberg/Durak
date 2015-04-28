@@ -22,7 +22,7 @@ public abstract class Player implements IPlayer {
      *
      * @return the playing card [ ]
      */
-    public abstract LinkedList<PlayingCard> attack(LinkedList<PlayingCard> currentField);
+    public abstract LinkedList<PlayingCard> attack(LinkedList<PlayingCard> attackerField, LinkedList<PlayingCard> defenderField);
 
     public abstract LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField);
 

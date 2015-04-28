@@ -29,9 +29,9 @@ public class ComputerPlayer extends Player {
      * @return the playing card [ ]
      */
     @Override
-    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> currentField) {
+    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> attackerField, LinkedList<PlayingCard> defenderField) {
         LinkedList<PlayingCard> cardsToPlay = new LinkedList<PlayingCard>();
-        for (PlayingCard cardOnField : currentField)
+        for (PlayingCard cardOnField : defenderField)
         {
             for (PlayingCard cardOnHand : hand) {
                 if (cardOnField.equals(cardOnHand))
@@ -47,8 +47,6 @@ public class ComputerPlayer extends Player {
 
     @Override
     public LinkedList<PlayingCard> defend(LinkedList<PlayingCard> currentField) {
-
-
         throw new NotImplementedException();
     }
 

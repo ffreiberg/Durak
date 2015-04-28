@@ -189,7 +189,7 @@ public class DurakController extends Observable {
 
         if(cmd != ATTACK) return;
 
-        LinkedList<PlayingCard> cards = activePlayer.attack(attackerField);
+        LinkedList<PlayingCard> cards = activePlayer.attack(attackerField, defenderField);
         for(PlayingCard card: cards) attackerField.add(card);
     }
 

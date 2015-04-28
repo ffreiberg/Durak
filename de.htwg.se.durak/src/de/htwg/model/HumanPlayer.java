@@ -20,7 +20,7 @@ public class HumanPlayer extends Player {
      * @return the playing card [ ]
      */
     @Override
-    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> currentField) {
+    public LinkedList<PlayingCard> attack(LinkedList<PlayingCard> attackerField, LinkedList<PlayingCard> defenderField) {
         return null;
     }
 
