@@ -7,7 +7,7 @@ import de.htwg.view.TUI;
 public class Durak {
 
     public static void main(String args[]){
-        DurakController controller = new DurakController(2);
+        DurakController controller = new DurakController();
         TUI tui = new TUI(controller);
 
         tui.printTUI();

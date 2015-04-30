@@ -13,7 +13,7 @@ import static de.htwg.controller.DurakCommands.*;
 public class DurakController extends Observable {
 
     private static final int startNumOfCards = 6;
-    private static final int maxNumOfCards = 12;
+    private static final int maxCardsOnField = 12;
 
     private Deck deck;
     private Player activePlayer;
@@ -155,7 +155,7 @@ public class DurakController extends Observable {
     private void attack(DurakCommands cmd) {
 
         //TODO: Ausgabe dass zu viele Karten auf dem attackerField sind
-        if(field.size() >= maxNumOfCards) return;
+        if(field.size() >= maxCardsOnField) return;
 
         if (activePlayer.equals(attacker) && field.isEmpty())
             cmd = ATTACK;
