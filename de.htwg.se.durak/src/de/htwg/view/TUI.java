@@ -46,6 +46,7 @@ public class TUI implements Observer {
             System.out.println("Invalid move! Try again");
         }
 
+        System.out.println("Дурак!\n");
         System.out.println("Trumpf " + controller.getTrump().toString() + "\t Cards in Deck: [" + controller.getDeckSize() + "]" );
         System.out.println("------------------------------");
 

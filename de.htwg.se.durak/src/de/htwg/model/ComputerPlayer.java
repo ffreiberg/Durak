@@ -33,8 +33,7 @@ public class ComputerPlayer extends Player {
 
         this.sortHand();
         if (cardsOnField.isEmpty()) {
-            firstAttack();
-            return hand.remove(0);
+            return hand.remove(firstAttack());
         }
 
         int index = scanField(cardsOnField);

@@ -166,12 +166,12 @@ public class DurakController extends Observable {
                 System.out.println("Unentschieden");
             else if(attacker.hand.isEmpty()){
                 if(attacker.getClass().equals(HumanPlayer.class))
-                    System.out.println("Spieler hat gewonnen.");
+                    System.out.println("Вы дурак!");
                 else
                     System.out.println("Computer hat gewonnen.");
             } else {
                 if(attacker.getClass().equals(ComputerPlayer.class))
-                    System.out.println("Computer hat gewonnen.");
+                    System.out.println("Вы дурак!");
                 else
                     System.out.println("Spieler hat gewonnen.");
             }
