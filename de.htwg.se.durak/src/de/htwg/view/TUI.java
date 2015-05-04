@@ -2,8 +2,8 @@ package de.htwg.view;
 
 import de.htwg.controller.DurakCommands;
 import de.htwg.controller.DurakController;
+import de.htwg.model.PlayingCard;
 
-import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
@@ -24,44 +24,49 @@ public class TUI implements Observer {
 
     //TODO: Prüfen ob Mensch oder Computer am Zug ist
     public boolean iterate(){
-        int cardIndex = 0;
-        String cmd;
+        String cmd = "1";
 
-        System.out.print("Kommando: ");
-        cmd = scanner.next();
-
-        if( !cmd.toLowerCase().equals("t") )
-        {
-            System.out.print("\nKarte: ");
-            cardIndex = scanner.nextInt();
+        if(controller.isHumanPlayer()) {
+            System.out.print("Zug Spieler -> Kommando: ");
+            cmd = scanner.next();
         }
 
-        return handleInput(cmd, cardIndex);
+        return handleInput(cmd);
     }
 
-    private boolean handleInput(String cmd, int cardIndex) {
+    private boolean handleInput(String cmd) {
 
-        switch (cmd.toLowerCase()){
-            case "q":
-                return true;
-            case "a":
-                controller.playerMove(DurakCommands.ATTACK, cardIndex);
-                break;
-            case "b":
-                controller.playerMove(DurakCommands.BEAT, cardIndex);
-                break;
-            case "t":
-                controller.playerMove(DurakCommands.TAKE, cardIndex);
-                break;
-            default:
-                controller.playerMove(null, cardIndex);
+        if( cmd.toCharArray()[0] == 'q') return true;
+        else controller.playerMove(cmd);
 
-        }
         return false;
     }
 
     public void printTUI(){
+        System.out.println("Trumpf " + controller.getTrump().toString() + "\t Cards in Deck: [" + controller.getDeckSize() + "]" );
+        System.out.println("------------------------------");
 
+        System.out.print("Computer\t");
+        for(PlayingCard defenderCard: controller.getComputerHand())
+            System.out.print(defenderCard.toString() + "\t");
+
+        System.out.println("\n------------------------------");
+
+        System.out.print("Feld\t\t");
+        for(PlayingCard fieldCard: controller.getField())
+            System.out.print(fieldCard.toString() + "\t");
+
+        System.out.println("\n------------------------------");
+        System.out.print("\t\t\t");
+
+        for(int i=1; i<=controller.getPlayersHand().size(); ++i)
+            System.out.print("[" + i + "]\t");
+
+        System.out.print("\nSpieler\t\t");
+        for(PlayingCard attackerCard: controller.getPlayersHand())
+            System.out.print(attackerCard.toString() + "\t");
+        System.out.println("\n------------------------------");
+        System.out.println();
     }
 
     @Override

@@ -62,7 +62,7 @@ public class ComputerPlayerTest extends TestCase {
        assertTrue(attackerCard != null);
     }
 
-    @Test
+    /*@Test
     public void testScanFieldSucceed() throws Exception {
         PlayingCard scannedCard = bot.scanField(field);
         PlayingCard expectedCard = new PlayingCard(ACE, SPADES);
@@ -73,9 +73,9 @@ public class ComputerPlayerTest extends TestCase {
 
     @Test
     public void testScanFieldFailed() throws Exception {
-        PlayingCard scannedCard = bot.scanField(field2);
+        //PlayingCard scannedCard = bot.scanField(field2);
 
 
         assertTrue(scannedCard == null);
-    }
+    }*/
 }

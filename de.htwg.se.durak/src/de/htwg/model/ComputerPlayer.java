@@ -32,37 +32,43 @@ public class ComputerPlayer extends Player {
     public PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex) {
 
         this.sortHand();
-        if (cardsOnField.isEmpty()) return hand.get(0);
+        if (cardsOnField.isEmpty()) return hand.remove(0);
 
-        return scanField(cardsOnField);
+        int index = scanField(cardsOnField);
+
+        if(index == -1) return null;
+        return hand.remove(index);
     }
 
     @Override
     public PlayingCard defend(PlayingCard cardToBeat, int cardIndex) {
-        PlayingCard cardDefend = null;
+        int cardDefend = -1;
 
-        for (PlayingCard cardOnHand : hand){
-            if ((cardOnHand.getColor() == cardToBeat.getColor()
-                    && (cardOnHand.getValue().ordinal() > cardToBeat.getValue().ordinal()))) {
-                 return cardOnHand;
+        for(int i=0; i<hand.size(); ++i){
+            if ((hand.get(i).getColor() == cardToBeat.getColor()
+                    && (hand.get(i).getValue().ordinal() > cardToBeat.getValue().ordinal()))) {
+
+                return hand.remove(i);
             }
-            else if (cardOnHand.isTrump()) {
-                cardDefend = cardOnHand;
+            else if (hand.get(i).isTrump() && !cardToBeat.isTrump()) {
+                cardDefend = i;
             }
         }
-
-        return cardDefend;
+        if(cardDefend == -1)
+            return null;
+        else
+            return hand.remove(cardDefend);
     }
 
-    public PlayingCard scanField(LinkedList<PlayingCard> currentField) {
+    public int scanField(LinkedList<PlayingCard> currentField) {
 
         for (PlayingCard cardOnField : currentField) {
-            for (PlayingCard cardOnHand : hand) {
-                if (cardOnHand.getValue() == cardOnField.getValue())
-                    return cardOnHand;
+            for (int i=0; i<hand.size(); ++i) {
+                if (hand.get(i).getValue() == cardOnField.getValue())
+                    return i;
             }
         }
 
-        return null;
+        return -1;
     }
 }

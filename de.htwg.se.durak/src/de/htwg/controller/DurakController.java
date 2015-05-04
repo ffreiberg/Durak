@@ -24,16 +24,7 @@ public class DurakController extends Observable {
 
     private Player defender, attacker;
 
-    /**
-     * Instantiates a new Durak controller.
-     *
-     * @throws IllegalArgumentException the illegal argument exception
-     */
-    public DurakController() throws IllegalArgumentException {
-        /*if(numOfComputerPlayers < minNumOfComputerPlayers && numOfComputerPlayers > maxNumOfComputerPlayers){
-            throw new IllegalArgumentException();
-        }*/
-
+    public DurakController() {
         deck = new Deck();
         players = new LinkedList<>();
         field = new LinkedList<>();
@@ -97,16 +88,24 @@ public class DurakController extends Observable {
     private void setNewPlayerRole(boolean skip) {
         //TODO: TUI neue Runde kennzeichnen
 
-        Player p = players.remove(0);
-        players.add(p);
-
-        if(skip == true){
-            p = players.remove(0);
-            players.add(p);
+        //Karten ziehen
+        while(attacker.hand.size() < startNumOfCards && deck.getDeckSize() > 0){
+            attacker.drawCard(deck.drawCard());
         }
+
+        while(defender.hand.size() < startNumOfCards && deck.getDeckSize() > 0){
+            defender.drawCard(deck.drawCard());
+        }
+
+        if(skip != true)
+            players.add(players.remove(0));
 
         attacker = players.get(0);
         defender = players.get(1);
+
+        activePlayer = attacker;
+
+        field = new LinkedList<>();
     }
 
     /**
@@ -115,74 +114,76 @@ public class DurakController extends Observable {
      * @param cmd the command
      * @throws IllegalArgumentException the illegal argument exception
      */
-    public void playerMove(DurakCommands cmd, int cardIndex) throws IllegalArgumentException{
+    public void playerMove(String cmd) {
 
-        if(activePlayer.equals(attacker)){
-            if(activePlayer.getClass().equals(ComputerPlayer.class))
-                attack(ATTACK, cardIndex);
-            else
-                attack(cmd, cardIndex);
-            activePlayer = defender;
-        }
-        else {
-            if(activePlayer.getClass().equals(ComputerPlayer.class))
-               defend(BEAT, cardIndex);
-            else
-                defend(cmd, cardIndex);
-            activePlayer = attacker;
+        if(cmd.toCharArray()[0] == 't' && activePlayer.equals(defender)){
+            takeCards();
+        } else {
+            round(Integer.parseInt(cmd));
         }
 
         setChanged();
         notifyObservers();
     }
 
-    private void defend(DurakCommands cmd, int cardIndex) {
-        if(cmd == TAKE){
-            for(PlayingCard card: field) activePlayer.drawCard(card);
-            setNewPlayerRole(true);
-            return;
+    private void round(int cardIndex) {
+        if(activePlayer.equals(attacker)){
+            //TODO: Ausgabe dass zu viele Karten auf dem attackerField sind
+            if(field.size() >= maxCardsOnField) return;
+
+            PlayingCard attackingCard = activePlayer.attack(field, cardIndex);
+            if(attackingCard == null) {
+                setNewPlayerRole(false);
+                return;
+            }
+
+            attackerCard = attackingCard;
+            field.add(attackerCard);
+
+            activePlayer = defender;
+        } else {
+            PlayingCard defenderCard = activePlayer.defend(attackerCard, cardIndex);
+
+            if(defenderCard == null){
+                takeCards();
+                return;
+            }
+
+            field.add(defenderCard);
+            activePlayer = attacker;
         }
-
-        PlayingCard defenderCard = activePlayer.defend(attackerCard, cardIndex);
-
-        if(defenderCard == null){
-            for(PlayingCard card: field) activePlayer.drawCard(card);
-            return;
-        }
-
-        field.add(defenderCard);
     }
 
-    private void attack(DurakCommands cmd, int cardIndex) {
+    private void takeCards() {
+        int size = field.size();
 
-        //TODO: Ausgabe dass zu viele Karten auf dem attackerField sind
-        if(field.size() >= maxCardsOnField) return;
+        for(int i=0; i<size; ++i)
+            defender.drawCard(field.remove(0));
 
-        if (activePlayer.equals(attacker) && field.isEmpty())
-            cmd = ATTACK;
-
-        if(cmd != ATTACK) return;
-
-        PlayingCard attackingCard = activePlayer.attack(field, cardIndex);
-        if(attackingCard == null) {
-            setNewPlayerRole(false);
-            return;
-        }
-        field.add(attackingCard);
+        setNewPlayerRole(true);
     }
 
-    /**
-     * Get players hand.
-     * (DEBUG)
-     *
-     * @return the string
-     */
-    public String getPlayersHand(){
-        String str = "";
-        for(Player p: players){
-            str += (p.getPlayerName() + "\t" + p.toString() + "\n");
-        }
-        return str;
+    public LinkedList<PlayingCard> getPlayersHand(){
+        if(attacker.getClass().equals(HumanPlayer.class)) return attacker.hand;
+        else return defender.hand;
     }
 
+    public LinkedList<PlayingCard> getComputerHand(){
+        if(attacker.getClass().equals(ComputerPlayer.class)) return attacker.hand;
+        else return defender.hand;
+    }
+
+    public LinkedList<PlayingCard> getField(){
+        return field;
+    }
+
+    public boolean isHumanPlayer() {
+        return activePlayer.getClass().equals(HumanPlayer.class);
+    }
+
+    public PlayingCardColor getTrump(){
+        return trump;
+    }
+
+    public int getDeckSize() { return deck.getDeckSize(); }
 }

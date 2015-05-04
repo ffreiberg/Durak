@@ -43,6 +43,7 @@ public abstract class Player implements IPlayer {
      */
     public void drawCard(PlayingCard card){
         hand.add(card);
+        this.sortHand();
     }
 
     /**
@@ -71,7 +72,6 @@ public abstract class Player implements IPlayer {
     @Override
     public void sortHand() {
         Collections.sort(hand, new CardComparator());
-        System.out.println(this.toString());
     }
 
     /**

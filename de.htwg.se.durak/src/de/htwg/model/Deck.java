@@ -13,9 +13,6 @@ public class Deck {
 
     private List<PlayingCard> deck;
 
-    /**
-     * Instantiates a new Deck.
-     */
     public Deck() {
         deck = new LinkedList<>();
 
@@ -33,39 +30,18 @@ public class Deck {
         }
     }
 
-    /**
-     * Get deck size.
-     *
-     * @return the int
-     */
     public int getDeckSize(){
         return deck.size();
     }
 
-    /**
-     * Draw card.
-     *
-     * @return the playing card
-     * @throws NoSuchElementException the no such element exception
-     */
     public PlayingCard drawCard() throws NoSuchElementException{
         return deck.remove(0);
     }
 
-    /**
-     * Add card.
-     *
-     * @param card the card
-     */
     public void addCard(PlayingCard card) {
         deck.add(card);
     }
 
-    /**
-     * To string.
-     *
-     * @return the string
-     */
     @Override
     public String toString(){
         String str = "";
