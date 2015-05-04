@@ -39,7 +39,7 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public PlayingCard defend(PlayingCard cardToBeat, int cardIndex) throws  IllegalArgumentException {
+    public PlayingCard defend(PlayingCard cardToBeat, int cardIndex) throws IllegalArgumentException {
         this.sortHand();
         if(cardIndex < 1 || cardIndex > hand.size())
             throw new IllegalArgumentException("Index out of range!");

@@ -5,8 +5,6 @@ import de.htwg.model.*;
 import java.util.Observable;
 import java.util.LinkedList;
 
-import static de.htwg.controller.DurakCommands.*;
-
 /**
  * Created by jawaigel on 16.04.2015.
  */
@@ -21,8 +19,8 @@ public class DurakController extends Observable {
     private LinkedList<PlayingCard> field;
     private PlayingCard attackerCard;
     private PlayingCardColor trump;
-
     private Player defender, attacker;
+    private boolean invalidPlayerInput;
 
     public DurakController() {
         deck = new Deck();
@@ -31,6 +29,8 @@ public class DurakController extends Observable {
 
         players.add(new HumanPlayer());
         players.add(new ComputerPlayer());
+
+        invalidPlayerInput = false;
 
         dealOutCards();
         setTrump();
@@ -108,12 +108,6 @@ public class DurakController extends Observable {
         field = new LinkedList<>();
     }
 
-    /**
-     * Player move.
-     *
-     * @param cmd the command
-     * @throws IllegalArgumentException the illegal argument exception
-     */
     public void playerMove(String cmd) {
 
         if(cmd.toCharArray()[0] == 't' && activePlayer.equals(defender)){
@@ -127,11 +121,20 @@ public class DurakController extends Observable {
     }
 
     private void round(int cardIndex) {
+        invalidPlayerInput = false;
         if(activePlayer.equals(attacker)){
+
             //TODO: Ausgabe dass zu viele Karten auf dem attackerField sind
             if(field.size() >= maxCardsOnField) return;
 
-            PlayingCard attackingCard = activePlayer.attack(field, cardIndex);
+            PlayingCard attackingCard = null;
+            try{
+                attackingCard = activePlayer.attack(field, cardIndex);
+            } catch (IllegalArgumentException e) {
+                invalidPlayerInput = true;
+                return;
+            }
+
             if(attackingCard == null) {
                 setNewPlayerRole(false);
                 return;
@@ -142,7 +145,14 @@ public class DurakController extends Observable {
 
             activePlayer = defender;
         } else {
-            PlayingCard defenderCard = activePlayer.defend(attackerCard, cardIndex);
+            PlayingCard defenderCard;
+
+            try{
+                defenderCard = activePlayer.defend(attackerCard, cardIndex);
+            } catch (IllegalArgumentException e){
+                invalidPlayerInput = true;
+                return;
+            }
 
             if(defenderCard == null){
                 takeCards();
@@ -186,4 +196,8 @@ public class DurakController extends Observable {
     }
 
     public int getDeckSize() { return deck.getDeckSize(); }
+
+    public boolean isInvalidPlayerInput() {
+        return invalidPlayerInput;
+    }
 }

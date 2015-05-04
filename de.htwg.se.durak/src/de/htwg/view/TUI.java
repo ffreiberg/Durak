@@ -1,6 +1,5 @@
 package de.htwg.view;
 
-import de.htwg.controller.DurakCommands;
 import de.htwg.controller.DurakController;
 import de.htwg.model.PlayingCard;
 
@@ -43,6 +42,10 @@ public class TUI implements Observer {
     }
 
     public void printTUI(){
+        if(controller.isInvalidPlayerInput()){
+            System.out.println("Invalid move! Try again");
+        }
+
         System.out.println("Trumpf " + controller.getTrump().toString() + "\t Cards in Deck: [" + controller.getDeckSize() + "]" );
         System.out.println("------------------------------");
 

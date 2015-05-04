@@ -7,21 +7,10 @@ import java.util.LinkedList;
  */
 public interface IPlayer {
 
-    /**
-     * Play card.
-     *
-     * @return the playing card [ ]
-     * @param cardsOnField
-     */
-    public PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex);
+    public PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex) throws IllegalArgumentException;
 
-    public PlayingCard defend(PlayingCard cardToBeat, int cardIndex);
+    public PlayingCard defend(PlayingCard cardToBeat, int cardIndex) throws IllegalArgumentException;
 
-    /**
-     * Draw card.
-     *
-     * @param card the card
-     */
     public void drawCard(PlayingCard card);
 
     public void setTrumpOnHand(PlayingCardColor trump);
