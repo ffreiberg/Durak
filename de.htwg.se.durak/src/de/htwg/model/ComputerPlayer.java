@@ -32,12 +32,27 @@ public class ComputerPlayer extends Player {
     public PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex) {
 
         this.sortHand();
-        if (cardsOnField.isEmpty()) return hand.remove(0);
+        if (cardsOnField.isEmpty()) {
+            firstAttack();
+            return hand.remove(0);
+        }
 
         int index = scanField(cardsOnField);
 
-        if(index == -1) return null;
+        if(index == -1)
+            return null;
         return hand.remove(index);
+    }
+
+    private int firstAttack() {
+        int i = 0;
+
+        for (PlayingCard cardOnHand : hand){
+            if (!cardOnHand.isTrump())
+                return i;
+            ++i;
+        }
+        return 0;
     }
 
     @Override
