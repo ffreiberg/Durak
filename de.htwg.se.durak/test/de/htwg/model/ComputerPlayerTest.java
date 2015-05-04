@@ -43,7 +43,7 @@ public class ComputerPlayerTest extends TestCase {
 
     @Test
     public void testAttackSucceed() throws Exception {
-        PlayingCard attackerCard = bot.attack(field);
+        PlayingCard attackerCard = bot.attack(field, 0);
         PlayingCard expectedCard = new PlayingCard(ACE, SPADES);
 
         assertTrue(attackerCard.getColor() == expectedCard.getColor()
@@ -52,13 +52,13 @@ public class ComputerPlayerTest extends TestCase {
 
     @Test
     public void testDefendFailed() throws Exception {
-        PlayingCard attackerCard = bot.defend(new PlayingCard(SIX, CLUBS));
+        PlayingCard attackerCard = bot.defend(new PlayingCard(SIX, CLUBS), 0);
         assertTrue(attackerCard == null);
     }
 
    @Test
     public void testDefendSucceed() throws Exception {
-       PlayingCard attackerCard = bot.defend(new PlayingCard(SIX, SPADES));
+       PlayingCard attackerCard = bot.defend(new PlayingCard(SIX, SPADES), 0);
        assertTrue(attackerCard != null);
     }
 

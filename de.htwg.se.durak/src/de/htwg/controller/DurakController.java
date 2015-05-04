@@ -115,20 +115,20 @@ public class DurakController extends Observable {
      * @param cmd the command
      * @throws IllegalArgumentException the illegal argument exception
      */
-    public void playerMove(DurakCommands cmd) throws IllegalArgumentException{
+    public void playerMove(DurakCommands cmd, int cardIndex) throws IllegalArgumentException{
 
         if(activePlayer.equals(attacker)){
             if(activePlayer.getClass().equals(ComputerPlayer.class))
-                attack(ATTACK);
+                attack(ATTACK, cardIndex);
             else
-                attack(cmd);
+                attack(cmd, cardIndex);
             activePlayer = defender;
         }
         else {
             if(activePlayer.getClass().equals(ComputerPlayer.class))
-               defend(BEAT);
+               defend(BEAT, cardIndex);
             else
-                defend(cmd);
+                defend(cmd, cardIndex);
             activePlayer = attacker;
         }
 
@@ -136,13 +136,14 @@ public class DurakController extends Observable {
         notifyObservers();
     }
 
-    private void defend(DurakCommands cmd) {
+    private void defend(DurakCommands cmd, int cardIndex) {
         if(cmd == TAKE){
             for(PlayingCard card: field) activePlayer.drawCard(card);
             setNewPlayerRole(true);
+            return;
         }
 
-        PlayingCard defenderCard = activePlayer.defend(attackerCard);
+        PlayingCard defenderCard = activePlayer.defend(attackerCard, cardIndex);
 
         if(defenderCard == null){
             for(PlayingCard card: field) activePlayer.drawCard(card);
@@ -152,7 +153,7 @@ public class DurakController extends Observable {
         field.add(defenderCard);
     }
 
-    private void attack(DurakCommands cmd) {
+    private void attack(DurakCommands cmd, int cardIndex) {
 
         //TODO: Ausgabe dass zu viele Karten auf dem attackerField sind
         if(field.size() >= maxCardsOnField) return;
@@ -162,7 +163,7 @@ public class DurakController extends Observable {
 
         if(cmd != ATTACK) return;
 
-        PlayingCard attackingCard = activePlayer.attack(field);
+        PlayingCard attackingCard = activePlayer.attack(field, cardIndex);
         if(attackingCard == null) {
             setNewPlayerRole(false);
             return;

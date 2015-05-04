@@ -3,6 +3,7 @@ package de.htwg.view;
 import de.htwg.controller.DurakCommands;
 import de.htwg.controller.DurakController;
 
+import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
@@ -21,26 +22,39 @@ public class TUI implements Observer {
         scanner = new Scanner(System.in);
     }
 
+    //TODO: Prüfen ob Mensch oder Computer am Zug ist
     public boolean iterate(){
-        return handleInput(scanner.next());
+        int cardIndex = 0;
+        String cmd;
+
+        System.out.print("Kommando: ");
+        cmd = scanner.next();
+
+        if( !cmd.toLowerCase().equals("t") )
+        {
+            System.out.print("\nKarte: ");
+            cardIndex = scanner.nextInt();
+        }
+
+        return handleInput(cmd, cardIndex);
     }
 
-    private boolean handleInput(String input) {
+    private boolean handleInput(String cmd, int cardIndex) {
 
-        switch (input.toLowerCase()){
+        switch (cmd.toLowerCase()){
             case "q":
                 return true;
             case "a":
-                controller.playerMove(DurakCommands.ATTACK);
+                controller.playerMove(DurakCommands.ATTACK, cardIndex);
                 break;
             case "b":
-                controller.playerMove(DurakCommands.BEAT);
+                controller.playerMove(DurakCommands.BEAT, cardIndex);
                 break;
             case "t":
-                controller.playerMove(DurakCommands.TAKE);
+                controller.playerMove(DurakCommands.TAKE, cardIndex);
                 break;
             default:
-                controller.playerMove(null);
+                controller.playerMove(null, cardIndex);
 
         }
         return false;

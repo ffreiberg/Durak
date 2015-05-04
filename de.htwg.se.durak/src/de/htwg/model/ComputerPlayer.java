@@ -28,7 +28,7 @@ public class ComputerPlayer extends Player {
      * @param cardsOnField
      */
     @Override
-    public PlayingCard attack(LinkedList<PlayingCard> cardsOnField) {
+    public PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex) {
 
         this.sortHand();
         if (cardsOnField.isEmpty()) return hand.get(0);
@@ -37,7 +37,7 @@ public class ComputerPlayer extends Player {
     }
 
     @Override
-    public PlayingCard defend(PlayingCard cardToBeat) {
+    public PlayingCard defend(PlayingCard cardToBeat, int cardIndex) {
         PlayingCard cardDefend = null;
 
         for (PlayingCard cardOnHand : hand){
