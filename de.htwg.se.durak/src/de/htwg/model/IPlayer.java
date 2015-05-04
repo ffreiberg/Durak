@@ -28,10 +28,8 @@ public interface IPlayer {
 
     public void sortHand();
 
-    /**
-     * Gets player name.
-     *
-     * @return the player name
-     */
     public String getPlayerName();
+
+    public LinkedList<PlayingCard> getPlayersHand();
+
 }

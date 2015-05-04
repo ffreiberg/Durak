@@ -13,7 +13,7 @@ public abstract class Player implements IPlayer {
     /**
      * The Hand.
      */
-    public List<PlayingCard> hand;
+    public LinkedList<PlayingCard> hand;
     /**
      * The Player name.
      */
@@ -52,6 +52,11 @@ public abstract class Player implements IPlayer {
      */
     public String getPlayerName() {
         return playerName;
+    }
+
+    @Override
+    public LinkedList<PlayingCard> getPlayersHand() {
+        return hand;
     }
 
     public void setTrumpOnHand(PlayingCardColor trump){
