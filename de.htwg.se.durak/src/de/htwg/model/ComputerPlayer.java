@@ -11,8 +11,9 @@ public class ComputerPlayer extends Player {
     /**
      * The Names.
      */
-    public String names[] = {"Elif", "Esac", "Julio", "Jamtonio", "LaDasha", "Schlomo", "Micha", "Walpurga", "Ralle",
-            "Karma", "Vladi", "Mustafa", "Yildirim", "Lothar", "Roland", "CR7", "Mausi96", "Allah"};
+    public String names[] = {"Albert","Allen","Bert","Bob","Cecil","Clarence","Elliot","Elmer","Ernie","Eugene",
+            "Fergus","Ferris","Frasier","Fred","George","Graham","Harvey","Irwin","Lester","Marvin","Neil","Niles",
+            "Oliver","Opie","Toby","Ulric","Ulysses","Uri","Waldo","Wally","Walt","Wesley","Yanni","Yogi","Yuri"};
 
     /**
      * Instantiates a new Computer player.
