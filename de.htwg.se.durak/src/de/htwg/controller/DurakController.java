@@ -161,6 +161,20 @@ public class DurakController extends Observable {
 
             field.add(defenderCard);
             activePlayer = attacker;
+
+            if(attacker.hand.isEmpty() && defender.hand.isEmpty())
+                System.out.println("Unentschieden");
+            else if(attacker.hand.isEmpty()){
+                if(attacker.getClass().equals(HumanPlayer.class))
+                    System.out.println("Spieler hat gewonnen.");
+                else
+                    System.out.println("Computer hat gewonnen.");
+            } else {
+                if(attacker.getClass().equals(ComputerPlayer.class))
+                    System.out.println("Computer hat gewonnen.");
+                else
+                    System.out.println("Spieler hat gewonnen.");
+            }
         }
     }
 
