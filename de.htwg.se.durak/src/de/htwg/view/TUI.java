@@ -1,6 +1,8 @@
 package de.htwg.view;
 
+import de.htwg.controller.DurakCommands;
 import de.htwg.controller.DurakController;
+
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
@@ -28,8 +30,14 @@ public class TUI implements Observer {
         switch (input.toLowerCase()){
             case "q":
                 return true;
-            case "w":
-                controller.playerMove(null);
+            case "a":
+                controller.playerMove(DurakCommands.ATTACK);
+                break;
+            case "b":
+                controller.playerMove(DurakCommands.BEAT);
+                break;
+            case "t":
+                controller.playerMove(DurakCommands.TAKE);
                 break;
             default:
                 controller.playerMove(null);
