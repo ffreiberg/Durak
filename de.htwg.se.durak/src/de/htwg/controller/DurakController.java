@@ -20,6 +20,7 @@ public class DurakController extends Observable {
     private PlayingCard attackerCard;
     private PlayingCardColor trump;
     private Player defender, attacker;
+    public Player winPlayer;
     private boolean invalidPlayerInput;
 
     public DurakController() {
@@ -30,6 +31,7 @@ public class DurakController extends Observable {
         players.add(new HumanPlayer());
         players.add(new ComputerPlayer());
 
+        winPlayer = null;
         invalidPlayerInput = false;
 
         dealOutCards();
@@ -86,7 +88,6 @@ public class DurakController extends Observable {
     }
 
     private void setNewPlayerRole(boolean skip) {
-        //TODO: TUI neue Runde kennzeichnen
 
         //Karten ziehen
         while(attacker.hand.size() < startNumOfCards && deck.getDeckSize() > 0){
@@ -108,7 +109,25 @@ public class DurakController extends Observable {
         field = new LinkedList<>();
     }
 
+    private void getWinner(){
+        if(deck.getDeckSize() != 0)
+            return;
+
+        if(attacker.hand.isEmpty() && defender.hand.isEmpty()){
+            winPlayer = defender;
+        } else if(attacker.hand.isEmpty() && !defender.hand.isEmpty()){
+            winPlayer = attacker;
+        } else if(!attacker.hand.isEmpty() && defender.hand.isEmpty()) {
+            winPlayer = defender;
+        } else {
+            return;
+        }
+        setChanged();
+        notifyObservers();
+    }
+
     public void playerMove(String cmd) {
+        getWinner();
 
         if(cmd.toCharArray()[0] == 't' && activePlayer.equals(defender)){
             takeCards();
@@ -161,20 +180,6 @@ public class DurakController extends Observable {
 
             field.add(defenderCard);
             activePlayer = attacker;
-
-            if(attacker.hand.isEmpty() && defender.hand.isEmpty())
-                System.out.println("Unentschieden");
-            else if(attacker.hand.isEmpty()){
-                if(attacker.getClass().equals(HumanPlayer.class))
-                    System.out.println("Вы дурак!");
-                else
-                    System.out.println("Computer hat gewonnen.");
-            } else {
-                if(attacker.getClass().equals(ComputerPlayer.class))
-                    System.out.println("Вы дурак!");
-                else
-                    System.out.println("Spieler hat gewonnen.");
-            }
         }
     }
 

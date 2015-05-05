@@ -1,6 +1,7 @@
 package de.htwg.view;
 
 import de.htwg.controller.DurakController;
+import de.htwg.model.HumanPlayer;
 import de.htwg.model.PlayingCard;
 
 import java.util.Observable;
@@ -23,6 +24,12 @@ public class TUI implements Observer {
 
     //TODO: Prüfen ob Mensch oder Computer am Zug ist
     public boolean iterate(){
+
+        if(controller.winPlayer != null) {
+            printWinnerScreen();
+            return true;
+        }
+
         String cmd = "1";
 
         if(controller.isHumanPlayer()) {
@@ -75,17 +82,18 @@ public class TUI implements Observer {
         System.out.println();
     }
 
+    private void printWinnerScreen(){
+        System.out.println("\n------------------------------");
+        if(controller.winPlayer.getClass().equals(HumanPlayer.class)){
+            System.out.println("Spieler hat gewonnen!");
+        } else {
+            System.out.println("Computer hat gewonnen!");
+        }
+        System.out.println("------------------------------");
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         printTUI();
     }
 }
-
-/**
- * Computer: |*| |*| |*| |*|
- * 1. Zug: herz 8   herz 9
- * 2. Zug:
- * 3. Zug:
- * ...
- * Spieler: |herz 10|
- */
