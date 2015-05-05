@@ -15,3 +15,5 @@ public class Durak {
         while(!tui.iterate());
     }
 }
+
+//TODO: Tests, Sonar, Jenkins, GUI,

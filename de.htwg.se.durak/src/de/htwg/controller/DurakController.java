@@ -128,9 +128,12 @@ public class DurakController extends Observable {
 
     public void playerMove(String cmd) {
         getWinner();
+        invalidPlayerInput = false;
 
         if(cmd.toCharArray()[0] == 't' && activePlayer.equals(defender)){
             takeCards();
+        } else if(cmd.toCharArray()[0] == 't' && activePlayer.equals(attacker)) {
+            invalidPlayerInput = true;
         } else {
             round(Integer.parseInt(cmd));
         }
@@ -140,7 +143,7 @@ public class DurakController extends Observable {
     }
 
     private void round(int cardIndex) {
-        invalidPlayerInput = false;
+
         if(activePlayer.equals(attacker)){
 
             //TODO: Ausgabe dass zu viele Karten auf dem attackerField sind
