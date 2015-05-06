@@ -17,7 +17,6 @@ public class DurakController extends Observable {
     private Player activePlayer;
     private LinkedList<Player> players;
     private Field field;
-    //private LinkedList<PlayingCard> field;
     private PlayingCard attackerCard;
     private PlayingCardColor trump;
     private Player defender, attacker;
@@ -28,7 +27,6 @@ public class DurakController extends Observable {
         deck = new Deck();
         players = new LinkedList<>();
 
-        //field = new LinkedList<>();
         field = new Field();
 
         players.add(new HumanPlayer());
@@ -211,7 +209,7 @@ public class DurakController extends Observable {
     }
 
     public boolean isHumanPlayer() {
-        return activePlayer.getClass().equals(HumanPlayer.class);
+        return activePlayer instanceof HumanPlayer;
     }
 
     public PlayingCardColor getTrump(){
