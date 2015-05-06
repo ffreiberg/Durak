@@ -15,19 +15,10 @@ public class ComputerPlayer extends Player {
             "Fergus","Ferris","Frasier","Fred","George","Graham","Harvey","Irwin","Lester","Marvin","Neil","Niles",
             "Oliver","Opie","Toby","Ulric","Ulysses","Uri","Waldo","Wally","Walt","Wesley","Yanni","Yogi","Yuri"};
 
-    /**
-     * Instantiates a new Computer player.
-     */
     public ComputerPlayer(){
         playerName = "BOT " + names[new Random().nextInt(names.length - 1)];
     }
 
-    /**
-     * Play card.
-     *
-     * @return the playing card [ ]
-     * @param cardsOnField
-     */
     @Override
     public PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex) {
 
