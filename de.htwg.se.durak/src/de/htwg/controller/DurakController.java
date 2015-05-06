@@ -16,7 +16,8 @@ public class DurakController extends Observable {
     private Deck deck;
     private Player activePlayer;
     private LinkedList<Player> players;
-    private LinkedList<PlayingCard> field;
+    private Field field;
+    //private LinkedList<PlayingCard> field;
     private PlayingCard attackerCard;
     private PlayingCardColor trump;
     private Player defender, attacker;
@@ -26,7 +27,9 @@ public class DurakController extends Observable {
     public DurakController() {
         deck = new Deck();
         players = new LinkedList<>();
-        field = new LinkedList<>();
+
+        //field = new LinkedList<>();
+        field = new Field();
 
         players.add(new HumanPlayer());
         players.add(new ComputerPlayer());
@@ -106,7 +109,8 @@ public class DurakController extends Observable {
 
         activePlayer = attacker;
 
-        field = new LinkedList<>();
+        //field = new LinkedList<>();
+        field.clearField();
     }
 
     private void getWinner(){
@@ -144,11 +148,11 @@ public class DurakController extends Observable {
         if(activePlayer.equals(attacker)){
 
             //TODO: Ausgabe dass zu viele Karten auf dem attackerField sind
-            if(field.size() >= maxCardsOnField) return;
+            if(field.getFieldSize() >= maxCardsOnField) return;
 
             PlayingCard attackingCard = null;
             try{
-                attackingCard = activePlayer.attack(field, cardIndex);
+                attackingCard = activePlayer.attack(field.getField(), cardIndex);
             } catch (IllegalArgumentException e) {
                 invalidPlayerInput = true;
                 return;
@@ -160,7 +164,7 @@ public class DurakController extends Observable {
             }
 
             attackerCard = attackingCard;
-            field.add(attackerCard);
+            field.addCard(attackerCard);
 
             activePlayer = defender;
         } else {
@@ -178,16 +182,16 @@ public class DurakController extends Observable {
                 return;
             }
 
-            field.add(defenderCard);
+            field.addCard(defenderCard);
             activePlayer = attacker;
         }
     }
 
     private void takeCards() {
-        int size = field.size();
+        int size = field.getFieldSize();
 
         for(int i=0; i<size; ++i)
-            defender.drawCard(field.remove(0));
+            defender.drawCard(field.getCard());
 
         setNewPlayerRole(true);
     }
@@ -203,7 +207,7 @@ public class DurakController extends Observable {
     }
 
     public LinkedList<PlayingCard> getField(){
-        return field;
+        return field.getField();
     }
 
     public boolean isHumanPlayer() {
