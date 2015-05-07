@@ -212,7 +212,7 @@ public class DurakController extends Observable {
     }
 
     public boolean isHumanPlayer() {
-        return activePlayer.getClass().equals(HumanPlayer.class);
+        return activePlayer instanceof HumanPlayer;
     }
 
     public PlayingCardColor getTrump(){
