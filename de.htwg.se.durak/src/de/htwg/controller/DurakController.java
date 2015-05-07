@@ -107,7 +107,6 @@ public class DurakController extends Observable {
 
         activePlayer = attacker;
 
-        //field = new LinkedList<>();
         field.clearField();
     }
 
