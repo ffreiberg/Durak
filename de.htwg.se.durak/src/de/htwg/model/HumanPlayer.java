@@ -14,12 +14,6 @@ public class HumanPlayer extends Player {
         playerName = "HumanPlayer";
     }
 
-    /**
-     * Play card.
-     *
-     * @return the playing card [ ]
-     * @param cardsOnField
-     */
     @Override
     public PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex) throws IllegalArgumentException {
 

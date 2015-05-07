@@ -10,47 +10,22 @@ import java.util.List;
  */
 public abstract class Player implements IPlayer {
 
-    /**
-     * The Hand.
-     */
     public LinkedList<PlayingCard> hand;
-    /**
-     * The Player name.
-     */
     public String playerName;
 
-    /**
-     * Play card.
-     *
-     * @return the playing card [ ]
-     * @param cardsOnField
-     */
     public abstract PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex);
 
     public abstract PlayingCard defend(PlayingCard cardToBeat, int cardIndex);
 
-    /**
-     * Instantiates a new Player.
-     */
     public Player(){
         hand = new LinkedList<>();
     }
 
-    /**
-     * Draw card.
-     *
-     * @param card the card
-     */
     public void drawCard(PlayingCard card){
         hand.add(card);
         this.sortHand();
     }
 
-    /**
-     * Gets player name.
-     *
-     * @return the player name
-     */
     public String getPlayerName() {
         return playerName;
     }
@@ -74,11 +49,6 @@ public abstract class Player implements IPlayer {
         Collections.sort(hand, new CardComparator());
     }
 
-    /**
-     * To string.
-     *
-     * @return the string
-     */
     @Override
     public String toString(){
         String str = playerName + "\t";
