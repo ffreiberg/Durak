@@ -57,4 +57,10 @@ public class FieldTest {
         field.addCard(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.CLUBS));
         assertEquals(2, field.getFieldSize());
     }
+
+    @Test
+    public void testToString() throws Exception {
+        field.addCard(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS));
+        assertEquals("♥6", field.toString());
+    }
 }

@@ -18,13 +18,13 @@ public enum PlayingCardColor {
     public String toString() {
         switch(this){
             case HEARTS:
-                return "\u2665";
+                return "♥";
             case DIAMONDS:
-                return "\u2666";
+                return "♦";
             case SPADES:
-                return "\u2660";
+                return "♠";
             case CLUBS:
-                return "\u2663";
+                return "♣";
             default:
                 return null;
         }
