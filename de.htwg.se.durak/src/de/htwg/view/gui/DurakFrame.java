@@ -6,6 +6,6 @@ package de.htwg.view.gui;
 public class DurakFrame {
 
     public DurakFrame() {
-
+        //fjdsf
     }
 }
