@@ -1,5 +1,43 @@
 package de.htwg.model;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class ComputerPlayerTest {
+
+    ComputerPlayer bot;
+
+    @Before
+    public void setUp() throws Exception {
+        bot = new ComputerPlayer();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        this.bot = null;
+    }
+
+    @Test
+    public void testAttack() throws Exception {
+
+    }
+
+    @Test
+    public void testDefend() throws Exception {
+
+    }
+
+    @Test
+    public void testScanField() throws Exception {
+
+    }
+
+/*
+    package de.htwg.model;
+
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -77,5 +115,7 @@ public class ComputerPlayerTest extends TestCase {
 
 
         assertTrue(scannedCard == null);
-    }*/
+    }
+}
+*/
 }

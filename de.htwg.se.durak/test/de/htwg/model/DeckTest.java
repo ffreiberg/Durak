@@ -8,14 +8,16 @@ import static org.junit.Assert.*;
 
 public class DeckTest {
 
+    Deck deck;
+
     @Before
     public void setUp() throws Exception {
-
+        deck = new Deck();
     }
 
     @After
     public void tearDown() throws Exception {
-
+        deck = null;
     }
 
     @Test

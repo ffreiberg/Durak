@@ -8,14 +8,16 @@ import static org.junit.Assert.*;
 
 public class FieldTest {
 
+    Field field;
+
     @Before
     public void setUp() throws Exception {
-
+        field = new Field();
     }
 
     @After
     public void tearDown() throws Exception {
-
+        field = null;
     }
 
     @Test
