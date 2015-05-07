@@ -60,11 +60,8 @@ public class TUI implements Observer {
         System.out.print("Computer\t");
         for(int i=1; i<=controller.getComputerHand().size(); ++i)
             System.out.print("[$]\t");
-        //for(PlayingCard defenderCard: controller.getComputerHand())
-        //    System.out.print(defenderCard.toString() + "\t");
 
         System.out.println("\n------------------------------");
-
         System.out.print("Feld\t\t");
         for(PlayingCard fieldCard: controller.getField())
             System.out.print(fieldCard.toString() + "\t");
