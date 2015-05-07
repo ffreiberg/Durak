@@ -3,6 +3,7 @@ package de.htwg.view.gui;
 import de.htwg.controller.DurakController;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
@@ -28,7 +29,7 @@ public class DurakFrame extends JFrame implements Observer {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(DEFAULT_X, DEFAULT_Y);
         pane = getContentPane();
-        pane.setLayout(new BorderLayout());
+        pane.setLayout(new GridLayout(3, 1, 10, 10));
 
         //Add Card Panels
         panelComputerPlayer = new DurakCardPanel();
