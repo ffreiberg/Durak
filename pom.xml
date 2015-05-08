@@ -5,25 +5,25 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>SE2015SS-09-DURAK</name>
   <build>
-	<sourceDirectory>de.htwg.se.durak.src</sourceDirectory>
-	<testSourceDirectory>de.htwg.se.durak.test</testSourceDirectory>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source/>
-					<target/>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+      <sourceDirectory>de.htwg.se.durak.src</sourceDirectory>
+      <testSourceDirectory>de.htwg.se.durak.test</testSourceDirectory>
+      <plugins>
+          <plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.1</version>
+              <configuration>
+                  <source/>
+                  <target/>
+              </configuration>
+          </plugin>
+      </plugins>
+  </build>
+  <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+  </dependencies>
 </project>
