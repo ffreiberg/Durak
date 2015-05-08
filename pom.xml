@@ -5,8 +5,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>SE2015SS-09-DURAK</name>
   <build>
-      <sourceDirectory>de.htwg.se.durak.src</sourceDirectory>
-      <testSourceDirectory>de.htwg.se.durak.test</testSourceDirectory>
+      <sourceDirectory>src</sourceDirectory>
+      <testSourceDirectory>test</testSourceDirectory>
       <plugins>
           <plugin>
               <artifactId>maven-compiler-plugin</artifactId>
