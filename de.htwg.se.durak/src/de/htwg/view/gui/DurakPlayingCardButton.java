@@ -16,7 +16,6 @@ public class DurakPlayingCardButton extends JButton {
 
     public DurakPlayingCardButton(PlayingCard card) {
         super(card.toString());
-        this.setPreferredSize(new Dimension(50, 100));
         this.card = card;
 
         this.addMouseListener(new MouseAdapter() {

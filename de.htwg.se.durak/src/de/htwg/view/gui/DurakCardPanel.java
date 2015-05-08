@@ -15,12 +15,12 @@ public class DurakCardPanel extends JPanel {
 
     public DurakCardPanel(LinkedList<PlayingCard> cards) {
         this.cards = cards;
+        this.setLayout(new GridLayout(1, 0));
         paintCards();
     }
 
     public void paintCards() {
         this.removeAll();
-        this.setLayout(new GridLayout(1, this.cards.size()));
         for(PlayingCard card: this.cards){
             this.add(new DurakPlayingCardButton(card));
         }
