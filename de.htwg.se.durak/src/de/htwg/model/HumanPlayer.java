@@ -21,7 +21,7 @@ public class HumanPlayer extends Player {
 
         if (cardIndex == 0)
             return null;
-        else if(cardIndex < 1 || cardIndex > hand.size())
+        else if(cardIndex < 0 || cardIndex > hand.size())
             throw new IllegalArgumentException("Index out of range!");
 
         if (cardsOnField.isEmpty())

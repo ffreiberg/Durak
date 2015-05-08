@@ -62,6 +62,7 @@ public class HumanPlayerTest {
 
     @Test
     public void testDefend() throws Exception {
+        PlayingCard p = new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS);
 
     }
 }
