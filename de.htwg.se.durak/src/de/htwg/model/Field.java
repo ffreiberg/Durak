@@ -26,7 +26,7 @@ public class Field {
     }
 
     public void clearField(){
-        field = new LinkedList<>();
+        field.clear();
     }
 
     public int getFieldSize() {
