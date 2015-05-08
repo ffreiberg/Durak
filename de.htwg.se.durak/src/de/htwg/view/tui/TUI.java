@@ -1,4 +1,4 @@
-package de.htwg.view;
+package de.htwg.view.tui;
 
 import de.htwg.controller.DurakController;
 import de.htwg.model.HumanPlayer;

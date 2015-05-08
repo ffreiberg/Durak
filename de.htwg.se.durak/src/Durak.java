@@ -1,5 +1,5 @@
 import de.htwg.controller.DurakController;
-import de.htwg.view.TUI;
+import de.htwg.view.tui.TUI;
 import de.htwg.view.gui.DurakFrame;
 
 /**
