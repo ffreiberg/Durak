@@ -32,4 +32,14 @@ public class Field {
     public int getFieldSize() {
         return field.size();
     }
+
+    public String toString(){
+
+        String s = "";
+
+        for (PlayingCard p : field){
+            s += p.toString();
+        }
+        return s;
+    }
 }

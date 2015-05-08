@@ -11,7 +11,7 @@ import static java.util.Collections.*;
  */
 public class Deck {
 
-    private List<PlayingCard> deck;
+    private LinkedList<PlayingCard> deck;
 
     public Deck() {
         deck = new LinkedList<>();
@@ -42,12 +42,13 @@ public class Deck {
         deck.add(card);
     }
 
-    @Override
+    //for debugging purpose only
+/*    @Override
     public String toString(){
         String str = "";
         for( PlayingCard card: deck){
             str += card.toString() + "\n";
         }
         return str;
-    }
+    }*/
 }

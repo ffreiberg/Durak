@@ -99,7 +99,7 @@ public class DurakController extends Observable {
             defender.drawCard(deck.drawCard());
         }
 
-        if(skip != true)
+        if(!skip)
             players.add(players.remove(0));
 
         attacker = players.get(0);
