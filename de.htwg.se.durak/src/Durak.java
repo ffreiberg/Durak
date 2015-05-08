@@ -10,9 +10,8 @@ public class Durak {
     public static void main(String args[]){
         DurakController controller = new DurakController();
 
+        new DurakFrame(controller);
         TUI tui = new TUI(controller);
-        DurakFrame gui = new DurakFrame(controller);
-
         tui.printTUI();
 
         while(!tui.iterate());
