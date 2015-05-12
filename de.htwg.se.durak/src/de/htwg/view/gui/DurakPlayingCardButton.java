@@ -12,16 +12,16 @@ import java.awt.event.MouseEvent;
  */
 public class DurakPlayingCardButton extends JButton {
 
-    private PlayingCard card;
+    private PlayingCard pCard;
 
     public DurakPlayingCardButton(PlayingCard card) {
         super(card.toString());
-        this.card = card;
+        this.pCard = card;
 
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println(card.toString());
+                System.out.println(pCard.toString());
                 //return card
             }
         });
