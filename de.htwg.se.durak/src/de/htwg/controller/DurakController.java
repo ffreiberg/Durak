@@ -10,8 +10,8 @@ import java.util.LinkedList;
  */
 public class DurakController extends Observable {
 
-    private static final int startNumOfCards = 6;
-    private static final int maxCardsOnField = 12;
+    private static final int START_NUM_OF_CARDS = 6;
+    private static final int MAX_CARDS_ON_FIELD = 12;
 
     private Deck deck;
     private Player activePlayer;
@@ -76,13 +76,15 @@ public class DurakController extends Observable {
         deck.addCard(trumpCard);
 
         deck.setTrump(trump);
-        for(Player player: players) player.setTrumpOnHand(trump);
+        for(Player player: players) {
+            player.setTrumpOnHand(trump);
+        }
     }
 
     private void dealOutCards() {
         //deal out cards
         for(Player player: players){
-            for(int i=0; i<startNumOfCards; ++i){
+            for(int i=0; i< START_NUM_OF_CARDS; ++i){
                 player.drawCard(deck.drawCard());
             }
         }
@@ -91,16 +93,17 @@ public class DurakController extends Observable {
     private void setNewPlayerRole(boolean skip) {
 
         //Karten ziehen
-        while(attacker.hand.size() < startNumOfCards && deck.getDeckSize() > 0){
+        while(attacker.hand.size() < START_NUM_OF_CARDS && deck.getDeckSize() > 0){
             attacker.drawCard(deck.drawCard());
         }
 
-        while(defender.hand.size() < startNumOfCards && deck.getDeckSize() > 0){
+        while(defender.hand.size() < START_NUM_OF_CARDS && deck.getDeckSize() > 0){
             defender.drawCard(deck.drawCard());
         }
 
-        if(!skip)
+        if(!skip) {
             players.add(players.remove(0));
+        }
 
         attacker = players.get(0);
         defender = players.get(1);
@@ -148,7 +151,9 @@ public class DurakController extends Observable {
         if(activePlayer.equals(attacker)){
 
             //TODO: Ausgabe dass zu viele Karten auf dem attackerField sind
-            if(field.getFieldSize() >= maxCardsOnField) return;
+            if(field.getFieldSize() >= MAX_CARDS_ON_FIELD) {
+                return;
+            }
 
             PlayingCard attackingCard = null;
             try{
@@ -190,20 +195,29 @@ public class DurakController extends Observable {
     private void takeCards() {
         int size = field.getFieldSize();
 
-        for(int i=0; i<size; ++i)
+        for(int i=0; i<size; ++i) {
             defender.drawCard(field.getCard());
+        }
 
         setNewPlayerRole(true);
     }
 
     public LinkedList<PlayingCard> getPlayersHand(){
-        if(attacker.getClass().equals(HumanPlayer.class)) return attacker.hand;
-        else return defender.hand;
+        if(attacker.getClass().equals(HumanPlayer.class)){
+            return attacker.hand;
+        }
+        else{
+            return defender.hand;
+        }
     }
 
     public LinkedList<PlayingCard> getComputerHand(){
-        if(attacker.getClass().equals(ComputerPlayer.class)) return attacker.hand;
-        else return defender.hand;
+        if(attacker.getClass().equals(ComputerPlayer.class)){
+            return attacker.hand;
+        }
+        else{
+            return defender.hand;
+        }
     }
 
     public LinkedList<PlayingCard> getField(){

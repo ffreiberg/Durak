@@ -3,7 +3,6 @@ package de.htwg.model;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by jawaigel on 16.04.2015.

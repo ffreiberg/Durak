@@ -29,8 +29,9 @@ public class ComputerPlayer extends Player {
 
         int index = scanField(cardsOnField);
 
-        if(index == -1)
+        if(index == -1) {
             return null;
+        }
         return hand.remove(index);
     }
 
@@ -38,8 +39,9 @@ public class ComputerPlayer extends Player {
         int i = 0;
 
         for (PlayingCard cardOnHand : hand){
-            if (!cardOnHand.isTrump())
+            if (!cardOnHand.isTrump()) {
                 return i;
+            }
             ++i;
         }
         return 0;
@@ -59,18 +61,21 @@ public class ComputerPlayer extends Player {
                 cardDefend = i;
             }
         }
-        if(cardDefend == -1)
+        if(cardDefend == -1) {
             return null;
-        else
+        }
+        else {
             return hand.remove(cardDefend);
+        }
     }
 
     public int scanField(LinkedList<PlayingCard> currentField) {
 
         for (PlayingCard cardOnField : currentField) {
             for (int i=0; i<hand.size(); ++i) {
-                if (hand.get(i).getValue() == cardOnField.getValue())
+                if (hand.get(i).getValue() == cardOnField.getValue()) {
                     return i;
+                }
             }
         }
 

@@ -1,7 +1,6 @@
 package de.htwg.model;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import static java.util.Collections.*;
@@ -26,7 +25,9 @@ public class Deck {
 
     public void setTrump(PlayingCardColor trump){
         for(PlayingCard card: deck) {
-            if(card.getColor() == trump) card.setTrump();
+            if(card.getColor() == trump) {
+                card.setTrump();
+            }
         }
     }
 
@@ -41,14 +42,4 @@ public class Deck {
     public void addCard(PlayingCard card) {
         deck.add(card);
     }
-
-    //for debugging purpose only
-/*    @Override
-    public String toString(){
-        String str = "";
-        for( PlayingCard card: deck){
-            str += card.toString() + "\n";
-        }
-        return str;
-    }*/
 }
