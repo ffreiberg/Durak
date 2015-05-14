@@ -25,11 +25,11 @@ public class HumanPlayerTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAttackFailure() throws Exception {
-        LinkedList<PlayingCard> cardsOnField = new LinkedList<>(Arrays.asList(
+        LinkedList<PlayingCard> cardsOnField = new LinkedList<PlayingCard>(Arrays.asList(
                 new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS),
                 new PlayingCard(PlayingCardValue.JACK, PlayingCardColor.HEARTS)
                 )),
-                cardsOnHand = new LinkedList<>(Arrays.asList(
+                cardsOnHand = new LinkedList<PlayingCard>(Arrays.asList(
                         new PlayingCard(PlayingCardValue.JACK, PlayingCardColor.SPADES),
                         new PlayingCard(PlayingCardValue.KING, PlayingCardColor.DIAMONDS)
                 ));
@@ -43,11 +43,11 @@ public class HumanPlayerTest {
     @Test
     public void testAttackSuccess() throws Exception {
 
-        LinkedList<PlayingCard> cardsOnField = new LinkedList<>(Arrays.asList(
+        LinkedList<PlayingCard> cardsOnField = new LinkedList<PlayingCard>(Arrays.asList(
                 new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS),
                 new PlayingCard(PlayingCardValue.JACK, PlayingCardColor.HEARTS)
         )),
-                cardsOnHand = new LinkedList<>(Arrays.asList(
+                cardsOnHand = new LinkedList<PlayingCard>(Arrays.asList(
                 new PlayingCard(PlayingCardValue.JACK, PlayingCardColor.SPADES),
                 new PlayingCard(PlayingCardValue.KING, PlayingCardColor.DIAMONDS)
         ));

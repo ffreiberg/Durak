@@ -33,7 +33,7 @@ public class FieldTest {
 
     @Test
     public void testGetField() throws Exception {
-        LinkedList<PlayingCard> expected = new LinkedList<>(Arrays.asList(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS),
+        LinkedList<PlayingCard> expected = new LinkedList<PlayingCard>(Arrays.asList(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS),
                 new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.CLUBS)));
         field.addCard(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS));
         field.addCard(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.CLUBS));
