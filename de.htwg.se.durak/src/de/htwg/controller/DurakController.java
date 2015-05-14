@@ -20,7 +20,7 @@ public class DurakController extends Observable {
     private PlayingCard attackerCard;
     private PlayingCardColor trump;
     private Player defender, attacker;
-    public Player winPlayer;
+    private Player winPlayer;
     private boolean invalidPlayerInput;
 
     public DurakController() {
@@ -45,7 +45,7 @@ public class DurakController extends Observable {
         PlayingCard lowestTrumpCard = new PlayingCard(PlayingCardValue.ACE, trump);
         int i=0, lowestTrumpIndex=0;
         for(Player player: players){
-            for(PlayingCard card: player.hand) {
+            for(PlayingCard card: player.getPlayersHand()) {
                 if (card.getColor() == trump &&
                         lowestTrumpCard.getValue().ordinal() >= card.getValue().ordinal()) {
                     lowestTrumpCard = card;
@@ -93,11 +93,11 @@ public class DurakController extends Observable {
     private void setNewPlayerRole(boolean skip) {
 
         //Karten ziehen
-        while(attacker.hand.size() < START_NUM_OF_CARDS && deck.getDeckSize() > 0){
+        while(attacker.getPlayersHand().size() < START_NUM_OF_CARDS && deck.getDeckSize() > 0){
             attacker.drawCard(deck.drawCard());
         }
 
-        while(defender.hand.size() < START_NUM_OF_CARDS && deck.getDeckSize() > 0){
+        while(defender.getPlayersHand().size() < START_NUM_OF_CARDS && deck.getDeckSize() > 0){
             defender.drawCard(deck.drawCard());
         }
 
@@ -114,14 +114,15 @@ public class DurakController extends Observable {
     }
 
     private void getWinner(){
-        if(deck.getDeckSize() != 0)
+        if(deck.getDeckSize() != 0) {
             return;
+        }
 
-        if(attacker.hand.isEmpty() && defender.hand.isEmpty()){
+        if(attacker.getPlayersHand().isEmpty() && defender.getPlayersHand().isEmpty()){
             winPlayer = defender;
-        } else if(attacker.hand.isEmpty() && !defender.hand.isEmpty()){
+        } else if(attacker.getPlayersHand().isEmpty() && !defender.getPlayersHand().isEmpty()){
             winPlayer = attacker;
-        } else if(!attacker.hand.isEmpty() && defender.hand.isEmpty()) {
+        } else if(!attacker.getPlayersHand().isEmpty() && defender.getPlayersHand().isEmpty()) {
             winPlayer = defender;
         } else {
             return;
@@ -204,19 +205,19 @@ public class DurakController extends Observable {
 
     public LinkedList<PlayingCard> getPlayersHand(){
         if(attacker.getClass().equals(HumanPlayer.class)){
-            return attacker.hand;
+            return attacker.getPlayersHand();
         }
         else{
-            return defender.hand;
+            return defender.getPlayersHand();
         }
     }
 
     public LinkedList<PlayingCard> getComputerHand(){
         if(attacker.getClass().equals(ComputerPlayer.class)){
-            return attacker.hand;
+            return attacker.getPlayersHand();
         }
         else{
-            return defender.hand;
+            return defender.getPlayersHand();
         }
     }
 
@@ -237,4 +238,6 @@ public class DurakController extends Observable {
     public boolean isInvalidPlayerInput() {
         return invalidPlayerInput;
     }
+
+    public Player getWinPlayer() {return winPlayer; }
 }

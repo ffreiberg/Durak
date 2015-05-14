@@ -52,7 +52,7 @@ public class HumanPlayerTest {
                 new PlayingCard(PlayingCardValue.KING, PlayingCardColor.DIAMONDS)
         ));
 
-        player.hand.addAll(cardsOnHand);
+        player.getPlayersHand().addAll(cardsOnHand);
 
         PlayingCard card = player.attack(cardsOnField, 1);
 

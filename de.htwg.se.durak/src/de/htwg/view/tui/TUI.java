@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class TUI implements Observer {
 
     private DurakController controller;
-    Scanner scanner;
+    private Scanner scanner;
 
     public TUI(DurakController controller) {
         this.controller = controller;
@@ -25,7 +25,7 @@ public class TUI implements Observer {
     //TODO: Prüfen ob Mensch oder Computer am Zug ist
     public boolean iterate(){
 
-        if(controller.winPlayer != null) {
+        if(controller.getWinPlayer() != null) {
             printWinnerScreen();
             return true;
         }
@@ -42,8 +42,12 @@ public class TUI implements Observer {
 
     private boolean handleInput(String cmd) {
 
-        if( cmd.toCharArray()[0] == 'q') return true;
-        else controller.playerMove(cmd);
+        if( cmd.toCharArray()[0] == 'q'){
+            return true;
+        }
+        else {
+            controller.playerMove(cmd);
+        }
 
         return false;
     }
@@ -81,7 +85,7 @@ public class TUI implements Observer {
 
     private void printWinnerScreen(){
         System.out.println("\n------------------------------");
-        if(controller.winPlayer.getClass().equals(HumanPlayer.class)){
+        if(controller.getWinPlayer().getClass().equals(HumanPlayer.class)){
             System.out.println("Spieler hat gewonnen!");
         } else {
             System.out.println("Computer hat gewonnen!");

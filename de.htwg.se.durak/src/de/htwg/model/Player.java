@@ -9,19 +9,19 @@ import java.util.LinkedList;
  */
 public abstract class Player implements IPlayer {
 
-    public LinkedList<PlayingCard> hand;
-    public String playerName;
+    private LinkedList<PlayingCard> getPlayersHand;
+    private String playerName;
 
     public abstract PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex);
 
     public abstract PlayingCard defend(PlayingCard cardToBeat, int cardIndex);
 
     public Player(){
-        hand = new LinkedList<PlayingCard>();
+        getPlayersHand = new LinkedList<PlayingCard>();
     }
 
     public void drawCard(PlayingCard card){
-        hand.add(card);
+        getPlayersHand.add(card);
         this.sortHand();
     }
 
@@ -31,11 +31,11 @@ public abstract class Player implements IPlayer {
 
     @Override
     public LinkedList<PlayingCard> getPlayersHand() {
-        return hand;
+        return getPlayersHand;
     }
 
     public void setTrumpOnHand(PlayingCardColor trump){
-        for (PlayingCard cardOnHand : hand) {
+        for (PlayingCard cardOnHand : getPlayersHand) {
             if (cardOnHand.getColor() == trump) {
                 cardOnHand.setTrump();
             }
@@ -45,13 +45,13 @@ public abstract class Player implements IPlayer {
 
     @Override
     public void sortHand() {
-        Collections.sort(hand, new CardComparator());
+        Collections.sort(getPlayersHand, new CardComparator());
     }
 
     @Override
     public String toString(){
         String str = playerName + "\t";
-        for(PlayingCard card: hand){
+        for(PlayingCard card: getPlayersHand){
             str += card.toString() + "\t";
         }
         return str;
