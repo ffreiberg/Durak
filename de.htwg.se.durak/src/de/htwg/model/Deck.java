@@ -14,7 +14,7 @@ public class Deck {
     private LinkedList<PlayingCard> deck;
 
     public Deck() {
-        deck = new LinkedList<>();
+        deck = new LinkedList<PlayingCard>();
 
         for(PlayingCardValue value: PlayingCardValue.values()){
             for(PlayingCardColor color: PlayingCardColor.values()){

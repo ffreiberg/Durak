@@ -25,7 +25,7 @@ public class DurakController extends Observable {
 
     public DurakController() {
         deck = new Deck();
-        players = new LinkedList<>();
+        players = new LinkedList<Player>();
 
         field = new Field();
 

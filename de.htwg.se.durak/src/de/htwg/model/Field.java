@@ -10,7 +10,7 @@ public class Field {
     private LinkedList<PlayingCard> field;
 
     public Field(){
-        field = new LinkedList<>();
+        field = new LinkedList<PlayingCard>();
     }
 
     public void addCard(PlayingCard card){
