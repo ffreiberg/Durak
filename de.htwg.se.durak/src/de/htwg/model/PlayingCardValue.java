@@ -8,7 +8,7 @@ public enum PlayingCardValue {
 
     private int value;
 
-    public static final int SIX_ = 6, SEVEN_ = 7, EIGHT_ = 8, NINE_ = 9, TEN_ = 10, JACK_ = 11, QUEEN_ = 12, KING_ = 13, ACE_ = 14;
+    public static final int E_SIX = 6, E_SEVEN = 7, E_EIGHT = 8, E_NINE = 9, E_TEN = 10, E_JACK = 11, E_QUEEN = 12, E_KING = 13, E_ACE = 14;
 
     PlayingCardValue(int value) {
         this.value = value;
@@ -18,16 +18,16 @@ public enum PlayingCardValue {
     public String toString()
     {
         switch(value){
-            case SIX_:
-            case SEVEN_:
-            case EIGHT_:
-            case NINE_:
-            case TEN_:
+            case E_SIX:
+            case E_SEVEN:
+            case E_EIGHT:
+            case E_NINE:
+            case E_TEN:
                 return Integer.toString(value);
-            case JACK_:
-            case QUEEN_:
-            case KING_:
-            case ACE_:
+            case E_JACK:
+            case E_QUEEN:
+            case E_KING:
+            case E_ACE:
                 return this.name().substring(0,1);
             default:
                 return null;
