@@ -2,6 +2,7 @@ package de.htwg.controller;
 
 import de.htwg.model.*;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.LinkedList;
 
@@ -17,7 +18,7 @@ public class DurakController extends Observable {
     private Deck deck;
     private String statusLine = "Welcome to дурак!\n";
     private Player activePlayer;
-    private LinkedList<Player> players;
+    private List<Player> players;
     private Field field;
     private PlayingCard attackerCard;
     private PlayingCardColor trump;
