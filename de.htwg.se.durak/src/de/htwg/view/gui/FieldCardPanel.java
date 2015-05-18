@@ -5,7 +5,7 @@ import de.htwg.model.PlayingCard;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,9 +14,9 @@ import java.util.Observer;
  */
 public class FieldCardPanel extends JPanel implements Observer{
 
-    private LinkedList<PlayingCard> cards;
+    private List<PlayingCard> cards;
 
-    public FieldCardPanel(DurakController controller, LinkedList<PlayingCard> cards) {
+    public FieldCardPanel(DurakController controller, List<PlayingCard> cards) {
         this.cards = cards;
         controller.addObserver(this);
 

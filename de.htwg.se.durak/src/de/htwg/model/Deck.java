@@ -1,6 +1,7 @@
 package de.htwg.model;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static java.util.Collections.*;
@@ -10,7 +11,7 @@ import static java.util.Collections.*;
  */
 public class Deck {
 
-    private LinkedList<PlayingCard> deck;
+    private List<PlayingCard> deck;
 
     public Deck() {
         deck = new LinkedList<PlayingCard>();

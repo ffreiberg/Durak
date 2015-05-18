@@ -1,6 +1,7 @@
 package de.htwg.model;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by jan-erikwaigel on 16.04.15.
@@ -11,11 +12,10 @@ public class HumanPlayer extends Player {
      * Instantiates a new Human player.
      */
     public HumanPlayer(){
-        //playerName = "HumanPlayer";
     }
 
     @Override
-    public PlayingCard attack(LinkedList<PlayingCard> cardsOnField, int cardIndex) throws IllegalArgumentException {
+    public PlayingCard attack(List<PlayingCard> cardsOnField, int cardIndex) throws IllegalArgumentException {
 
         this.sortHand();
 
@@ -57,7 +57,7 @@ public class HumanPlayer extends Player {
         }
     }
 
-    private boolean cardValid(LinkedList<PlayingCard> cardsOnField, PlayingCard cardToPlay){
+    private boolean cardValid(List<PlayingCard> cardsOnField, PlayingCard cardToPlay){
 
         for (PlayingCard card : cardsOnField){
             if (cardToPlay.getValue().ordinal() == card.getValue().ordinal()) {

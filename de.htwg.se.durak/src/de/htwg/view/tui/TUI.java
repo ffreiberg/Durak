@@ -14,12 +14,10 @@ import java.util.Observer;
 public class TUI implements Observer {
 
     private DurakController controller;
-    //private Scanner scanner;
 
     public TUI(DurakController controller) {
         this.controller = controller;
         controller.addObserver(this);
-        //scanner = new Scanner(System.in);
     }
 
     //TODO: Prüfen ob Mensch oder Computer am Zug ist
@@ -60,13 +58,23 @@ public class TUI implements Observer {
     }
 
     private void printWinnerScreen(){
-        System.out.println("\n------------------------------");
+        String str = "";
+        str += "##################################################\n" +
+                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
+                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
+                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
+                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n";
         if(controller.getWinPlayer().getClass().equals(HumanPlayer.class)){
-            System.out.println("Spieler hat gewonnen!");
+            str += "#\tYou win!\t#\n";
         } else {
-            System.out.println("Вы дурак!");
+            str += "#\tВы дурак!\t#\n";
         }
-        System.out.println("------------------------------");
+        str +=  "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
+                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
+                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
+                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
+                "##################################################\n";
+        System.out.println(str);
     }
 
     @Override

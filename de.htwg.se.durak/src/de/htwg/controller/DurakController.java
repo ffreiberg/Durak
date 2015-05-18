@@ -70,6 +70,10 @@ public class DurakController extends Observable {
         defender = players.get(1);
 
         activePlayer = attacker;
+
+        if (activePlayer instanceof ComputerPlayer) {
+            playerMove("1");
+        }
     }
 
     private void setTrump() {
@@ -209,7 +213,7 @@ public class DurakController extends Observable {
         setNewPlayerRole(true);
     }
 
-    public LinkedList<PlayingCard> getPlayersHand(){
+    public List<PlayingCard> getPlayersHand(){
         if(attacker.getClass().equals(HumanPlayer.class)){
             return attacker.getPlayersHand();
         }
@@ -218,7 +222,7 @@ public class DurakController extends Observable {
         }
     }
 
-    public LinkedList<PlayingCard> getComputerHand(){
+    public List<PlayingCard> getComputerHand(){
         if(attacker.getClass().equals(ComputerPlayer.class)){
             return attacker.getPlayersHand();
         }
@@ -249,15 +253,15 @@ public class DurakController extends Observable {
         }
         statusLine += "\nPlayer\t\t";
 
-        for(PlayingCard attackerCard: getPlayersHand()) {
-            statusLine += attackerCard.toString() + "\t";
+        for(PlayingCard aCard: getPlayersHand()) {
+            statusLine += aCard.toString() + "\t";
         }
         statusLine += SEPARATOR;
 
         return statusLine;
     }
 
-    public LinkedList<PlayingCard> getField(){
+    public List<PlayingCard> getField(){
         return field.getField();
     }
 
@@ -275,5 +279,5 @@ public class DurakController extends Observable {
         return invalidPlayerInput;
     }
 
-    public Player getWinPlayer() {return winPlayer; }
+    public Player getWinPlayer() { return winPlayer; }
 }

@@ -1,13 +1,14 @@
 package de.htwg.model;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by jawaigel on 06.05.2015.
  */
 public class Field {
 
-    private LinkedList<PlayingCard> field;
+    private List<PlayingCard> field;
 
     public Field(){
         field = new LinkedList<PlayingCard>();
@@ -22,7 +23,7 @@ public class Field {
         return field.remove(0);
     }
 
-    public LinkedList<PlayingCard> getField(){
+    public List<PlayingCard> getField(){
         return field;
     }
 

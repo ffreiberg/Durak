@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
@@ -16,12 +17,12 @@ import java.util.Observer;
  */
 public class PlayerCardPanel extends JPanel implements ActionListener, Observer {
 
-    private LinkedList<PlayingCard> cards;
+    private List<PlayingCard> cards;
     private DurakController controller;
 
     private JButton take;
 
-    public PlayerCardPanel(DurakController controller, LinkedList<PlayingCard> cards) {
+    public PlayerCardPanel(DurakController controller, List<PlayingCard> cards) {
         this.controller = controller;
         this.cards = cards;
         this.controller.addObserver(this);
