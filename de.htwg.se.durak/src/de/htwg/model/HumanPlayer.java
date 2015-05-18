@@ -1,6 +1,5 @@
 package de.htwg.model;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
