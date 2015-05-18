@@ -15,6 +15,7 @@ public class DurakController extends Observable {
     private static final String SEPARATOR = "\n------------------------------\n";
 
     private Deck deck;
+    private String statusLine = "Welcome to дурак!\n";
     private Player activePlayer;
     private LinkedList<Player> players;
     private Field field;
@@ -225,35 +226,34 @@ public class DurakController extends Observable {
         }
     }
 
-    public String getGameString() {
-        String str = "";
-        str += "Trumpf [" + trump.toString() + "]\t Cards in Deck: [" + deck.getDeckSize() + "]\n";
-        str += SEPARATOR;
-        str += "Computer\t";
+    public String getStatus() {
+        statusLine += "Trumpf [" + trump.toString() + "]\t Cards in Deck: [" + deck.getDeckSize() + "]";
+        statusLine += SEPARATOR;
+        statusLine += "Computer\t";
 
         for(int i = 1; i <= getComputerHand().size(); ++i) {
-            str += "[$]\t";
+            statusLine += "[$]\t";
         }
-        str += SEPARATOR;
-        str += "Field\t\t";
+        statusLine += SEPARATOR;
+        statusLine += "Field\t\t";
 
         for(PlayingCard fieldCard: field.getField()) {
-            str += fieldCard.toString() + "\t";
+            statusLine += fieldCard.toString() + "\t";
         }
-        str += SEPARATOR;
-        str += "\t\t\t";
+        statusLine += SEPARATOR;
+        statusLine += "\t\t\t";
 
         for(int i = 1; i <= getPlayersHand().size(); ++i) {
-            str += "[" + i + "]\t";
+            statusLine += "[" + i + "]\t";
         }
-        str += "\nPlayer\t\t";
+        statusLine += "\nPlayer\t\t";
 
         for(PlayingCard attackerCard: getPlayersHand()) {
-            str += attackerCard.toString() + "\t";
+            statusLine += attackerCard.toString() + "\t";
         }
-        str += SEPARATOR;
+        statusLine += SEPARATOR;
 
-        return str;
+        return statusLine;
     }
 
     public LinkedList<PlayingCard> getField(){

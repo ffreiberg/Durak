@@ -2,11 +2,11 @@ package de.htwg.view.tui;
 
 import de.htwg.controller.DurakController;
 import de.htwg.model.HumanPlayer;
-import de.htwg.model.PlayingCard;
 
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Scanner;
+
+
 
 /**
  * Created by fafreibe on 10.04.2015.
@@ -53,7 +53,7 @@ public class TUI implements Observer {
         if(controller.isInvalidPlayerInput()){
             str += "Invalid move! Try again\n";
         }
-        str += controller.getGameString();
+        str += controller.getStatus();
         str += "Possible commands: q - quit, t - take, 0 - end turn, {1-X} - play card at position\n";
         str += "Your turn: ";
         System.out.print(str);
