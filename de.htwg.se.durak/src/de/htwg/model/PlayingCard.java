@@ -8,11 +8,13 @@ public class PlayingCard {
     private PlayingCardValue value;
     private PlayingCardColor color;
     private boolean trump;
+    private boolean hide;
 
     public PlayingCard(PlayingCardValue value, PlayingCardColor color){
         this.value = value;
         this.color = color;
         this.trump = false;
+        this.hide = true;
     }
 
     public PlayingCardValue getValue() {
@@ -28,6 +30,10 @@ public class PlayingCard {
     public boolean isTrump() {
         return trump;
     }
+
+    public boolean getHide() { return this.hide; }
+
+    public void setHide(boolean hide) { this.hide = hide;}
 
     public String toString(){
         return color.toString() + value.toString();

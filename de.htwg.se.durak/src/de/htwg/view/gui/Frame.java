@@ -1,6 +1,7 @@
 package de.htwg.view.gui;
 
 import de.htwg.controller.DurakController;
+import de.htwg.model.HumanPlayer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+
+import static java.awt.Font.CENTER_BASELINE;
 
 /**
  * Created by jawaigel on 07.05.2015.
@@ -18,7 +21,8 @@ public class Frame extends JFrame implements ActionListener, Observer{
     private static final int DEFAULT_Y = 480;
 
     private PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
-    private FieldCardPanel panelField;
+    //private FieldCardPanel panelField;
+    private JPanel panelField;
     private JButton playerTakeBtn, playerSkipBtn, trumpBtn, deckBtn;
 
     private DurakController controller;
@@ -71,6 +75,18 @@ public class Frame extends JFrame implements ActionListener, Observer{
         this.setVisible(true);
     }
 
+    private void paintWinnerScreen() {
+        panelField = new JPanel();
+        JTextField txtField = new JTextField();
+        txtField.setMinimumSize(new Dimension(DEFAULT_X-20, 100));
+
+        if(controller.getWinPlayer() instanceof HumanPlayer){
+            txtField.setText("Spieler hat gewonnen!");
+        } else {
+            txtField.setText("Computer hat gewonnen!");
+        }
+    }
+
     public void close() {
         this.setVisible(false);
         this.dispose();
@@ -83,6 +99,7 @@ public class Frame extends JFrame implements ActionListener, Observer{
         } else if (e.getSource().equals(playerSkipBtn)) {
             controller.playerMove("0");
         }
+
     }
 
     @Override
@@ -90,6 +107,11 @@ public class Frame extends JFrame implements ActionListener, Observer{
         /*if(!controller.isHumanPlayer()) {
             controller.playerMove("1");
         }*/
+        if(controller.getWinPlayer() != null) {
+            paintWinnerScreen();
+            return;
+        }
+
         deckBtn.setText(Integer.toString(controller.getDeckSize()));
     }
 }

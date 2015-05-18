@@ -32,7 +32,10 @@ public class ComputerPlayer extends Player {
         if(index == -1) {
             return null;
         }
-        return getPlayersHand().remove(index);
+
+        PlayingCard retCard = getPlayersHand().remove(index);
+        retCard.setHide(true);
+        return retCard;
     }
 
     private int firstAttack() {
@@ -65,7 +68,9 @@ public class ComputerPlayer extends Player {
             return null;
         }
         else {
-            return getPlayersHand().remove(cardDefend);
+            PlayingCard returnCard = getPlayersHand().remove(cardDefend);
+            returnCard.setHide(true);
+            return returnCard;
         }
     }
 

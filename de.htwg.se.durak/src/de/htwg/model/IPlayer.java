@@ -17,8 +17,6 @@ public interface IPlayer {
 
     void sortHand();
 
-    String getPlayerName();
-
     LinkedList<PlayingCard> getPlayersHand();
 
 }

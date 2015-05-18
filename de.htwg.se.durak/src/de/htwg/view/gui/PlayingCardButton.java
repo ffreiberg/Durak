@@ -14,13 +14,16 @@ import java.util.EventListener;
  */
 public class PlayingCardButton extends JButton{
 
-    private PlayingCard card;
     private int position;
 
     public PlayingCardButton(PlayingCard card, int position) {
-        super(card.toString());
+
+        if(card.getHide()) {
+            super.setText("$");
+        } else {
+            super.setText(card.toString());
+        }
         this.setPreferredSize(new Dimension(60, 100));
-        this.card = card;
         this.position = position;
     }
 

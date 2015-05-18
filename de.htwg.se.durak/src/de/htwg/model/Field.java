@@ -14,6 +14,7 @@ public class Field {
     }
 
     public void addCard(PlayingCard card){
+        card.setHide(false);
         field.add(card);
     }
 
