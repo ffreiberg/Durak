@@ -10,15 +10,13 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-import static java.awt.Font.CENTER_BASELINE;
-
 /**
  * Created by jawaigel on 07.05.2015.
  */
 public class Frame extends JFrame implements ActionListener, Observer{
 
-    private static final int DEFAULT_X = 640;
-    private static final int DEFAULT_Y = 480;
+    private static final int DEFAULT_X = 800;
+    private static final int DEFAULT_Y = 420;
 
     private PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
     //private FieldCardPanel panelField;
@@ -114,4 +112,5 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
         deckBtn.setText(Integer.toString(controller.getDeckSize()));
     }
+
 }
