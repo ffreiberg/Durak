@@ -14,29 +14,26 @@ import java.util.Scanner;
 public class TUI implements Observer {
 
     private DurakController controller;
-    private Scanner scanner;
+    //private Scanner scanner;
 
     public TUI(DurakController controller) {
         this.controller = controller;
         controller.addObserver(this);
-        scanner = new Scanner(System.in);
+        //scanner = new Scanner(System.in);
     }
 
     //TODO: Prüfen ob Mensch oder Computer am Zug ist
-    public boolean iterate(){
+    public boolean iterate(String cmd){
 
         if(controller.getWinPlayer() != null) {
             printWinnerScreen();
             return true;
         }
 
-        String cmd = "1";
-
         if(controller.isHumanPlayer()) {
-            cmd = scanner.next();
+            return handleInput(cmd);
         }
-
-        return handleInput(cmd);
+        return false;
     }
 
     private boolean handleInput(String cmd) {
