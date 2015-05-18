@@ -33,7 +33,6 @@ public class TUI implements Observer {
         String cmd = "1";
 
         if(controller.isHumanPlayer()) {
-            System.out.print("Zug Spieler -> Kommando: ");
             cmd = scanner.next();
         }
 
@@ -53,34 +52,14 @@ public class TUI implements Observer {
     }
 
     public void printTUI(){
+        String str = "";
         if(controller.isInvalidPlayerInput()){
-            System.out.println("Invalid move! Try again");
+            str += "Invalid move! Try again\n";
         }
-
-        System.out.println("Дурак!\n");
-        System.out.println("Trumpf " + controller.getTrump().toString() + "\t Cards in Deck: [" + controller.getDeckSize() + "]" );
-        System.out.println("------------------------------");
-
-        System.out.print("Computer\t");
-        for(int i=1; i<=controller.getComputerHand().size(); ++i)
-            System.out.print("[$]\t");
-
-        System.out.println("\n------------------------------");
-        System.out.print("Feld\t\t");
-        for(PlayingCard fieldCard: controller.getField())
-            System.out.print(fieldCard.toString() + "\t");
-
-        System.out.println("\n------------------------------");
-        System.out.print("\t\t\t");
-
-        for(int i=1; i<=controller.getPlayersHand().size(); ++i)
-            System.out.print("[" + i + "]\t");
-
-        System.out.print("\nSpieler\t\t");
-        for(PlayingCard attackerCard: controller.getPlayersHand())
-            System.out.print(attackerCard.toString() + "\t");
-        System.out.println("\n------------------------------");
-        System.out.println();
+        str += controller.getGameString();
+        str += "Possible commands: q - quit, t - take, 0 - end turn, {1-X} - play card at position\n";
+        str += "Your turn: ";
+        System.out.print(str);
     }
 
     private void printWinnerScreen(){
@@ -88,7 +67,7 @@ public class TUI implements Observer {
         if(controller.getWinPlayer().getClass().equals(HumanPlayer.class)){
             System.out.println("Spieler hat gewonnen!");
         } else {
-            System.out.println("Computer hat gewonnen!");
+            System.out.println("Вы дурак!");
         }
         System.out.println("------------------------------");
     }
