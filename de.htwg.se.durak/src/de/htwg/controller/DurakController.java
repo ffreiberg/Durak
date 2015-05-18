@@ -12,6 +12,7 @@ public class DurakController extends Observable {
 
     private static final int START_NUM_OF_CARDS = 6;
     private static final int MAX_CARDS_ON_FIELD = 12;
+    private static final String SEPARATOR = "\n------------------------------\n";
 
     private Deck deck;
     private Player activePlayer;
@@ -222,6 +223,37 @@ public class DurakController extends Observable {
         else{
             return defender.getPlayersHand();
         }
+    }
+
+    public String getGameString() {
+        String str = "";
+        str += "Trumpf [" + trump.toString() + "]\t Cards in Deck: [" + deck.getDeckSize() + "]\n";
+        str += SEPARATOR;
+        str += "Computer\t";
+
+        for(int i = 1; i <= getComputerHand().size(); ++i) {
+            str += "[$]\t";
+        }
+        str += SEPARATOR;
+        str += "Field\t\t";
+
+        for(PlayingCard fieldCard: field.getField()) {
+            str += fieldCard.toString() + "\t";
+        }
+        str += SEPARATOR;
+        str += "\t\t\t";
+
+        for(int i = 1; i <= getPlayersHand().size(); ++i) {
+            str += "[" + i + "]\t";
+        }
+        str += "\nPlayer\t\t";
+
+        for(PlayingCard attackerCard: getPlayersHand()) {
+            str += attackerCard.toString() + "\t";
+        }
+        str += SEPARATOR;
+
+        return str;
     }
 
     public LinkedList<PlayingCard> getField(){
