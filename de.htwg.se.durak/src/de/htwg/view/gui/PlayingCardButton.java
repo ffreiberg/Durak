@@ -19,7 +19,7 @@ public class PlayingCardButton extends JButton{
 
     public PlayingCardButton(PlayingCard card, int position) {
         super(card.toString());
-        this.setPreferredSize(new Dimension(50, 80));
+        this.setPreferredSize(new Dimension(60, 100));
         this.card = card;
         this.position = position;
     }

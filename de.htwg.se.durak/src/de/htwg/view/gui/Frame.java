@@ -87,9 +87,9 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-//        if(!controller.isHumanPlayer()) {
-//            controller.playerMove("1");
-        //}
+        /*if(!controller.isHumanPlayer()) {
+            controller.playerMove("1");
+        }*/
         deckBtn.setText(Integer.toString(controller.getDeckSize()));
     }
 }

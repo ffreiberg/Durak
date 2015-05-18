@@ -141,6 +141,9 @@ public class DurakController extends Observable {
             invalidPlayerInput = true;
         } else {
             round(Integer.parseInt(cmd));
+            if(!isHumanPlayer()){
+                round(1);
+            }
         }
 
         setChanged();
