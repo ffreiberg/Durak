@@ -144,6 +144,9 @@ public class DurakController extends Observable {
 
         if(cmd.toCharArray()[0] == 't' && activePlayer.equals(defender)){
             takeCards();
+            if( activePlayer instanceof ComputerPlayer) {
+                round(1);
+            }
         } else if(cmd.toCharArray()[0] == 't' && activePlayer.equals(attacker)) {
             invalidPlayerInput = true;
         } else {

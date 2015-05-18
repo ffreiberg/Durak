@@ -21,6 +21,7 @@ public class FieldCardPanel extends JPanel implements Observer{
         controller.addObserver(this);
 
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
+        paintCards();
     }
 
     public void paintCards() {
