@@ -41,6 +41,10 @@ public class DurakController extends Observable {
         dealOutCards();
         setTrump();
         searchFirstAttacker();
+
+        if (activePlayer instanceof ComputerPlayer) {
+            playerMove("1");
+        }
     }
 
     private void searchFirstAttacker() {
@@ -70,10 +74,6 @@ public class DurakController extends Observable {
         defender = players.get(1);
 
         activePlayer = attacker;
-
-        if (activePlayer instanceof ComputerPlayer) {
-            playerMove("1");
-        }
     }
 
     private void setTrump() {

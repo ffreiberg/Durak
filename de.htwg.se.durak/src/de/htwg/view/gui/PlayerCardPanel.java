@@ -20,15 +20,12 @@ public class PlayerCardPanel extends JPanel implements ActionListener, Observer 
     private List<PlayingCard> cards;
     private DurakController controller;
 
-    private JButton take;
-
     public PlayerCardPanel(DurakController controller, List<PlayingCard> cards) {
         this.controller = controller;
         this.cards = cards;
         this.controller.addObserver(this);
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        take = new JButton("t");
         paintCards();
     }
 
@@ -47,7 +44,6 @@ public class PlayerCardPanel extends JPanel implements ActionListener, Observer 
     @Override
     public void actionPerformed(ActionEvent e) {
         PlayingCardButton btn = (PlayingCardButton) e.getSource();
-        System.out.println(btn.getPosition());
         controller.playerMove(Integer.toString(btn.getPosition()));
     }
 

@@ -26,7 +26,6 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
     private PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
     private FieldCardPanel panelField;
-    //private JPanel panelField;
     private JButton playerTakeBtn, playerSkipBtn, trumpBtn, deckBtn;
 
     private DurakController controller;
