@@ -1,7 +1,6 @@
 package de.htwg.view.gui;
 
 import de.htwg.controller.DurakController;
-import de.htwg.model.HumanPlayer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,8 +22,6 @@ public class Frame extends JFrame implements ActionListener, Observer{
     private static final GridLayout ACTION_PANEL_LAYOUT = new GridLayout(2, 1);
     private static final BorderLayout PANE_LAYOUT = new BorderLayout(5, 5);
 
-
-    private PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
     private FieldCardPanel panelField;
     private JButton playerTakeBtn, playerSkipBtn, trumpBtn, deckBtn;
 
@@ -33,6 +30,8 @@ public class Frame extends JFrame implements ActionListener, Observer{
     public Frame(DurakController controller) {
 
         this.controller = controller;
+
+        PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
 
         this.setTitle("Durak");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

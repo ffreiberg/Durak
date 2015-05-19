@@ -4,15 +4,13 @@ import de.htwg.model.PlayingCard;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.EventListener;
 
 /**
  * Created by jawaigel on 07.05.2015.
  */
 public class PlayingCardButton extends JButton{
+
+    private static final Dimension CARD_SIZE_DIMENSION = new Dimension(60, 100);
 
     private int position;
 
@@ -23,7 +21,7 @@ public class PlayingCardButton extends JButton{
         } else {
             super.setText(card.toString());
         }
-        this.setPreferredSize(new Dimension(60, 100));
+        this.setPreferredSize(CARD_SIZE_DIMENSION);
         this.position = position;
     }
 
