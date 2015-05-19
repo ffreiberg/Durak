@@ -59,21 +59,13 @@ public class TUI implements Observer {
 
     private void printWinnerScreen(){
         String str = "";
-        str += "##################################################\n" +
-                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
-                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
-                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
-                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n";
+        str += "\n\n\n\n\n";
         if(controller.getWinPlayer().getClass().equals(HumanPlayer.class)){
-            str += "#\tYou win!\t#\n";
+            str += "\t\t\t\t\tYou win!\t\t\t\t\t\n";
         } else {
-            str += "#\tВы дурак!\t#\n";
+            str += "\t\t\t\t\tВы дурак!\t\t\t\t\t\n";
         }
-        str +=  "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
-                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
-                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
-                "#\t\t\t\t\t\t\t\t\t\t\t\t#\n" +
-                "##################################################\n";
+        str +=  "\n\n\n\n\n";
         System.out.println(str);
     }
 

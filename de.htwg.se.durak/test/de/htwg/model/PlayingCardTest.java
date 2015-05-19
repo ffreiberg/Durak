@@ -31,6 +31,11 @@ public class PlayingCardTest {
     }
 
     @Test
+    public void testGetHide() throws Exception {
+        assertTrue(p.getHide());
+    }
+
+    @Test
     public void testSetTrump() throws Exception {
         assertFalse(p.isTrump());
         p.setTrump();

@@ -7,7 +7,9 @@ import java.util.Scanner;
 /**
  * Created by jawaigel on 16.04.2015.
  */
-class Durak {
+public final class Durak {
+
+    private Durak(){}
 
     public static void main(String args[]){
         Scanner scanner = new Scanner(System.in);
