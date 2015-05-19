@@ -17,10 +17,16 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
     private static final int DEFAULT_X = 800;
     private static final int DEFAULT_Y = 420;
+    private static final Dimension CARD_SIZE_DIMENSION = new Dimension(50, 80);
+    private static final GridLayout CARD_PANEL_LAYOUT = new GridLayout(3, 1, 5, 5);
+    private static final GridLayout DECK_PANEL_LAYOUT = new GridLayout(2, 1);
+    private static final GridLayout ACTION_PANEL_LAYOUT = new GridLayout(2, 1);
+    private static final BorderLayout PANE_LAYOUT = new BorderLayout(5, 5);
+
 
     private PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
-    //private FieldCardPanel panelField;
-    private JPanel panelField;
+    private FieldCardPanel panelField;
+    //private JPanel panelField;
     private JButton playerTakeBtn, playerSkipBtn, trumpBtn, deckBtn;
 
     private DurakController controller;
@@ -47,42 +53,30 @@ public class Frame extends JFrame implements ActionListener, Observer{
         playerSkipBtn.addActionListener(this);
 
         trumpBtn = new JButton(controller.getTrump().toString());
-        trumpBtn.setPreferredSize(new Dimension(50, 80));
+        trumpBtn.setPreferredSize(CARD_SIZE_DIMENSION);
         deckBtn = new JButton(Integer.toString(controller.getDeckSize()));
-        deckBtn.setPreferredSize(new Dimension(50, 80));
+        deckBtn.setPreferredSize(CARD_SIZE_DIMENSION);
 
-        JPanel cardPanel = new JPanel(new GridLayout(3, 1, 5, 5));
+        JPanel cardPanel = new JPanel(CARD_PANEL_LAYOUT);
         cardPanel.add(panelComputerPlayer);
         cardPanel.add(panelField);
         cardPanel.add(panelHumanPlayer);
 
-        JPanel deckPanel = new JPanel(new GridLayout(2, 1));
+        JPanel deckPanel = new JPanel(DECK_PANEL_LAYOUT);
         deckPanel.add(trumpBtn);
         deckPanel.add(deckBtn);
 
         Container pane = this.getContentPane();
-        pane.setLayout(new BorderLayout(5, 5));
+        pane.setLayout(PANE_LAYOUT);
         pane.add(deckPanel, BorderLayout.LINE_START);
         pane.add(cardPanel, BorderLayout.CENTER);
 
-        JPanel actionPanel = new JPanel(new GridLayout(2, 1));
+        JPanel actionPanel = new JPanel(ACTION_PANEL_LAYOUT);
         actionPanel.add(playerTakeBtn);
         actionPanel.add(playerSkipBtn);
         pane.add(actionPanel, BorderLayout.EAST);
 
         this.setVisible(true);
-    }
-
-    private void paintWinnerScreen() {
-        panelField = new JPanel();
-        JTextField txtField = new JTextField();
-        txtField.setMinimumSize(new Dimension(DEFAULT_X-20, 100));
-
-        if(controller.getWinPlayer() instanceof HumanPlayer){
-            txtField.setText("Spieler hat gewonnen!");
-        } else {
-            txtField.setText("Computer hat gewonnen!");
-        }
     }
 
     public void close() {
@@ -102,13 +96,10 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        /*if(!controller.isHumanPlayer()) {
-            controller.playerMove("1");
-        }*/
-        if(controller.getWinPlayer() != null) {
-            paintWinnerScreen();
-            return;
-        }
+       if(controller.getWinPlayer() != null) {
+           panelField.paintWinnerScreen(controller.getWinPlayer());
+           return;
+       }
 
         deckBtn.setText(Integer.toString(controller.getDeckSize()));
     }

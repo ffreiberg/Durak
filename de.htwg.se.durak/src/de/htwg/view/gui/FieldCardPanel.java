@@ -1,6 +1,8 @@
 package de.htwg.view.gui;
 
 import de.htwg.controller.DurakController;
+import de.htwg.model.HumanPlayer;
+import de.htwg.model.Player;
 import de.htwg.model.PlayingCard;
 
 import javax.swing.*;
@@ -14,6 +16,8 @@ import java.util.Observer;
  */
 public class FieldCardPanel extends JPanel implements Observer{
 
+    private static final Dimension WINNER_LABEL_DIMENSION = new Dimension(500, 200);
+
     private List<PlayingCard> cards;
 
     public FieldCardPanel(DurakController controller, List<PlayingCard> cards) {
@@ -24,7 +28,7 @@ public class FieldCardPanel extends JPanel implements Observer{
         paintCards();
     }
 
-    public void paintCards() {
+    private void paintCards() {
         this.removeAll();
 
         for(PlayingCard card: cards){
@@ -32,6 +36,20 @@ public class FieldCardPanel extends JPanel implements Observer{
             this.add(btn);
         }
         updateUI();
+    }
+
+    public void paintWinnerScreen(Player player) {
+        this.removeAll();
+
+        JLabel winLabel = new JLabel();
+        winLabel.setSize(WINNER_LABEL_DIMENSION);
+
+        if(player instanceof HumanPlayer) {
+            winLabel.setText("Spieler hat gewonnen");
+        } else {
+            winLabel.setText("Computer hat gewonnen");
+        }
+        this.add(winLabel);
     }
 
     @Override

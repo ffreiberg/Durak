@@ -32,7 +32,7 @@ public class PlayerCardPanel extends JPanel implements ActionListener, Observer 
         paintCards();
     }
 
-    public void paintCards() {
+    private void paintCards() {
         this.removeAll();
 
         int i=1;
