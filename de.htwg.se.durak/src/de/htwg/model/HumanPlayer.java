@@ -14,7 +14,7 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public PlayingCard attack(List<PlayingCard> cardsOnField, int cardIndex) throws IllegalArgumentException {
+    public PlayingCard attack(List<PlayingCard> cardsOnField, int cardIndex) {
 
         this.sortHand();
 
@@ -37,7 +37,7 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    public PlayingCard defend(PlayingCard cardToBeat, int cardIndex) throws IllegalArgumentException {
+    public PlayingCard defend(PlayingCard cardToBeat, int cardIndex) {
         this.sortHand();
         if(cardIndex < 1 || cardIndex > getPlayersHand().size()) {
             throw new IllegalArgumentException("Index out of range!");
