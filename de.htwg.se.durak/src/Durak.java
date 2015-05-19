@@ -19,7 +19,11 @@ public final class Durak {
         TUI tui = new TUI(controller);
         tui.printTUI();
 
-        while(!tui.iterate(scanner.next()));
+        boolean continueGame = true;
+
+        while(continueGame) {
+            continueGame = !tui.iterate(scanner.next());
+        }
 
         gui.close();
     }
