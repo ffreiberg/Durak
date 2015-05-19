@@ -2,7 +2,6 @@ package de.htwg.model;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static java.util.Collections.*;
 

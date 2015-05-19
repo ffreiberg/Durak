@@ -43,7 +43,7 @@ public class DurakController extends Observable {
         searchFirstAttacker();
 
         if (activePlayer instanceof ComputerPlayer) {
-            playerMove("1");
+            this.playerMove("1");
         }
     }
 
