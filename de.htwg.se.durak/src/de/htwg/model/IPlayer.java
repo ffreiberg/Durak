@@ -7,9 +7,9 @@ import java.util.List;
  */
 public interface IPlayer {
 
-    PlayingCard attack(List<PlayingCard> cardsOnField, int cardIndex) throws IllegalArgumentException;
+    PlayingCard attack(List<PlayingCard> cardsOnField, int cardIndex);
 
-    PlayingCard defend(PlayingCard cardToBeat, int cardIndex) throws IllegalArgumentException;
+    PlayingCard defend(PlayingCard cardToBeat, int cardIndex);
 
     void drawCard(PlayingCard card);
 

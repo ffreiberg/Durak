@@ -36,7 +36,7 @@ public class Deck {
         return deck.size();
     }
 
-    public PlayingCard drawCard() throws NoSuchElementException{
+    public PlayingCard drawCard(){
         return deck.remove(0);
     }
 
