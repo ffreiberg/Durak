@@ -34,7 +34,7 @@ public class HumanPlayerTest {
         successCard = new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS);
         trumpCard = new PlayingCard(PlayingCardValue.ACE, PlayingCardColor.CLUBS);
         player.getPlayersHand().addAll(cardsOnHand);
-        player.getPlayersHand().get(4).setTrump();
+        player.setTrumpOnHand(PlayingCardColor.CLUBS);
     }
 
     @After
