@@ -33,7 +33,6 @@ public class ComputerPlayerTest {
         ));
         noValidCards = new LinkedList<PlayingCard>(Arrays.asList(
                         new PlayingCard(PlayingCardValue.QUEEN, PlayingCardColor.DIAMONDS),
-                        new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS),
                         new PlayingCard(PlayingCardValue.ACE, PlayingCardColor.CLUBS)
                 ));
         singleCard = new LinkedList<PlayingCard>(Arrays.asList(
@@ -80,7 +79,18 @@ public class ComputerPlayerTest {
 
     @Test
     public void testDefend() throws Exception {
-
+        PlayingCard p = bot.defend(cardToBeat, 0);
+        assertEquals(new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS).toString(),
+                p.toString());
+        botDummy.getPlayersHand().addAll(singleCard);
+        botDummy.setTrumpOnHand(PlayingCardColor.DIAMONDS);
+        p = botDummy.defend(cardToBeat, 0);
+        assertEquals(new PlayingCard(PlayingCardValue.NINE, PlayingCardColor.DIAMONDS).toString(),
+                p.toString());
+        botDummy.getPlayersHand().clear();
+        botDummy.getPlayersHand().addAll(noValidCards);
+        p = botDummy.defend(cardToBeat, 0);
+        assertNull(p);
     }
 
     @Test
