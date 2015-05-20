@@ -109,4 +109,23 @@ public class HumanPlayerTest {
     public void testDefendTryToBeatLowerCard() throws Exception {
         PlayingCard p = player.defend(cardToBeat, 1);
     }
+
+    @Test
+    public void testToString() throws Exception {
+        String str = player.toString(),
+                expected = "\t\t" +
+                    new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS).toString() + "\t" +
+                    new PlayingCard(PlayingCardValue.JACK, PlayingCardColor.SPADES).toString() + "\t" +
+                    new PlayingCard(PlayingCardValue.QUEEN, PlayingCardColor.DIAMONDS).toString() + "\t" +
+                    new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS).toString() + "\t" +
+                    new PlayingCard(PlayingCardValue.ACE, PlayingCardColor.CLUBS).toString() + "\t";
+        assertEquals(expected, str);
+    }
+
+    @Test
+    public void testDrawCard() throws Exception {
+        player.drawCard(new PlayingCard(PlayingCardValue.TEN, PlayingCardColor.CLUBS));
+        player.sortHand();
+        assertEquals(new PlayingCard(PlayingCardValue.TEN, PlayingCardColor.CLUBS).toString(), player.getPlayersHand().get(1).toString());
+    }
 }
