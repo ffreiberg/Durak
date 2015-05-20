@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -13,7 +14,7 @@ public class HumanPlayerTest {
 
     HumanPlayer player;
     PlayingCard cardToBeat, successCard, trumpCard;
-    LinkedList<PlayingCard> cardsOnField, cardsOnHand, emptyField;
+    List<PlayingCard> cardsOnField, cardsOnHand, emptyField;
 
     @Before
     public void setUp() throws Exception {
@@ -40,6 +41,11 @@ public class HumanPlayerTest {
     @After
     public void tearDown() throws Exception {
         player = null;
+        cardToBeat = null;
+        successCard = null;
+        cardsOnField = null;
+        cardsOnHand = null;
+        emptyField = null;
     }
 
     @Test(expected = IllegalArgumentException.class)

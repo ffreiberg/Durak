@@ -4,15 +4,44 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class ComputerPlayerTest {
 
-    ComputerPlayer bot;
+    ComputerPlayer bot, botNoValidCards;
+    PlayingCard cardToBeat, successCard, trumpCard;
+    List<PlayingCard> cardsOnField, cardsOnHand, emptyField, noValidCards;
 
     @Before
     public void setUp() throws Exception {
         bot = new ComputerPlayer();
+        botNoValidCards = new ComputerPlayer();
+        cardsOnField = new LinkedList<PlayingCard>(Arrays.asList(
+                new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.JACK, PlayingCardColor.HEARTS)
+        ));
+        cardsOnHand = new LinkedList<PlayingCard>(Arrays.asList(
+                new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.SPADES),
+                new PlayingCard(PlayingCardValue.JACK, PlayingCardColor.SPADES),
+                new PlayingCard(PlayingCardValue.QUEEN, PlayingCardColor.DIAMONDS),
+                new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.ACE, PlayingCardColor.CLUBS)
+        ));
+        noValidCards = new LinkedList<PlayingCard>(Arrays.asList(
+                        new PlayingCard(PlayingCardValue.QUEEN, PlayingCardColor.DIAMONDS),
+                        new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS),
+                        new PlayingCard(PlayingCardValue.ACE, PlayingCardColor.CLUBS)
+                ));
+        emptyField = new LinkedList<PlayingCard>();
+        cardToBeat = new PlayingCard(PlayingCardValue.SEVEN, PlayingCardColor.HEARTS);
+        successCard = new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS);
+        trumpCard = new PlayingCard(PlayingCardValue.ACE, PlayingCardColor.CLUBS);
+        bot.getPlayersHand().addAll(cardsOnHand);
+        bot.setTrumpOnHand(PlayingCardColor.CLUBS);
     }
 
     @After
@@ -21,8 +50,23 @@ public class ComputerPlayerTest {
     }
 
     @Test
-    public void testAttack() throws Exception {
+    public void testFirstAttack() throws Exception {
+        PlayingCard p = bot.attack(emptyField, 0);
+        assertEquals(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.SPADES).toString(),
+                p.toString());
+    }
 
+    @Test
+    public void testAttackNoValidCards() throws Exception {
+        PlayingCard p = botNoValidCards.attack(cardsOnField, 3);
+        assertNull(p);
+    }
+
+    @Test
+    public void testAttackSuccess() throws  Exception {
+        PlayingCard p = bot.attack(cardsOnField, 1);
+        assertEquals(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.SPADES).toString(),
+                p.toString());
     }
 
     @Test
@@ -38,7 +82,8 @@ public class ComputerPlayerTest {
     public void testDrawCard() throws Exception {
         bot.drawCard(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.CLUBS));
         bot.sortHand();
-        assertEquals(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.CLUBS).toString(), bot.getPlayersHand().get(0).toString());
+        assertEquals(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.CLUBS).toString(),
+                bot.getPlayersHand().get(1).toString());
     }
 
 /*
