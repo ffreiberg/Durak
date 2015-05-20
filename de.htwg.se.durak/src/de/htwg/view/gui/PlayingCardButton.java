@@ -25,8 +25,6 @@ public class PlayingCardButton extends JButton{
         this.setPreferredSize(CARD_SIZE_DIMENSION);
         this.setVerticalAlignment(CENTER);
 
-
-
         this.position = position;
     }
 
