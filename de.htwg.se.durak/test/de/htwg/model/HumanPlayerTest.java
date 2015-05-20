@@ -107,8 +107,20 @@ public class HumanPlayerTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testDefendTryToBeatLowerCard() throws Exception {
-        cardToBeat.setTrump();
         PlayingCard p = player.defend(cardToBeat, 1);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testDefendTryToBeatWrongCard() throws Exception {
+        cardToBeat.setTrump();
+        PlayingCard p = player.defend(cardToBeat, 2);
+    }
+
 }
+
+/*
+    true - true:    hab ich
+    true - false:
+    false - true:   hab ich
+    false - false:
+*/
