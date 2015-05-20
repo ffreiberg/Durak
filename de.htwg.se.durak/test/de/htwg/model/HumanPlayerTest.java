@@ -47,8 +47,13 @@ public class HumanPlayerTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testAttackWrongIndex() throws Exception {
+    public void testAttackLowerIndex() throws Exception {
         PlayingCard wrongIndex = player.attack(cardsOnField, -1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAttackGreaterIndex() throws Exception {
+        PlayingCard wrongIndex = player.attack(cardsOnField, player.getPlayersHand().size()+1);
     }
 
     @Test
@@ -73,8 +78,13 @@ public class HumanPlayerTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testDefendWrongIndex() throws Exception {
+    public void testDefendLowerIndex() throws Exception {
         PlayingCard wrondIndex = player.defend(cardToBeat, -1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDefendGreaterIndex() throws Exception {
+        PlayingCard wrondIndex = player.defend(cardToBeat, player.getPlayersHand().size()+1);
     }
 
     @Test(expected = IllegalArgumentException.class)
