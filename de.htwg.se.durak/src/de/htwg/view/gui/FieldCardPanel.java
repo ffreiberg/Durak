@@ -6,6 +6,7 @@ import de.htwg.model.Player;
 import de.htwg.model.PlayingCard;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.util.List;
 import java.util.Observable;
@@ -25,6 +26,7 @@ public class FieldCardPanel extends JPanel implements Observer{
         controller.addObserver(this);
 
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
+        this.setBorder(new BevelBorder(BevelBorder.LOWERED));
         paintCards();
     }
 

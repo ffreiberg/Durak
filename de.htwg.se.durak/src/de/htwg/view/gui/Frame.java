@@ -3,6 +3,8 @@ package de.htwg.view.gui;
 import de.htwg.controller.DurakController;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +19,7 @@ public class Frame extends JFrame implements ActionListener, Observer{
     private static final int DEFAULT_X = 800;
     private static final int DEFAULT_Y = 420;
     private static final Dimension CARD_SIZE_DIMENSION = new Dimension(50, 80);
+    private static final Dimension STATUS_BAR_DIMENSION = new Dimension(DEFAULT_X, 20);
     private static final GridLayout CARD_PANEL_LAYOUT = new GridLayout(3, 1, 5, 5);
     private static final GridLayout DECK_PANEL_LAYOUT = new GridLayout(2, 1);
     private static final GridLayout ACTION_PANEL_LAYOUT = new GridLayout(2, 1);
@@ -24,6 +27,7 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
     private FieldCardPanel panelField;
     private JButton playerTakeBtn, playerSkipBtn, trumpBtn, deckBtn;
+    private JLabel statusMsg;
 
     private DurakController controller;
 
@@ -33,7 +37,7 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
         PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
 
-        this.setTitle("Durak");
+        this.setTitle("дурак");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(DEFAULT_X, DEFAULT_Y);
 
@@ -47,13 +51,17 @@ public class Frame extends JFrame implements ActionListener, Observer{
         playerTakeBtn = new JButton("take");
         playerTakeBtn.addActionListener(this);
 
-        playerSkipBtn = new JButton("skip");
+        playerSkipBtn = new JButton("end turn");
         playerSkipBtn.addActionListener(this);
 
         trumpBtn = new JButton(controller.getTrump().toString());
         trumpBtn.setPreferredSize(CARD_SIZE_DIMENSION);
         deckBtn = new JButton(Integer.toString(controller.getDeckSize()));
         deckBtn.setPreferredSize(CARD_SIZE_DIMENSION);
+
+        statusMsg = new JLabel();
+        statusMsg.setHorizontalAlignment(SwingConstants.CENTER);
+        statusMsg.setVerticalAlignment(SwingConstants.CENTER);
 
         JPanel cardPanel = new JPanel(CARD_PANEL_LAYOUT);
         cardPanel.add(panelComputerPlayer);
@@ -74,6 +82,12 @@ public class Frame extends JFrame implements ActionListener, Observer{
         actionPanel.add(playerSkipBtn);
         pane.add(actionPanel, BorderLayout.EAST);
 
+        JPanel statusBar = new JPanel(new BorderLayout());
+        statusBar.setBorder(new LineBorder(Color.GRAY));
+        statusBar.setPreferredSize(STATUS_BAR_DIMENSION);
+        statusBar.add(statusMsg, BorderLayout.CENTER);
+        pane.add(statusBar, BorderLayout.SOUTH);
+
         this.setVisible(true);
     }
 
@@ -89,7 +103,6 @@ public class Frame extends JFrame implements ActionListener, Observer{
         } else if (e.getSource().equals(playerSkipBtn)) {
             controller.playerMove("0");
         }
-
     }
 
     @Override
@@ -98,6 +111,14 @@ public class Frame extends JFrame implements ActionListener, Observer{
            panelField.paintWinnerScreen(controller.getWinPlayer());
            return;
        }
+
+        if(controller.isInvalidPlayerInput()) {
+            statusMsg.setText("Invalid Player move!");
+        } else if (controller.isHumanPlayer()){
+            statusMsg.setText("Spieler am Zug");
+        } else {
+            statusMsg.setText("");
+        }
 
         deckBtn.setText(Integer.toString(controller.getDeckSize()));
     }
