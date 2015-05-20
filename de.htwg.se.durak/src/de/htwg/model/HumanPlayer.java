@@ -43,7 +43,6 @@ public class HumanPlayer extends Player {
             throw new IllegalArgumentException("Index out of range!");
         }
 
-        //TODO: Prüfen ob Karte gültig
         if (getPlayersHand().get(cardIndex - 1).getColor() == cardToBeat.getColor() &&
                 getPlayersHand().get(cardIndex - 1).getValue().ordinal() > cardToBeat.getValue().ordinal()) {
             return getPlayersHand().remove(cardIndex - 1);
