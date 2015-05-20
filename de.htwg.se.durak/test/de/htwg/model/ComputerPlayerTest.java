@@ -34,6 +34,12 @@ public class ComputerPlayerTest {
     public void testScanField() throws Exception {
 
     }
+    @Test
+    public void testDrawCard() throws Exception {
+        bot.drawCard(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.CLUBS));
+        bot.sortHand();
+        assertEquals(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.CLUBS).toString(), bot.getPlayersHand().get(0).toString());
+    }
 
 /*
     package de.htwg.model;
