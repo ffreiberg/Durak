@@ -107,6 +107,7 @@ public class HumanPlayerTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testDefendTryToBeatLowerCard() throws Exception {
+        cardToBeat.setTrump();
         PlayingCard p = player.defend(cardToBeat, 1);
     }
 
