@@ -40,12 +40,12 @@ public class HumanPlayerTest {
 
     @After
     public void tearDown() throws Exception {
-        player = null;
-        cardToBeat = null;
-        successCard = null;
-        cardsOnField = null;
-        cardsOnHand = null;
-        emptyField = null;
+        this.player = null;
+        this.cardToBeat = null;
+        this.successCard = null;
+        this.cardsOnField = null;
+        this.cardsOnHand = null;
+        this.emptyField = null;
     }
 
     @Test(expected = IllegalArgumentException.class)

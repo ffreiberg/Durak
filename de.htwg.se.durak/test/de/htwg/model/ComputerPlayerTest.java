@@ -49,6 +49,15 @@ public class ComputerPlayerTest {
     @After
     public void tearDown() throws Exception {
         this.bot = null;
+        this.botDummy = null;
+        this.cardsOnField = null;
+        this.cardsOnHand = null;
+        this.cardToBeat = null;
+        this.emptyField = null;
+        this.noValidCards = null;
+        this.singleCard = null;
+        this.trumpCard = null;
+        this.successCard = null;
     }
 
     @Test
