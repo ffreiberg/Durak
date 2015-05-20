@@ -12,14 +12,14 @@ import static org.junit.Assert.*;
 
 public class ComputerPlayerTest {
 
-    ComputerPlayer bot, botNoValidCards;
+    ComputerPlayer bot, botDummy;
     PlayingCard cardToBeat, successCard, trumpCard;
-    List<PlayingCard> cardsOnField, cardsOnHand, emptyField, noValidCards;
+    List<PlayingCard> cardsOnField, cardsOnHand, emptyField, noValidCards, singleCard;
 
     @Before
     public void setUp() throws Exception {
         bot = new ComputerPlayer();
-        botNoValidCards = new ComputerPlayer();
+        botDummy = new ComputerPlayer();
         cardsOnField = new LinkedList<PlayingCard>(Arrays.asList(
                 new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS),
                 new PlayingCard(PlayingCardValue.JACK, PlayingCardColor.HEARTS)
@@ -36,6 +36,9 @@ public class ComputerPlayerTest {
                         new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS),
                         new PlayingCard(PlayingCardValue.ACE, PlayingCardColor.CLUBS)
                 ));
+        singleCard = new LinkedList<PlayingCard>(Arrays.asList(
+                new PlayingCard(PlayingCardValue.NINE, PlayingCardColor.DIAMONDS)
+        ));
         emptyField = new LinkedList<PlayingCard>();
         cardToBeat = new PlayingCard(PlayingCardValue.SEVEN, PlayingCardColor.HEARTS);
         successCard = new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS);
@@ -54,11 +57,17 @@ public class ComputerPlayerTest {
         PlayingCard p = bot.attack(emptyField, 0);
         assertEquals(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.SPADES).toString(),
                 p.toString());
+        botDummy.getPlayersHand().addAll(singleCard);
+        botDummy.setTrumpOnHand(PlayingCardColor.DIAMONDS);
+        p = botDummy.attack(emptyField, 0);
+        assertEquals(new PlayingCard(PlayingCardValue.NINE, PlayingCardColor.DIAMONDS).toString(),
+                p.toString());
     }
 
     @Test
     public void testAttackNoValidCards() throws Exception {
-        PlayingCard p = botNoValidCards.attack(cardsOnField, 3);
+        botDummy.getPlayersHand().addAll(noValidCards);
+        PlayingCard p = botDummy.attack(cardsOnField, 3);
         assertNull(p);
     }
 
