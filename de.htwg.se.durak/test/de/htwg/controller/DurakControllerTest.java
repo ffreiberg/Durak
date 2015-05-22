@@ -22,7 +22,7 @@ public class DurakControllerTest {
         p2 = new ComputerPlayer();
         deck = new Deck();
 
-        deck.addCard(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS));
+        controller.initGame();
     }
 
     @After
@@ -64,14 +64,67 @@ public class DurakControllerTest {
 
     @Test
     public void testGetDeckSize() throws Exception {
-        /*
         int size = controller.getDeckSize();
-        assertEquals(1, size);
-        */
+        assertEquals(24, size);
     }
 
     @Test
     public void testIsInvalidPlayerInput() throws Exception {
+
+    }
+
+    @Test
+    public void testInitGame() throws Exception {
+
+    }
+
+    @Test
+    public void testPlayerMove1() throws Exception {
+
+    }
+
+    @Test
+    public void testGetPlayersHand1() throws Exception {
+
+    }
+
+    @Test
+    public void testGetComputerHand1() throws Exception {
+
+    }
+
+    @Test
+    public void testGetStatus() throws Exception {
+
+    }
+
+    @Test
+    public void testGetField1() throws Exception {
+
+    }
+
+    @Test
+    public void testIsHumanPlayer1() throws Exception {
+
+    }
+
+    @Test
+    public void testGetTrump1() throws Exception {
+
+    }
+
+    @Test
+    public void testGetDeckSize1() throws Exception {
+
+    }
+
+    @Test
+    public void testIsInvalidPlayerInput1() throws Exception {
+
+    }
+
+    @Test
+    public void testGetWinPlayer() throws Exception {
 
     }
 }

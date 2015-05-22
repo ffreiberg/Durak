@@ -17,6 +17,7 @@ public class DurakController extends Observable {
 
     private Deck deck;
     private String statusLine = "Welcome to дурак!\n";
+
     private Player activePlayer;
     private List<Player> players;
     private Field field;
@@ -285,4 +286,8 @@ public class DurakController extends Observable {
     }
 
     public Player getWinPlayer() { return winPlayer; }
+
+    public Player getActivePlayer() { return activePlayer; }
+
+    public void setActivePlayer(Player activePlayer) { this.activePlayer = activePlayer; }
 }
