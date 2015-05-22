@@ -288,4 +288,8 @@ public class DurakController extends Observable {
     public Player getWinPlayer() { return winPlayer; }
 
     public void setWinPlayer(Player p) { this.winPlayer = p; }
+
+    public void setActivePlayer(Player p) { this.activePlayer = p; }
+
+    public Player getActivePlayer() { return activePlayer; }
 }
