@@ -30,6 +30,7 @@ public class DurakControllerTest {
         controller = null;
         p1 = null;
         p2 = null;
+        deck = null;
     }
 
     @Test

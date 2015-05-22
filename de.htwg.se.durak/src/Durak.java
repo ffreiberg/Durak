@@ -14,6 +14,7 @@ public final class Durak {
     public static void main(String args[]){
         Scanner scanner = new Scanner(System.in);
         DurakController controller = new DurakController();
+        controller.initGame();
 
         Frame gui = new Frame(controller);
         TUI tui = new TUI(controller);

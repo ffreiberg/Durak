@@ -27,10 +27,12 @@ public class DurakController extends Observable {
     private boolean invalidPlayerInput;
 
     public DurakController() {
-        deck = new Deck();
-        players = new LinkedList<Player>();
+        this.deck = new Deck();
+        this.players = new LinkedList<Player>();
+        this.field = new Field();
+    }
 
-        field = new Field();
+    public void initGame() {
 
         players.add(new HumanPlayer());
         players.add(new ComputerPlayer());
