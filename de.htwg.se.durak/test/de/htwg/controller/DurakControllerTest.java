@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -43,7 +44,8 @@ public class DurakControllerTest {
 
     @Test
     public void testGetField() throws Exception {
-
+        List<PlayingCard> actual = controller.getField();
+        assertTrue(actual.isEmpty());
     }
 
     @Test
@@ -53,6 +55,8 @@ public class DurakControllerTest {
 
     @Test
     public void testGetTrump() throws Exception {
+        PlayingCardColor actual = controller.getTrump();
+        assertTrue(actual instanceof PlayingCardColor);
     }
 
     @Test
