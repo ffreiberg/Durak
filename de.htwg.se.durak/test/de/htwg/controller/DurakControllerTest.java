@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -191,6 +192,39 @@ public class DurakControllerTest {
         controller.setAttacker(new HumanPlayer());
         controller.getWinner();
         assertTrue(controller.getWinPlayer() instanceof HumanPlayer);
+    }
+
+    @Test
+    public void testRoundMaxField() throws Exception {
+        LinkedList<PlayingCard> p = new LinkedList<PlayingCard>(Arrays.asList(
+                new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.SEVEN, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.EIGHT, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.NINE, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.TEN, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.JACK, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.QUEEN, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.KING, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.ACE, PlayingCardColor.HEARTS),
+                new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.SPADES),
+                new PlayingCard(PlayingCardValue.SEVEN, PlayingCardColor.SPADES),
+                new PlayingCard(PlayingCardValue.EIGHT, PlayingCardColor.SPADES),
+                new PlayingCard(PlayingCardValue.NINE, PlayingCardColor.SPADES)));
+        controller.getField().addAll(p);
+        controller.setActivePlayer(controller.getAttacker());
+        controller.round(0);
+    }
+
+    @Test
+    public void testRoundAttackerInvalid() throws Exception {
+        controller.setAttacker(new HumanPlayer());
+        controller.setActivePlayer(controller.getAttacker());
+        controller.round(99);
+        assertTrue(controller.isInvalidPlayerInput());
+        controller.setDefender(new HumanPlayer());
+        controller.setActivePlayer(controller.getDefender());
+        controller.round(99);
+        assertTrue(controller.isInvalidPlayerInput());
     }
 
 }

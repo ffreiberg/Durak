@@ -181,7 +181,7 @@ public class DurakController extends Observable {
         notifyObservers();
     }
 
-    private void round(int cardIndex) {
+    public void round(int cardIndex) {
 
         if(activePlayer.equals(attacker)){
 
