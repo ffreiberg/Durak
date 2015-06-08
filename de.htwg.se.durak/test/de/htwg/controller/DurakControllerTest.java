@@ -39,7 +39,10 @@ public class DurakControllerTest {
 
     @Test
     public void testGetComputerHand() throws Exception {
-
+        controller.setAttacker(new ComputerPlayer());
+        assertTrue(controller.getComputerHand().isEmpty());
+        controller.setDefender(new ComputerPlayer());
+        assertTrue(controller.getComputerHand().isEmpty());
     }
 
     @Test
@@ -101,4 +104,11 @@ public class DurakControllerTest {
         controller.setAttacker(new HumanPlayer());
         assertTrue(controller.getAttacker() instanceof HumanPlayer);
     }
+
+    @Test
+    public void testPlayerInput() throws Exception {
+        controller.setPlayerInput(true);
+        assertTrue(controller.isInvalidPlayerInput());
+    }
+
 }

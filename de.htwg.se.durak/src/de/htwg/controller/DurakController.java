@@ -316,4 +316,10 @@ public class DurakController extends Observable {
     public void setAttacker(Player p) { attacker = p; }
 
     public Player getAttacker() { return attacker; }
+
+    public void setPlayerInput(boolean input) { invalidPlayerInput = input; }
+
+    public Player getDefender() { return defender; }
+
+    public void setDefender(Player p) { defender = p; }
 }
