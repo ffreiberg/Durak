@@ -14,6 +14,8 @@ public class DurakController extends Observable {
     private static final int START_NUM_OF_CARDS = 6;
     private static final int MAX_CARDS_ON_FIELD = 12;
     private static final String SEPARATOR = "\n------------------------------\n";
+    private static final char CMD_TAKE = 't';
+    private static final int CMD_COMPUTER = 1;
 
     private Deck deck;
     private String statusLine = "Welcome to дурак!\n";
@@ -142,20 +144,21 @@ public class DurakController extends Observable {
     }
 
     public void playerMove(String cmd) {
+
         getWinner();
         invalidPlayerInput = false;
 
-        if(cmd.toCharArray()[0] == 't' && activePlayer.equals(defender)){
+        if(cmd.toCharArray()[0] == CMD_TAKE && activePlayer.equals(defender)){
             takeCards();
             if( activePlayer instanceof ComputerPlayer) {
-                round(1);
+                round(CMD_COMPUTER);
             }
-        } else if(cmd.toCharArray()[0] == 't' && activePlayer.equals(attacker)) {
+        } else if(cmd.toCharArray()[0] == CMD_TAKE && activePlayer.equals(attacker)) {
             invalidPlayerInput = true;
         } else {
             round(Integer.parseInt(cmd));
             while(!isHumanPlayer()){
-                round(1);
+                round(CMD_COMPUTER);
             }
         }
 
