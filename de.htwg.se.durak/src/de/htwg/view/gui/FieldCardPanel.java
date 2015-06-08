@@ -54,6 +54,10 @@ public class FieldCardPanel extends JPanel implements Observer{
         this.add(winLabel);
     }
 
+    public void disableField() {
+        this.setEnabled(false);
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         paintCards();

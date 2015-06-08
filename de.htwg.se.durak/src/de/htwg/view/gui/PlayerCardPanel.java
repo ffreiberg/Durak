@@ -40,6 +40,10 @@ public class PlayerCardPanel extends JPanel implements ActionListener, Observer 
         updateUI();
     }
 
+    public void disableField() {
+        this.setEnabled(false);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         PlayingCardButton btn = (PlayingCardButton) e.getSource();
