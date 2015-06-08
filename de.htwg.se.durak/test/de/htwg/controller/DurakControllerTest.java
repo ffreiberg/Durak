@@ -100,7 +100,17 @@ public class DurakControllerTest {
 
     @Test
     public void testSetNewPlayerRole() throws Exception {
+        controller.setAttacker(new HumanPlayer());
+        controller.setDefender(new ComputerPlayer());
+        controller.setNewPlayerRole(true);
+    }
 
+    @Test
+    public void testSetNewPlayerRoleA() throws Exception {
+        controller.clearDeck();
+        controller.setAttacker(new HumanPlayer());
+        controller.setDefender(new ComputerPlayer());
+        controller.setNewPlayerRole(false);
     }
 
     @Test
@@ -130,6 +140,7 @@ public class DurakControllerTest {
     @Test
     public void testGetWinner() throws Exception {
         controller.clearDeck();
+        controller.getWinner();
         controller.setDefender(new HumanPlayer());
         controller.getWinner();
         assertTrue(controller.getWinPlayer() instanceof HumanPlayer);

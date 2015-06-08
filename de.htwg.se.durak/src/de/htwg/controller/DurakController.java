@@ -102,7 +102,7 @@ public class DurakController extends Observable {
         }
     }
 
-    private void setNewPlayerRole(boolean skip) {
+    public void setNewPlayerRole(boolean skip) {
 
         //Karten ziehen
         while(attacker.getPlayersHand().size() < START_NUM_OF_CARDS && deck.getDeckSize() > 0){
