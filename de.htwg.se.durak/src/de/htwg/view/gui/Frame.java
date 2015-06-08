@@ -111,10 +111,13 @@ public class Frame extends JFrame implements ActionListener, Observer{
     public void update(Observable o, Object arg) {
 
         if(controller.getWinPlayer() != null) {
-           panelField.paintWinnerScreen(controller.getWinPlayer());
-           panelComputerPlayer.disableField();
-           panelHumanPlayer.disableField();
-           return;
+
+            this.close();
+
+            panelField.paintWinnerScreen(controller.getWinPlayer());
+            panelComputerPlayer.disableField();
+            panelHumanPlayer.disableField();
+            return;
        }
 
         if(controller.isInvalidPlayerInput()) {

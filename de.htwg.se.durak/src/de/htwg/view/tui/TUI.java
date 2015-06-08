@@ -47,6 +47,11 @@ public class TUI implements Observer {
     }
 
     public void printTUI(){
+        if(controller.getWinPlayer() != null) {
+            printWinnerScreen();
+            return;
+        }
+
         String str = "";
         if(controller.isInvalidPlayerInput()){
             str += "Invalid move! Try again\n";

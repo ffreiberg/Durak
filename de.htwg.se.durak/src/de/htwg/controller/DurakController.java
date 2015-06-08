@@ -145,7 +145,7 @@ public class DurakController extends Observable {
 
     public void playerMove(String cmd) {
 
-        getWinner();
+        //getWinner();
         invalidPlayerInput = false;
 
         if(cmd.toCharArray()[0] == CMD_TAKE && activePlayer.equals(defender)){
@@ -157,8 +157,19 @@ public class DurakController extends Observable {
             invalidPlayerInput = true;
         } else {
             round(Integer.parseInt(cmd));
+
+            getWinner();
+            if(winPlayer != null) {
+                return;
+            }
+
             while(!isHumanPlayer()){
                 round(CMD_COMPUTER);
+
+                getWinner();
+                if(winPlayer != null) {
+                    return;
+                }
             }
         }
 
