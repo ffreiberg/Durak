@@ -145,7 +145,6 @@ public class DurakController extends Observable {
 
     public void playerMove(String cmd) {
 
-        //getWinner();
         invalidPlayerInput = false;
 
         if(cmd.toCharArray()[0] == CMD_TAKE && activePlayer.equals(defender)){

@@ -34,7 +34,10 @@ public class DurakControllerTest {
 
     @Test
     public void testGetPlayersHand() throws Exception {
-
+        controller.setAttacker(new HumanPlayer());
+        assertTrue(controller.getPlayersHand().isEmpty());
+        controller.setDefender(new HumanPlayer());
+        assertTrue(controller.getPlayersHand().isEmpty());
     }
 
     @Test
