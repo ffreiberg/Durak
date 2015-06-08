@@ -1,6 +1,5 @@
 package de.htwg.model;
 
-import javax.inject.Inject;
 
 /**
  * Created by fafreibe on 10.04.2015.
@@ -12,7 +11,6 @@ public class PlayingCard {
     private boolean trump;
     private boolean hide;
 
-    @Inject
     public PlayingCard(PlayingCardValue value, PlayingCardColor color){
         this.value = value;
         this.color = color;
