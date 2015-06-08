@@ -26,6 +26,7 @@ public class Frame extends JFrame implements ActionListener, Observer{
     private static final BorderLayout PANE_LAYOUT = new BorderLayout(5, 5);
 
     private FieldCardPanel panelField;
+    private PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
     private JButton playerTakeBtn, playerSkipBtn, trumpBtn, deckBtn;
     private JLabel statusMsg;
 
@@ -34,8 +35,6 @@ public class Frame extends JFrame implements ActionListener, Observer{
     public Frame(DurakController controller) {
 
         this.controller = controller;
-
-        PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
 
         this.setTitle("дурак");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,8 +106,11 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-       if(controller.getWinPlayer() != null) {
+
+        if(controller.getWinPlayer() != null) {
            panelField.paintWinnerScreen(controller.getWinPlayer());
+           panelComputerPlayer.disableField();
+           panelHumanPlayer.disableField();
            return;
        }
 
