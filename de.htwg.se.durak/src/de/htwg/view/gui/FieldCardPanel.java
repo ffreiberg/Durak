@@ -52,10 +52,7 @@ public class FieldCardPanel extends JPanel implements Observer{
             winLabel.setText("Computer hat gewonnen");
         }
         this.add(winLabel);
-    }
-
-    public void disableField() {
-        this.setEnabled(false);
+        updateUI();
     }
 
     @Override

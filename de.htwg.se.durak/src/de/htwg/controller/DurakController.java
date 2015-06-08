@@ -149,7 +149,13 @@ public class DurakController extends Observable {
         invalidPlayerInput = false;
 
         if(cmd.toCharArray()[0] == CMD_TAKE && activePlayer.equals(defender)){
+
             takeCards();
+            getWinner();
+            if(winPlayer != null) {
+                return;
+            }
+
             if( activePlayer instanceof ComputerPlayer) {
                 round(CMD_COMPUTER);
             }
