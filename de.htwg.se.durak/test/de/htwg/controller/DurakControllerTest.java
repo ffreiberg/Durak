@@ -84,4 +84,21 @@ public class DurakControllerTest {
         Player winPlayer = controller.getWinPlayer();
         assertEquals(p, winPlayer);
     }
+
+    @Test
+    public void testSetNewPlayerRole() throws Exception {
+
+    }
+
+    @Test
+    public void testGetActivePlayer() throws Exception {
+        controller.setActivePlayer(new HumanPlayer());
+        assertTrue(controller.getActivePlayer() instanceof HumanPlayer);
+    }
+
+    @Test
+    public void testGetAttacker() throws Exception {
+        controller.setAttacker(new HumanPlayer());
+        assertTrue(controller.getAttacker() instanceof HumanPlayer);
+    }
 }

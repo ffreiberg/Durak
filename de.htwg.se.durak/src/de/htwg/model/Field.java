@@ -11,7 +11,7 @@ public class Field {
     private List<PlayingCard> field;
 
     public Field(){
-        field = new LinkedList<PlayingCard>();
+        this.field = new LinkedList<PlayingCard>();
     }
 
     public void addCard(PlayingCard card){
