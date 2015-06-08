@@ -125,7 +125,7 @@ public class DurakController extends Observable {
         field.clearField();
     }
 
-    private void getWinner(){
+    public void getWinner(){
         if(deck.getDeckSize() != 0) {
             return;
         }
@@ -136,9 +136,8 @@ public class DurakController extends Observable {
             winPlayer = attacker;
         } else if(!attacker.getPlayersHand().isEmpty() && defender.getPlayersHand().isEmpty()) {
             winPlayer = defender;
-        } else {
-            return;
         }
+
         setChanged();
         notifyObservers();
     }
@@ -323,4 +322,10 @@ public class DurakController extends Observable {
     public void setDefender(Player p) { defender = p; }
 
     public void setField(PlayingCard p) { field.addCard(p); }
+
+    public void clearDeck() {
+        int iter = getDeckSize();
+        for (int i = 0; i < iter; ++i)
+            deck.drawCard();
+    }
 }

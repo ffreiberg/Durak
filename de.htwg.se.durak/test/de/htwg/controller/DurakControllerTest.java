@@ -121,4 +121,29 @@ public class DurakControllerTest {
         assertTrue(controller.isInvalidPlayerInput());
     }
 
+    @Test
+    public void testGetDefender() throws Exception {
+        controller.setDefender(new HumanPlayer());
+        assertTrue(controller.getDefender() instanceof HumanPlayer);
+    }
+
+    @Test
+    public void testGetWinner() throws Exception {
+        controller.clearDeck();
+        controller.setDefender(new HumanPlayer());
+        controller.getWinner();
+        assertTrue(controller.getWinPlayer() instanceof HumanPlayer);
+        controller.setAttacker(new ComputerPlayer());
+        controller.getWinner();
+        assertTrue(controller.getWinPlayer() instanceof HumanPlayer);
+    }
+
+    @Test
+    public void testGetWinnerA() throws Exception {
+        controller.clearDeck();
+        controller.setAttacker(new HumanPlayer());
+        controller.getWinner();
+        assertTrue(controller.getWinPlayer() instanceof HumanPlayer);
+    }
+
 }
