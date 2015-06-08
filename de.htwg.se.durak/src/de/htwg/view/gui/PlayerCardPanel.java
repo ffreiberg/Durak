@@ -41,9 +41,9 @@ public class PlayerCardPanel extends JPanel implements ActionListener, Observer 
     }
 
     public void disableField() {
-        //TODO:
-        this.removeAll();
-        updateUI();
+        for(Component c: this.getComponents()) {
+            c.setEnabled(false);
+        }
     }
 
     @Override
@@ -54,6 +54,8 @@ public class PlayerCardPanel extends JPanel implements ActionListener, Observer 
 
     @Override
     public void update(Observable o, Object arg) {
-        paintCards();
+        if(controller.getWinPlayer() == null ) {
+            paintCards();
+        }
     }
 }

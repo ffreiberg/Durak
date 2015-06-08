@@ -1,9 +1,9 @@
 package de.htwg.view.gui;
 
 import de.htwg.controller.DurakController;
+import de.htwg.model.HumanPlayer;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -27,6 +27,11 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
     private static final String CMD_TAKE = "t";
     private static final String CMD_SKIP = "0";
+    private static final String MSG_COMPUTER_WIN = "Computer hat gewonnen!";
+    private static final String MSG_PLAYER_WIN = "Spieler hat gewonnen!";
+    private static final String MSG_PLAYER_MOVE = "Spieler am Zug";
+    private static final String MSG_INVALID_MOVE = "Spielzug nicht möglich!";
+
 
     private FieldCardPanel panelField;
     private PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
@@ -111,23 +116,25 @@ public class Frame extends JFrame implements ActionListener, Observer{
     public void update(Observable o, Object arg) {
 
         if(controller.getWinPlayer() != null) {
-            statusMsg.setText("Dingens hat gewonnen");
-
             playerSkipBtn.setEnabled(false);
             playerTakeBtn.setEnabled(false);
 
             panelField.disableField();
             panelHumanPlayer.disableField();
             panelComputerPlayer.disableField();
+
+            if(controller.getWinPlayer() instanceof HumanPlayer) {
+                statusMsg.setText(MSG_PLAYER_WIN);
+            } else {
+                statusMsg.setText(MSG_COMPUTER_WIN);
+            }
             return;
        }
 
         if(controller.isInvalidPlayerInput()) {
-            statusMsg.setText("Invalid Player move!");
+            statusMsg.setText(MSG_INVALID_MOVE);
         } else if (controller.isHumanPlayer()){
-            statusMsg.setText("Spieler am Zug");
-        } else {
-            statusMsg.setText("");
+            statusMsg.setText(MSG_PLAYER_MOVE);
         }
 
         deckBtn.setText(Integer.toString(controller.getDeckSize()));

@@ -17,13 +17,13 @@ import java.util.Observer;
  */
 public class FieldCardPanel extends JPanel implements Observer{
 
-    private static final Dimension WINNER_LABEL_DIMENSION = new Dimension(500, 200);
-
     private List<PlayingCard> cards;
+    private DurakController controller;
 
     public FieldCardPanel(DurakController controller, List<PlayingCard> cards) {
         this.cards = cards;
-        controller.addObserver(this);
+        this.controller = controller;
+        this.controller.addObserver(this);
 
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.setBorder(new BevelBorder(BevelBorder.LOWERED));
@@ -41,13 +41,15 @@ public class FieldCardPanel extends JPanel implements Observer{
     }
 
     public void disableField() {
-        //TODO:
-        this.removeAll();
-        updateUI();
+        for(Component c: this.getComponents()) {
+            c.setEnabled(false);
+        }
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        paintCards();
+        if(controller.getWinPlayer() == null){
+            paintCards();
+        }
     }
 }
