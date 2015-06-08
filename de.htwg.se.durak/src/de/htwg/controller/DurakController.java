@@ -325,7 +325,8 @@ public class DurakController extends Observable {
 
     public void clearDeck() {
         int iter = getDeckSize();
-        for (int i = 0; i < iter; ++i)
+        for (int i = 0; i < iter; ++i) {
             deck.drawCard();
+        }
     }
 }

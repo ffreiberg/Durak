@@ -226,5 +226,4 @@ public class DurakControllerTest {
         controller.round(99);
         assertTrue(controller.isInvalidPlayerInput());
     }
-
 }
