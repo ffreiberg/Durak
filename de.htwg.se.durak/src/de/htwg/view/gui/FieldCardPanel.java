@@ -1,8 +1,6 @@
 package de.htwg.view.gui;
 
 import de.htwg.controller.DurakController;
-import de.htwg.model.HumanPlayer;
-import de.htwg.model.Player;
 import de.htwg.model.PlayingCard;
 
 import javax.swing.*;
