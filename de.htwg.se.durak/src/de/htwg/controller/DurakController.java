@@ -132,9 +132,9 @@ public class DurakController extends Observable {
 
         if(attacker.getPlayersHand().isEmpty() && defender.getPlayersHand().isEmpty()){
             winPlayer = defender;
-        } else if(attacker.getPlayersHand().isEmpty() && !defender.getPlayersHand().isEmpty()){
+        } else if(attacker.getPlayersHand().isEmpty()){
             winPlayer = attacker;
-        } else if(!attacker.getPlayersHand().isEmpty() && defender.getPlayersHand().isEmpty()) {
+        } else if(defender.getPlayersHand().isEmpty()) {
             winPlayer = defender;
         }
 
