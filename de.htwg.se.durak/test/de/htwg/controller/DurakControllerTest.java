@@ -29,7 +29,40 @@ public class DurakControllerTest {
 
     @Test
     public void testPlayerMove() throws Exception {
+        controller.setDefender(new ComputerPlayer());
+        controller.setActivePlayer(controller.getDefender());
         controller.playerMove("t");
+        assertFalse(controller.isInvalidPlayerInput());
+    }
+
+    @Test
+    public void testPlayerMoveWinPlayerSet() throws Exception {
+        controller.setActivePlayer(controller.getDefender());
+        controller.setWinPlayer(new HumanPlayer());
+        controller.playerMove("t");
+        assertFalse(controller.isInvalidPlayerInput());
+    }
+
+    @Test
+    public void testPlayerMoveInvalid() throws Exception {
+        controller.setActivePlayer(controller.getAttacker());
+        controller.playerMove("t");
+        assertTrue(controller.isInvalidPlayerInput());
+    }
+
+    @Test
+    public void testPlayerMoveElse() throws Exception {
+        controller.setActivePlayer(controller.getAttacker());
+        controller.setWinPlayer(new HumanPlayer());
+        controller.playerMove("1");
+        assertFalse(controller.isInvalidPlayerInput());
+    }
+
+    @Test
+    public void testPlayerMoveBot() throws Exception {
+        controller.setActivePlayer(new ComputerPlayer());
+        controller.playerMove("1");
+        assertFalse(controller.isInvalidPlayerInput());
     }
 
     @Test
@@ -53,12 +86,7 @@ public class DurakControllerTest {
     @Test
     public void testGetField() throws Exception {
         List<PlayingCard> actual = controller.getField();
-//        assertTrue(actual.isEmpty());
-    }
-
-    @Test
-    public void testIsHumanPlayer() throws Exception {
-
+        assertNotNull(actual);
     }
 
     @Test
