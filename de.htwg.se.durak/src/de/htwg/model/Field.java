@@ -1,5 +1,6 @@
 package de.htwg.model;
 
+import javax.inject.Inject;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,8 +11,9 @@ public class Field {
 
     private List<PlayingCard> field;
 
+    @Inject
     public Field(){
-        field = new LinkedList<PlayingCard>();
+        this.field = new LinkedList<PlayingCard>();
     }
 
     public void addCard(PlayingCard card){

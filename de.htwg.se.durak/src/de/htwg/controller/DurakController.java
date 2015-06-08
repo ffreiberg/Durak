@@ -312,4 +312,8 @@ public class DurakController extends Observable {
     public void setActivePlayer(Player p) { this.activePlayer = p; }
 
     public Player getActivePlayer() { return activePlayer; }
+
+    public void setAttacker(Player p) { attacker = p; }
+
+    public Player getAttacker() { return attacker; }
 }
