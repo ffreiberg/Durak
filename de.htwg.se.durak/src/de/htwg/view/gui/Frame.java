@@ -25,6 +25,9 @@ public class Frame extends JFrame implements ActionListener, Observer{
     private static final GridLayout ACTION_PANEL_LAYOUT = new GridLayout(2, 1);
     private static final BorderLayout PANE_LAYOUT = new BorderLayout(5, 5);
 
+    private static final String CMD_TAKE = "t";
+    private static final String CMD_SKIP = "0";
+
     private FieldCardPanel panelField;
     private PlayerCardPanel panelComputerPlayer, panelHumanPlayer;
     private JButton playerTakeBtn, playerSkipBtn, trumpBtn, deckBtn;
@@ -98,9 +101,9 @@ public class Frame extends JFrame implements ActionListener, Observer{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(playerTakeBtn)) {
-            controller.playerMove("t");
+            controller.playerMove(CMD_TAKE);
         } else if (e.getSource().equals(playerSkipBtn)) {
-            controller.playerMove("0");
+            controller.playerMove(CMD_SKIP);
         }
     }
 
