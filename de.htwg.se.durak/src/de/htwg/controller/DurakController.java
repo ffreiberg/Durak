@@ -228,7 +228,7 @@ public class DurakController extends Observable {
         }
     }
 
-    private void takeCards() {
+    public void takeCards() {
         int size = field.getFieldSize();
 
         for(int i=0; i<size; ++i) {
@@ -321,4 +321,6 @@ public class DurakController extends Observable {
     public Player getDefender() { return defender; }
 
     public void setDefender(Player p) { defender = p; }
+
+    public void setField(PlayingCard p) { field.addCard(p); }
 }

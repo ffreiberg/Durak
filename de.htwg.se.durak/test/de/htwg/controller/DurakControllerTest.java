@@ -36,6 +36,7 @@ public class DurakControllerTest {
     public void testGetPlayersHand() throws Exception {
         controller.setAttacker(new HumanPlayer());
         assertTrue(controller.getPlayersHand().isEmpty());
+        controller.setAttacker(new ComputerPlayer());
         controller.setDefender(new HumanPlayer());
         assertTrue(controller.getPlayersHand().isEmpty());
     }
@@ -44,6 +45,7 @@ public class DurakControllerTest {
     public void testGetComputerHand() throws Exception {
         controller.setAttacker(new ComputerPlayer());
         assertTrue(controller.getComputerHand().isEmpty());
+        controller.setAttacker(new HumanPlayer());
         controller.setDefender(new ComputerPlayer());
         assertTrue(controller.getComputerHand().isEmpty());
     }
@@ -72,12 +74,17 @@ public class DurakControllerTest {
     }
 
     @Test
-    public void testIsInvalidPlayerInput() throws Exception {
-
+    public void testTakeCards() throws Exception {
+        controller.setField(new PlayingCard(PlayingCardValue.SIX,
+                PlayingCardColor.HEARTS));
+        controller.takeCards();
+        assertTrue(controller.getField().isEmpty());
     }
 
     @Test
     public void testGetStatus() throws Exception {
+        controller.setField(new PlayingCard(PlayingCardValue.SIX,
+                PlayingCardColor.HEARTS));
         String actual = controller.getStatus();
         String expected = "Welcome to дурак!";
         assertThat(actual, CoreMatchers.containsString(expected));
