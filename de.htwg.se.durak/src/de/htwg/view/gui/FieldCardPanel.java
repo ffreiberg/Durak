@@ -40,18 +40,9 @@ public class FieldCardPanel extends JPanel implements Observer{
         updateUI();
     }
 
-    public void paintWinnerScreen(Player player) {
+    public void disableField() {
+        //TODO:
         this.removeAll();
-
-        JLabel winLabel = new JLabel();
-        winLabel.setSize(WINNER_LABEL_DIMENSION);
-
-        if(player instanceof HumanPlayer) {
-            winLabel.setText("Spieler hat gewonnen");
-        } else {
-            winLabel.setText("Computer hat gewonnen");
-        }
-        this.add(winLabel);
         updateUI();
     }
 
