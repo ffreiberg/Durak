@@ -20,5 +20,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="javax.inject" level="project" />
+    <orderEntry type="library" name="log4j-api-2.3" level="project" />
   </component>
 </module>

@@ -6,6 +6,9 @@ import de.htwg.model.HumanPlayer;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 
 /**
@@ -14,6 +17,7 @@ import java.util.Observer;
 public class TUI implements Observer {
 
     private DurakController controller;
+    private static Logger logger = LogManager.getLogger(TUI.class.getName());
 
     public TUI(DurakController controller) {
         this.controller = controller;
@@ -59,7 +63,7 @@ public class TUI implements Observer {
         str += controller.getStatus();
         str += "Possible commands: q - quit, t - take, 0 - end turn, {1-X} - play card at position\n";
         str += "Your turn: ";
-        System.out.print(str);
+       logger.info(str);
     }
 
     private void printWinnerScreen(){
@@ -71,7 +75,7 @@ public class TUI implements Observer {
             str += "\t\t\t\t\tВы дурак!\t\t\t\t\t\n";
         }
         str +=  "\n\n\n\n\n";
-        System.out.println(str);
+        logger.info(str);
     }
 
     @Override
