@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="log4j-1.2-api-2.3-javadoc" level="project" />
     <orderEntry type="library" name="aopalliance" level="project" />
+    <orderEntry type="library" name="guice-4.0" level="project" />
   </component>
 </module>

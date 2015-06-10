@@ -3,8 +3,8 @@ package de.htwg.view.gui;
 import com.google.inject.Inject;
 import de.htwg.controller.IDurakController;
 import de.htwg.model.HumanPlayer;
-import util.*;
 import util.Event;
+import util.IObserver;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -20,6 +20,7 @@ public class Frame extends JFrame implements ActionListener, IObserver {
 
     private static final int DEFAULT_X = 800;
     private static final int DEFAULT_Y = 420;
+
     private static final Dimension CARD_SIZE_DIMENSION = new Dimension(50, 80);
     private static final Dimension STATUS_BAR_DIMENSION = new Dimension(DEFAULT_X, 20);
     private static final GridLayout CARD_PANEL_LAYOUT = new GridLayout(3, 1, 5, 5);
@@ -65,8 +66,10 @@ public class Frame extends JFrame implements ActionListener, IObserver {
         playerSkipBtn.addActionListener(this);
 
         trumpBtn = new JButton(controller.getTrump().toString());
+        trumpBtn.setEnabled(false);
         trumpBtn.setPreferredSize(CARD_SIZE_DIMENSION);
         deckBtn = new JButton(Integer.toString(controller.getDeckSize()));
+        deckBtn.setEnabled(false);
         deckBtn.setPreferredSize(CARD_SIZE_DIMENSION);
 
         statusMsg = new JLabel();
