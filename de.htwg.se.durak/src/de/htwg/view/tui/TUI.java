@@ -63,7 +63,7 @@ public class TUI implements Observer {
         str += controller.getStatus();
         str += "Possible commands: q - quit, t - take, 0 - end turn, {1-X} - play card at position\n";
         str += "Your turn: ";
-       logger.info(str);
+        logger.info(str);
     }
 
     private void printWinnerScreen(){
