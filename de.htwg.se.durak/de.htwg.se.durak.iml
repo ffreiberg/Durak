@@ -19,8 +19,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="javax.inject" level="project" />
-    <orderEntry type="library" name="log4j-api-2.3" level="project" />
     <orderEntry type="library" name="log4j-1.2-api-2.3-javadoc" level="project" />
+    <orderEntry type="library" name="aopalliance" level="project" />
   </component>
 </module>
