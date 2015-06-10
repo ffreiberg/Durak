@@ -3,13 +3,13 @@ package de.htwg.controller;
 import de.htwg.model.*;
 
 import java.util.List;
-import java.util.Observable;
+import util.Observable;
 import java.util.LinkedList;
 
 /**
  * Created by jawaigel on 16.04.2015.
  */
-public class DurakController extends Observable {
+public class DurakController extends Observable implements IDurakController {
 
     private static final int START_NUM_OF_CARDS = 6;
     private static final int MAX_CARDS_ON_FIELD = 12;
@@ -35,6 +35,7 @@ public class DurakController extends Observable {
         this.field = new Field();
     }
 
+    @Override
     public void initGame() {
 
         players.add(new HumanPlayer());
@@ -102,6 +103,7 @@ public class DurakController extends Observable {
         }
     }
 
+    @Override
     public void setNewPlayerRole(boolean skip) {
 
         //Karten ziehen
@@ -125,6 +127,7 @@ public class DurakController extends Observable {
         field.clearField();
     }
 
+    @Override
     public void getWinner(){
         if(deck.getDeckSize() != 0) {
             return;
@@ -138,10 +141,10 @@ public class DurakController extends Observable {
             winPlayer = defender;
         }
 
-        setChanged();
         notifyObservers();
     }
 
+    @Override
     public void playerMove(String cmd) {
 
         invalidPlayerInput = false;
@@ -177,10 +180,10 @@ public class DurakController extends Observable {
             }
         }
 
-        setChanged();
         notifyObservers();
     }
 
+    @Override
     public void round(int cardIndex) {
 
         if(activePlayer.equals(attacker)){
@@ -227,6 +230,7 @@ public class DurakController extends Observable {
         }
     }
 
+    @Override
     public void takeCards() {
         int size = field.getFieldSize();
 
@@ -237,6 +241,7 @@ public class DurakController extends Observable {
         setNewPlayerRole(true);
     }
 
+    @Override
     public List<PlayingCard> getPlayersHand(){
         if(attacker.getClass().equals(HumanPlayer.class)){
             return attacker.getPlayersHand();
@@ -246,6 +251,7 @@ public class DurakController extends Observable {
         }
     }
 
+    @Override
     public List<PlayingCard> getComputerHand(){
         if(attacker.getClass().equals(ComputerPlayer.class)){
             return attacker.getPlayersHand();
@@ -255,6 +261,7 @@ public class DurakController extends Observable {
         }
     }
 
+    @Override
     public String getStatus() {
         statusLine += "Trumpf [" + trump.toString() + "]\t Cards in Deck: [" + deck.getDeckSize() + "]";
         statusLine += SEPARATOR;
@@ -285,44 +292,60 @@ public class DurakController extends Observable {
         return statusLine;
     }
 
+    @Override
     public List<PlayingCard> getField(){
         return field.getField();
     }
 
+    @Override
     public boolean isHumanPlayer() {
         return activePlayer instanceof HumanPlayer;
     }
 
+    @Override
     public PlayingCardColor getTrump(){
         return trump;
     }
 
+    @Override
     public int getDeckSize() { return deck.getDeckSize(); }
 
+    @Override
     public boolean isInvalidPlayerInput() {
         return invalidPlayerInput;
     }
 
+    @Override
     public Player getWinPlayer() { return winPlayer; }
 
+    @Override
     public void setWinPlayer(Player p) { this.winPlayer = p; }
 
+    @Override
     public void setActivePlayer(Player p) { this.activePlayer = p; }
 
+    @Override
     public Player getActivePlayer() { return activePlayer; }
 
+    @Override
     public void setAttacker(Player p) { attacker = p; }
 
+    @Override
     public Player getAttacker() { return attacker; }
 
+    @Override
     public void setPlayerInput(boolean input) { invalidPlayerInput = input; }
 
+    @Override
     public Player getDefender() { return defender; }
 
+    @Override
     public void setDefender(Player p) { defender = p; }
 
+    @Override
     public void setField(PlayingCard p) { field.addCard(p); }
 
+    @Override
     public void clearDeck() {
         int iter = getDeckSize();
         for (int i = 0; i < iter; ++i) {

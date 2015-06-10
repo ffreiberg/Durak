@@ -1,24 +1,25 @@
 package de.htwg.view.gui;
 
-import de.htwg.controller.DurakController;
+import de.htwg.controller.IDurakController;
 import de.htwg.model.PlayingCard;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+
+import util.Event;
+import util.IObserver;
 
 /**
  * Created by jan-erikwaigel on 12.05.15.
  */
-public class FieldCardPanel extends JPanel implements Observer{
+public class FieldCardPanel extends JPanel implements IObserver{
 
     private List<PlayingCard> cards;
-    private DurakController controller;
+    private IDurakController controller;
 
-    public FieldCardPanel(DurakController controller, List<PlayingCard> cards) {
+    public FieldCardPanel(IDurakController controller, List<PlayingCard> cards) {
         this.cards = cards;
         this.controller = controller;
         this.controller.addObserver(this);
@@ -45,9 +46,10 @@ public class FieldCardPanel extends JPanel implements Observer{
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Event e) {
         if(controller.getWinPlayer() == null){
             paintCards();
         }
     }
+
 }

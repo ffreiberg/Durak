@@ -1,6 +1,7 @@
 package de.htwg.view.gui;
 
-import de.htwg.controller.DurakController;
+
+import de.htwg.controller.IDurakController;
 import de.htwg.model.PlayingCard;
 
 import javax.swing.*;
@@ -8,18 +9,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import util.IObserver;
+import util.Event;
 
 /**
  * Created by jawaigel on 07.05.2015.
  */
-public class PlayerCardPanel extends JPanel implements ActionListener, Observer {
+public class PlayerCardPanel extends JPanel implements ActionListener, IObserver {
 
     private List<PlayingCard> cards;
-    private DurakController controller;
+    private IDurakController controller;
 
-    public PlayerCardPanel(DurakController controller, List<PlayingCard> cards) {
+    public PlayerCardPanel(IDurakController controller, List<PlayingCard> cards) {
         this.controller = controller;
         this.cards = cards;
         this.controller.addObserver(this);
@@ -53,7 +54,7 @@ public class PlayerCardPanel extends JPanel implements ActionListener, Observer 
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Event e) {
         if(controller.getWinPlayer() == null ) {
             paintCards();
         }

@@ -1,20 +1,21 @@
 package de.htwg.view.gui;
 
-import de.htwg.controller.DurakController;
+import de.htwg.controller.IDurakController;
 import de.htwg.model.HumanPlayer;
+import util.*;
+import util.Event;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
+
 
 /**
  * Created by jawaigel on 07.05.2015.
  */
-public class Frame extends JFrame implements ActionListener, Observer{
+public class Frame extends JFrame implements ActionListener, IObserver {
 
     private static final int DEFAULT_X = 800;
     private static final int DEFAULT_Y = 420;
@@ -27,10 +28,10 @@ public class Frame extends JFrame implements ActionListener, Observer{
 
     private static final String CMD_TAKE = "t";
     private static final String CMD_SKIP = "0";
-    private static final String MSG_COMPUTER_WIN = "Computer hat gewonnen!";
-    private static final String MSG_PLAYER_WIN = "Spieler hat gewonnen!";
-    private static final String MSG_PLAYER_MOVE = "Spieler am Zug";
-    private static final String MSG_INVALID_MOVE = "Spielzug nicht möglich!";
+    private static final String MSG_COMPUTER_WIN = "Вы дурак!";
+    private static final String MSG_PLAYER_WIN = "You win!";
+    private static final String MSG_PLAYER_MOVE = "Your turn";
+    private static final String MSG_INVALID_MOVE = "Invalid move! Try again";
 
 
     private FieldCardPanel panelField;
@@ -38,9 +39,9 @@ public class Frame extends JFrame implements ActionListener, Observer{
     private JButton playerTakeBtn, playerSkipBtn, trumpBtn, deckBtn;
     private JLabel statusMsg;
 
-    private DurakController controller;
+    private IDurakController controller;
 
-    public Frame(DurakController controller) {
+    public Frame(IDurakController controller) {
 
         this.controller = controller;
 
@@ -113,9 +114,9 @@ public class Frame extends JFrame implements ActionListener, Observer{
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Event e) {
 
-        if(controller.getWinPlayer() != null) {
+        if (controller.getWinPlayer() != null) {
             playerSkipBtn.setEnabled(false);
             playerTakeBtn.setEnabled(false);
 
@@ -123,21 +124,20 @@ public class Frame extends JFrame implements ActionListener, Observer{
             panelHumanPlayer.disableField();
             panelComputerPlayer.disableField();
 
-            if(controller.getWinPlayer() instanceof HumanPlayer) {
+            if (controller.getWinPlayer() instanceof HumanPlayer) {
                 statusMsg.setText(MSG_PLAYER_WIN);
             } else {
                 statusMsg.setText(MSG_COMPUTER_WIN);
             }
             return;
-       }
+        }
 
-        if(controller.isInvalidPlayerInput()) {
+        if (controller.isInvalidPlayerInput()) {
             statusMsg.setText(MSG_INVALID_MOVE);
-        } else if (controller.isHumanPlayer()){
+        } else if (controller.isHumanPlayer()) {
             statusMsg.setText(MSG_PLAYER_MOVE);
         }
 
         deckBtn.setText(Integer.toString(controller.getDeckSize()));
     }
-
 }

@@ -1,25 +1,27 @@
 package de.htwg.view.tui;
 
-import de.htwg.controller.DurakController;
+import de.htwg.controller.IDurakController;
 import de.htwg.model.HumanPlayer;
 
-import java.util.Observable;
-import java.util.Observer;
+import util.Event;
+import util.IObserver;
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Inject;
 
 
 /**
  * Created by fafreibe on 10.04.2015.
  */
-public class TUI implements Observer {
+public class TUI implements IObserver {
 
-    private DurakController controller;
+    private IDurakController controller;
     private static Logger logger = LogManager.getLogger(TUI.class.getName());
 
-    public TUI(DurakController controller) {
+    public TUI(IDurakController controller) {
         this.controller = controller;
         controller.addObserver(this);
     }
@@ -79,7 +81,7 @@ public class TUI implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Event e) {
         printTUI();
     }
 }

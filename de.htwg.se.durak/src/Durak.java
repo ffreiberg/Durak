@@ -1,4 +1,7 @@
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import de.htwg.controller.DurakController;
+import de.htwg.controller.IDurakController;
 import de.htwg.view.tui.TUI;
 import de.htwg.view.gui.Frame;
 
@@ -12,8 +15,11 @@ public final class Durak {
     private Durak(){}
 
     public static void main(String args[]){
+
+        Injector injector = Guice.createInjector(new DurakModule());
+
         Scanner scanner = new Scanner(System.in);
-        DurakController controller = new DurakController();
+        IDurakController controller = injector.getInstance(IDurakController.class);
         controller.initGame();
 
         Frame gui = new Frame(controller);
@@ -29,5 +35,3 @@ public final class Durak {
         gui.close();
     }
 }
-
-//TODO: Tests, Sonar, Jenkins, GUI,
