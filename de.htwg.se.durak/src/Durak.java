@@ -1,6 +1,5 @@
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import de.htwg.controller.DurakController;
 import de.htwg.controller.IDurakController;
 import de.htwg.view.tui.TUI;
 import de.htwg.view.gui.Frame;

@@ -10,7 +10,6 @@ import util.IObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.inject.Inject;
 
 
 /**
