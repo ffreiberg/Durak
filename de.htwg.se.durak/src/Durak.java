@@ -21,8 +21,8 @@ public final class Durak {
         IDurakController controller = injector.getInstance(IDurakController.class);
         controller.initGame();
 
-        Frame gui = new Frame(controller);
-        TUI tui = new TUI(controller);
+        Frame gui = injector.getInstance(Frame.class);
+        TUI tui = injector.getInstance(TUI.class);
         tui.printTUI();
 
         boolean continueGame = true;

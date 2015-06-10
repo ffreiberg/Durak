@@ -1,5 +1,6 @@
 package de.htwg.view.gui;
 
+import com.google.inject.Inject;
 import de.htwg.controller.IDurakController;
 import de.htwg.model.HumanPlayer;
 import util.*;
@@ -41,6 +42,7 @@ public class Frame extends JFrame implements ActionListener, IObserver {
 
     private IDurakController controller;
 
+    @Inject
     public Frame(IDurakController controller) {
 
         this.controller = controller;

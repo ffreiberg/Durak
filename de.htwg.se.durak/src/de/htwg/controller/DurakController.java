@@ -1,5 +1,6 @@
 package de.htwg.controller;
 
+import com.google.inject.Singleton;
 import de.htwg.model.*;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.LinkedList;
 /**
  * Created by jawaigel on 16.04.2015.
  */
+@Singleton
 public class DurakController extends Observable implements IDurakController {
 
     private static final int START_NUM_OF_CARDS = 6;

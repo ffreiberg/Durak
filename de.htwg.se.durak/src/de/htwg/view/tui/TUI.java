@@ -1,5 +1,6 @@
 package de.htwg.view.tui;
 
+import com.google.inject.Inject;
 import de.htwg.controller.IDurakController;
 import de.htwg.model.HumanPlayer;
 
@@ -20,12 +21,12 @@ public class TUI implements IObserver {
     private IDurakController controller;
     private static Logger logger = LogManager.getLogger(TUI.class.getName());
 
+    @Inject
     public TUI(IDurakController controller) {
         this.controller = controller;
         controller.addObserver(this);
     }
 
-    //TODO: Prüfen ob Mensch oder Computer am Zug ist
     public boolean iterate(String cmd){
 
         if(controller.getWinPlayer() != null) {
