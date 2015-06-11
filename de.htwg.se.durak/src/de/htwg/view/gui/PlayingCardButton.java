@@ -8,12 +8,16 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Created by jawaigel on 07.05.2015.
  */
 public class PlayingCardButton extends JButton{
 
     private static final Dimension CARD_SIZE_DIMENSION = new Dimension(60, 100);
+    private static Logger logger = LogManager.getLogger(PlayingCardButton.class.getName());
     private static final int WIDTH = 60;
     private static final int HEIGHT = 100;
 
@@ -26,14 +30,14 @@ public class PlayingCardButton extends JButton{
                 Image img = ImageIO.read(new File("cards/back.png"));
                 super.setIcon(new ImageIcon(img.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH)));
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.debug("Unable to load cards/back.png");
             }
         } else {
             try {
                 Image img = ImageIO.read(new File("cards/" + card.toString() + ".png"));
                 super.setIcon(new ImageIcon(img.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH)));
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.debug("Unable to load cards/" + card.toString() + ".png");
             }
         }
 
