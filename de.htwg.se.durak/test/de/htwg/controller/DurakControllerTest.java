@@ -77,7 +77,8 @@ public class DurakControllerTest {
 
     @Test
     public void testPlayerMoveBot() throws Exception {
-        controller.setActivePlayer(new ComputerPlayer());
+        Player p = new ComputerPlayer();
+        controller.setActivePlayer(p);
         controller.playerMove("1");
         assertFalse(controller.isInvalidPlayerInput());
     }
