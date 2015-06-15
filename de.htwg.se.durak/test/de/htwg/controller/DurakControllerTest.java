@@ -30,16 +30,18 @@ public class DurakControllerTest {
 
     @Test
     public void testPlayerMoveHumanDefender() throws Exception {
-        controller.setDefender(new HumanPlayer());
-        controller.setActivePlayer(controller.getDefender());
+        Player p = new HumanPlayer();
+        controller.setDefender(p);
+        controller.setActivePlayer(p);
         controller.playerMove("t");
         assertFalse(controller.isInvalidPlayerInput());
     }
 
     @Test
     public void testPlayerMoveBotDefender() throws Exception {
-        controller.setDefender(new ComputerPlayer());
-        controller.setActivePlayer(controller.getDefender());
+        Player p = new ComputerPlayer();
+        controller.setDefender(p);
+        controller.setActivePlayer(p);
         controller.playerMove("t");
         assertFalse(controller.isInvalidPlayerInput());
     }
@@ -266,5 +268,6 @@ public class DurakControllerTest {
         controller.setAttacker(p);
         controller.setActivePlayer(p);
         controller.round(0);
+        assertTrue(controller.getField().isEmpty());
     }
 }
