@@ -232,4 +232,30 @@ public class DurakControllerTest {
         controller.round(99);
         assertTrue(controller.isInvalidPlayerInput());
     }
+
+    @Test
+    public void testRound() throws Exception {
+        Player bot = new ComputerPlayer(),
+            p = new HumanPlayer();
+
+        controller.setAttacker(p);
+        controller.setActivePlayer(p);
+        controller.setDefender(bot);
+        controller.round(1);
+        assertTrue(controller.isInvalidPlayerInput());
+    }
+
+    @Test
+    public void testRoundX() throws Exception {
+        Player bot = new ComputerPlayer(),
+                p = new HumanPlayer();
+
+        p.getPlayersHand().add(new PlayingCard(PlayingCardValue.ACE, PlayingCardColor.HEARTS));
+
+        controller.setDefender(p);
+        controller.setActivePlayer(p);
+        controller.setAttackerCard(new PlayingCard(PlayingCardValue.SIX, PlayingCardColor.HEARTS));
+        controller.round(1);
+        assertTrue(!controller.getField().isEmpty());
+    }
 }

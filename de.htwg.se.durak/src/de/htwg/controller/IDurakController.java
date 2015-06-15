@@ -60,4 +60,6 @@ public interface IDurakController extends IObservable {
     void setField(PlayingCard p);
 
     void clearDeck();
+
+    void setAttackerCard(PlayingCard p);
 }

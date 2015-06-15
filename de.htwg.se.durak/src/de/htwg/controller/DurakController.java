@@ -354,4 +354,7 @@ public class DurakController extends Observable implements IDurakController {
             deck.drawCard();
         }
     }
+
+    @Override
+    public void setAttackerCard(PlayingCard p) { attackerCard = p; }
 }
