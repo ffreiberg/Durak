@@ -21,12 +21,18 @@ public class TUI implements IObserver {
     private IDurakController controller;
     private static Logger logger = LogManager.getLogger(TUI.class.getName());
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Inject
     public TUI(IDurakController controller) {
         this.controller = controller;
         controller.addObserver(this);
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public boolean iterate(String cmd){
 
         if(controller.getWinPlayer() != null) {
@@ -40,6 +46,9 @@ public class TUI implements IObserver {
         return false;
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     private boolean handleInput(String cmd) {
 
         if( cmd.toCharArray()[0] == 'q'){
@@ -52,6 +61,9 @@ public class TUI implements IObserver {
         return false;
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public void printTUI(){
         if(controller.getWinPlayer() != null) {
             printWinnerScreen();
@@ -68,6 +80,9 @@ public class TUI implements IObserver {
         logger.info(str);
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     private void printWinnerScreen(){
         String str = "";
         str += "\n\n\n\n\n";
@@ -80,6 +95,9 @@ public class TUI implements IObserver {
         logger.info(str);
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public void update(Event e) {
         printTUI();

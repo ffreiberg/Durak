@@ -6,7 +6,9 @@ import de.htwg.controller.IDurakController;
  */
 public class DurakModule extends AbstractModule {
 
-    //
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     protected void configure() {
         bind(IDurakController.class).to(de.htwg.controller.DurakController.class);

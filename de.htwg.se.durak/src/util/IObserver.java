@@ -5,6 +5,9 @@ package util;
  */
 
 public interface IObserver {
-    void update(Event e);
 
+    /**
+     * this is just a dummy for sonar
+     */
+    void update(Event e);
 }

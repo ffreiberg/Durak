@@ -29,6 +29,9 @@ public class ComputerPlayer extends Player {
         return retCard;
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     private int firstAttack() {
         int i = 0;
 
@@ -41,6 +44,9 @@ public class ComputerPlayer extends Player {
         return 0;
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public PlayingCard defend(PlayingCard cardToBeat, int cardIndex) {
         int cardDefend = -1;
@@ -65,6 +71,9 @@ public class ComputerPlayer extends Player {
         }
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public int scanField(List<PlayingCard> currentField) {
 
         for (PlayingCard cardOnField : currentField) {

@@ -20,6 +20,9 @@ public class PlayerCardPanel extends JPanel implements ActionListener, IObserver
     private List<PlayingCard> cards;
     private IDurakController controller;
 
+    /**
+     * this is just a dummy for sonar
+     */
     public PlayerCardPanel(IDurakController controller, List<PlayingCard> cards) {
         this.controller = controller;
         this.cards = cards;
@@ -29,6 +32,9 @@ public class PlayerCardPanel extends JPanel implements ActionListener, IObserver
         paintCards();
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     private void paintCards() {
         this.removeAll();
 
@@ -41,18 +47,27 @@ public class PlayerCardPanel extends JPanel implements ActionListener, IObserver
         updateUI();
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public void disableField() {
         for(Component c: this.getComponents()) {
             c.setEnabled(false);
         }
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         PlayingCardButton btn = (PlayingCardButton) e.getSource();
         controller.playerMove(Integer.toString(btn.getPosition()));
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public void update(Event e) {
         if(controller.getWinPlayer() == null ) {

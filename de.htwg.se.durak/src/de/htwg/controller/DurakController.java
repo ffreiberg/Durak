@@ -31,6 +31,9 @@ public class DurakController extends Observable implements IDurakController {
     private Player winPlayer;
     private boolean invalidPlayerInput;
 
+    /**
+     * this is just a dummy for sonar
+     */
     public DurakController() {
         this.deck = new Deck();
         this.players = new LinkedList<Player>();

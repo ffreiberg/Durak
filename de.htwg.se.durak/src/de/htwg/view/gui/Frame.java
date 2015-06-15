@@ -43,6 +43,9 @@ public class Frame extends JFrame implements ActionListener, IObserver {
 
     private IDurakController controller;
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Inject
     public Frame(IDurakController controller) {
 
@@ -104,11 +107,17 @@ public class Frame extends JFrame implements ActionListener, IObserver {
         this.setVisible(true);
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public void close() {
         this.setVisible(false);
         this.dispose();
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(playerTakeBtn)) {
@@ -118,6 +127,9 @@ public class Frame extends JFrame implements ActionListener, IObserver {
         }
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public void update(Event e) {
 

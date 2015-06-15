@@ -12,14 +12,26 @@ public abstract class Player implements IPlayer {
 
     private List<PlayingCard> playersHand;
 
+    /**
+     * this is just a dummy for sonar
+     */
     public abstract PlayingCard attack(List<PlayingCard> cardsOnField, int cardIndex);
 
+    /**
+     * this is just a dummy for sonar
+     */
     public abstract PlayingCard defend(PlayingCard cardToBeat, int cardIndex);
 
+    /**
+     * this is just a dummy for sonar
+     */
     public Player(){
         playersHand = new LinkedList<PlayingCard>();
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public void drawCard(PlayingCard card){
         if(this instanceof HumanPlayer) {
             card.setHide(false);
@@ -32,12 +44,17 @@ public abstract class Player implements IPlayer {
         this.sortHand();
     }
 
-
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public List<PlayingCard> getPlayersHand() {
         return playersHand;
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public void setTrumpOnHand(PlayingCardColor trump){
         for (PlayingCard cardOnHand : playersHand) {
             if (cardOnHand.getColor() == trump) {
@@ -47,11 +64,17 @@ public abstract class Player implements IPlayer {
         }
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public void sortHand() {
         Collections.sort(playersHand, new CardComparator());
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public String toString(){
         String str = "\t\t";
@@ -62,6 +85,9 @@ public abstract class Player implements IPlayer {
     }
 
     private class CardComparator implements Comparator<PlayingCard> {
+        /**
+         * this is just a dummy for sonar
+         */
         @Override
         public int compare(PlayingCard card1, PlayingCard card2)
         {

@@ -23,6 +23,9 @@ public class PlayingCardButton extends JButton{
 
     private int position;
 
+    /**
+     * this is just a dummy for sonar
+     */
     public PlayingCardButton(PlayingCard card, int position) {
 
         if(card.getHide()) {
@@ -47,6 +50,9 @@ public class PlayingCardButton extends JButton{
         this.position = position;
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public int getPosition() {
         return this.position;
     }

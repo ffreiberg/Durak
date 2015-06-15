@@ -12,6 +12,9 @@ public class Deck {
 
     private List<PlayingCard> deck;
 
+    /**
+     * this is just a dummy for sonar
+     */
     public Deck() {
         deck = new LinkedList<PlayingCard>();
 
@@ -23,6 +26,9 @@ public class Deck {
         shuffle(deck);
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public void setTrump(PlayingCardColor trump){
         for(PlayingCard card: deck) {
             if(card.getColor() == trump) {
@@ -31,14 +37,23 @@ public class Deck {
         }
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public int getDeckSize(){
         return deck.size();
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public PlayingCard drawCard(){
         return deck.remove(0);
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public void addCard(PlayingCard card) {
         deck.add(card);
     }

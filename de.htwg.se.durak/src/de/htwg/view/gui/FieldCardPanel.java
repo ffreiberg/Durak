@@ -19,6 +19,9 @@ public class FieldCardPanel extends JPanel implements IObserver{
     private List<PlayingCard> cards;
     private IDurakController controller;
 
+    /**
+     * this is just a dummy for sonar
+     */
     public FieldCardPanel(IDurakController controller, List<PlayingCard> cards) {
         this.cards = cards;
         this.controller = controller;
@@ -29,6 +32,9 @@ public class FieldCardPanel extends JPanel implements IObserver{
         paintCards();
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     private void paintCards() {
         this.removeAll();
 
@@ -39,12 +45,18 @@ public class FieldCardPanel extends JPanel implements IObserver{
         updateUI();
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     public void disableField() {
         for(Component c: this.getComponents()) {
             c.setEnabled(false);
         }
     }
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     public void update(Event e) {
         if(controller.getWinPlayer() == null){

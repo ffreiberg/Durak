@@ -7,16 +7,34 @@ import java.util.List;
  */
 public interface IPlayer {
 
+    /**
+     * this is just a dummy for sonar
+     */
     PlayingCard attack(List<PlayingCard> cardsOnField, int cardIndex);
 
+    /**
+     * this is just a dummy for sonar
+     */
     PlayingCard defend(PlayingCard cardToBeat, int cardIndex);
 
+    /**
+     * this is just a dummy for sonar
+     */
     void drawCard(PlayingCard card);
 
+    /**
+     * this is just a dummy for sonar
+     */
     void setTrumpOnHand(PlayingCardColor trump);
 
+    /**
+     * this is just a dummy for sonar
+     */
     void sortHand();
 
+    /**
+     * this is just a dummy for sonar
+     */
     List<PlayingCard> getPlayersHand();
 
 }

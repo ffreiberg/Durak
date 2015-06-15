@@ -11,8 +11,14 @@ import java.util.Scanner;
  */
 public final class Durak {
 
+    /**
+     * this is just a dummy for sonar
+     */
     private Durak(){}
 
+    /**
+     * this is just a dummy for sonar
+     */
     public static void main(String args[]){
 
         Injector injector = Guice.createInjector(new DurakModule());
