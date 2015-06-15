@@ -258,4 +258,13 @@ public class DurakControllerTest {
         controller.round(1);
         assertTrue(!controller.getField().isEmpty());
     }
+
+    @Test
+    public void testRoundCantThinkOfName() throws Exception {
+        Player p = new HumanPlayer();
+
+        controller.setAttacker(p);
+        controller.setActivePlayer(p);
+        controller.round(0);
+    }
 }
