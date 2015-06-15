@@ -53,6 +53,12 @@ public class DurakControllerTest {
     }
 
     @Test
+    public void testPlayerMoveX() throws Exception {
+        controller.setDefender(new HumanPlayer());
+        controller.setActivePlayer(controller.getDefender());
+    }
+
+    @Test
     public void testPlayerMoveInvalid() throws Exception {
         controller.setActivePlayer(controller.getAttacker());
         controller.playerMove("t");
