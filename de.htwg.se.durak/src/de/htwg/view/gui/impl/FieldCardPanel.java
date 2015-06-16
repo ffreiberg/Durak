@@ -1,21 +1,20 @@
-package de.htwg.view.gui;
-
+package de.htwg.view.gui.impl;
 
 import de.htwg.controller.IDurakController;
-import de.htwg.model.PlayingCard;
+import de.htwg.model.impl.PlayingCard;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
-import util.IObserver;
+
+import de.htwg.view.gui.IFieldCardPanel;
 import util.Event;
 
 /**
- * Created by jawaigel on 07.05.2015.
+ * Created by jan-erikwaigel on 12.05.15.
  */
-public class PlayerCardPanel extends JPanel implements ActionListener, IObserver {
+public class FieldCardPanel extends JPanel implements IFieldCardPanel {
 
     private List<PlayingCard> cards;
     private IDurakController controller;
@@ -23,12 +22,13 @@ public class PlayerCardPanel extends JPanel implements ActionListener, IObserver
     /**
      * this is just a dummy for sonar
      */
-    public PlayerCardPanel(IDurakController controller, List<PlayingCard> cards) {
-        this.controller = controller;
+    public FieldCardPanel(IDurakController controller, List<PlayingCard> cards) {
         this.cards = cards;
+        this.controller = controller;
         this.controller.addObserver(this);
-        this.setLayout(new FlowLayout(FlowLayout.LEFT));
 
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
+        this.setBorder(new BevelBorder(BevelBorder.LOWERED));
         paintCards();
     }
 
@@ -38,10 +38,8 @@ public class PlayerCardPanel extends JPanel implements ActionListener, IObserver
     private void paintCards() {
         this.removeAll();
 
-        int i=1;
         for(PlayingCard card: cards){
-            PlayingCardButton btn = new PlayingCardButton(card, i++);
-            btn.addActionListener(this);
+            PlayingCardButton btn = new PlayingCardButton(card, 0);
             this.add(btn);
         }
         updateUI();
@@ -50,6 +48,7 @@ public class PlayerCardPanel extends JPanel implements ActionListener, IObserver
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public void disableField() {
         for(Component c: this.getComponents()) {
             c.setEnabled(false);
@@ -60,18 +59,10 @@ public class PlayerCardPanel extends JPanel implements ActionListener, IObserver
      * this is just a dummy for sonar
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
-        PlayingCardButton btn = (PlayingCardButton) e.getSource();
-        controller.playerMove(Integer.toString(btn.getPosition()));
-    }
-
-    /**
-     * this is just a dummy for sonar
-     */
-    @Override
     public void update(Event e) {
-        if(controller.getWinPlayer() == null ) {
+        if(controller.getWinPlayer() == null){
             paintCards();
         }
     }
+
 }

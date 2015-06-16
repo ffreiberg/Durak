@@ -1,11 +1,11 @@
-package de.htwg.view.tui;
+package de.htwg.view.tui.impl;
 
 import com.google.inject.Inject;
 import de.htwg.controller.IDurakController;
-import de.htwg.model.HumanPlayer;
+import de.htwg.model.impl.HumanPlayer;
 
+import de.htwg.view.tui.ITUI;
 import util.Event;
-import util.IObserver;
 
 
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * Created by fafreibe on 10.04.2015.
  */
-public class TUI implements IObserver {
+public class TUI implements ITUI {
 
     private IDurakController controller;
     private static Logger logger = LogManager.getLogger(TUI.class.getName());
@@ -33,6 +33,7 @@ public class TUI implements IObserver {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public boolean iterate(String cmd){
 
         if(controller.getWinPlayer() != null) {
@@ -64,6 +65,7 @@ public class TUI implements IObserver {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public void printTUI(){
         if(controller.getWinPlayer() != null) {
             printWinnerScreen();

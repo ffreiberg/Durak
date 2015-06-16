@@ -1,22 +1,21 @@
-package de.htwg.view.gui;
+package de.htwg.view.gui.impl;
 
 import com.google.inject.Inject;
 import de.htwg.controller.IDurakController;
-import de.htwg.model.HumanPlayer;
+import de.htwg.model.impl.HumanPlayer;
+import de.htwg.view.gui.IFrame;
 import util.Event;
-import util.IObserver;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 /**
  * Created by jawaigel on 07.05.2015.
  */
-public class Frame extends JFrame implements ActionListener, IObserver {
+public class Frame extends JFrame implements IFrame {
 
     private static final int DEFAULT_X = 800;
     private static final int DEFAULT_Y = 420;
@@ -110,6 +109,7 @@ public class Frame extends JFrame implements ActionListener, IObserver {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public void close() {
         this.setVisible(false);
         this.dispose();

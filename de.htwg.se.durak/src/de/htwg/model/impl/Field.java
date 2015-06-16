@@ -1,4 +1,6 @@
-package de.htwg.model;
+package de.htwg.model.impl;
+
+import de.htwg.model.IField;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.List;
 /**
  * Created by jawaigel on 06.05.2015.
  */
-public class Field {
+public class Field implements IField {
 
     private List<PlayingCard> field;
 
@@ -20,6 +22,7 @@ public class Field {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public void addCard(PlayingCard card){
         card.setHide(false);
         field.add(card);
@@ -28,6 +31,7 @@ public class Field {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public PlayingCard getCard(){
         return field.remove(0);
     }
@@ -35,6 +39,7 @@ public class Field {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public List<PlayingCard> getField(){
         return field;
     }
@@ -42,6 +47,7 @@ public class Field {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public void clearField(){
         field.clear();
     }
@@ -49,6 +55,7 @@ public class Field {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public int getFieldSize() {
         return field.size();
     }
@@ -56,6 +63,7 @@ public class Field {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public String toString(){
 
         String s = "";

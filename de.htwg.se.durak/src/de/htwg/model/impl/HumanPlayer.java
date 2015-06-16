@@ -1,4 +1,4 @@
-package de.htwg.model;
+package de.htwg.model.impl;
 
 import java.util.List;
 
@@ -59,7 +59,6 @@ public class HumanPlayer extends Player {
      * this is just a dummy for sonar
      */
     private boolean cardValid(List<PlayingCard> cardsOnField, PlayingCard cardToPlay){
-
         for (PlayingCard card : cardsOnField){
             if (cardToPlay.getValue().ordinal() == card.getValue().ordinal()) {
                 return true;

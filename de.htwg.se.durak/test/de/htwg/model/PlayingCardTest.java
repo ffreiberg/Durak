@@ -1,5 +1,8 @@
 package de.htwg.model;
 
+import de.htwg.model.impl.PlayingCard;
+import de.htwg.model.impl.PlayingCardColor;
+import de.htwg.model.impl.PlayingCardValue;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

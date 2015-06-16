@@ -1,8 +1,8 @@
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.htwg.controller.IDurakController;
-import de.htwg.view.tui.TUI;
-import de.htwg.view.gui.Frame;
+import de.htwg.view.tui.impl.TUI;
+import de.htwg.view.gui.impl.Frame;
 
 import java.util.Scanner;
 

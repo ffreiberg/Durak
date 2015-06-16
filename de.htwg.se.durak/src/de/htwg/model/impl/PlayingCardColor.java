@@ -1,9 +1,11 @@
-package de.htwg.model;
+package de.htwg.model.impl;
+
+import de.htwg.model.IPlayingCardColor;
 
 /**
  * Created by fafreibe on 10.04.2015.
  */
-public enum PlayingCardColor {
+public enum PlayingCardColor implements IPlayingCardColor {
 
     HEARTS, DIAMONDS, SPADES, CLUBS;
 

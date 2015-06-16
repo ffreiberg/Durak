@@ -1,10 +1,12 @@
-package de.htwg.model;
+package de.htwg.model.impl;
 
+
+import de.htwg.model.IPlayingCard;
 
 /**
  * Created by fafreibe on 10.04.2015.
  */
-public class PlayingCard {
+public class PlayingCard implements IPlayingCard {
 
     private PlayingCardValue value;
     private PlayingCardColor color;
@@ -24,6 +26,7 @@ public class PlayingCard {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public PlayingCardValue getValue() {
         return value;
     }
@@ -31,6 +34,7 @@ public class PlayingCard {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public PlayingCardColor getColor() {
         return color;
     }
@@ -38,11 +42,13 @@ public class PlayingCard {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public void setTrump() { this.trump = true; }
 
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public boolean isTrump() {
         return trump;
     }
@@ -50,16 +56,19 @@ public class PlayingCard {
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public boolean getHide() { return this.hide; }
 
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public void setHide(boolean hide) { this.hide = hide;}
 
     /**
      * this is just a dummy for sonar
      */
+    @Override
     public String toString(){
         return color.toString() + value.toString();
     }

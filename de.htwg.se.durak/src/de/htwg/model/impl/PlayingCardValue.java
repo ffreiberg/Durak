@@ -1,9 +1,11 @@
-package de.htwg.model;
+package de.htwg.model.impl;
+
+import de.htwg.model.IPlayingCardValue;
 
 /**
  * Created by fafreibe on 10.04.2015.
  */
-public enum PlayingCardValue {
+public enum PlayingCardValue implements IPlayingCardValue {
     SIX(6), SEVEN(7), EIGHT(8), NINE(9), TEN(10), JACK(11), QUEEN(12), KING(13), ACE(14);
 
     private int value;
