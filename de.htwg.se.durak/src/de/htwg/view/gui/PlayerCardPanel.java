@@ -1,15 +1,14 @@
-package de.htwg.view.gui.impl;
+package de.htwg.view.gui;
 
 
 import de.htwg.controller.IDurakController;
-import de.htwg.model.impl.PlayingCard;
+import de.htwg.model.PlayingCard;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.List;
 
-import de.htwg.view.gui.IPlayerCardPanel;
 import util.Event;
 
 /**

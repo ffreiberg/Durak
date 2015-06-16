@@ -1,4 +1,4 @@
-package de.htwg.model.impl;
+package de.htwg.model;
 
 import java.util.List;
 

@@ -1,10 +1,9 @@
-package de.htwg.view.tui.impl;
+package de.htwg.view.tui;
 
 import com.google.inject.Inject;
 import de.htwg.controller.IDurakController;
-import de.htwg.model.impl.HumanPlayer;
+import de.htwg.model.HumanPlayer;
 
-import de.htwg.view.tui.ITUI;
 import util.Event;
 
 

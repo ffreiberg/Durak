@@ -1,9 +1,8 @@
-package de.htwg.view.gui.impl;
+package de.htwg.view.gui;
 
 import com.google.inject.Inject;
 import de.htwg.controller.IDurakController;
-import de.htwg.model.impl.HumanPlayer;
-import de.htwg.view.gui.IFrame;
+import de.htwg.model.HumanPlayer;
 import util.Event;
 
 import javax.swing.*;

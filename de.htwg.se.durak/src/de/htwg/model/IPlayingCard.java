@@ -1,8 +1,5 @@
 package de.htwg.model;
 
-import de.htwg.model.impl.PlayingCardColor;
-import de.htwg.model.impl.PlayingCardValue;
-
 /**
  * Created by fafreibe on 16.06.2015.
  */

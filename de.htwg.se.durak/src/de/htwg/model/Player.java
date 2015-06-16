@@ -1,6 +1,4 @@
-package de.htwg.model.impl;
-
-import de.htwg.model.IPlayer;
+package de.htwg.model;
 
 import java.util.Collections;
 import java.util.Comparator;

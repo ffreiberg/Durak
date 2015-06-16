@@ -1,6 +1,6 @@
-package de.htwg.view.gui.impl;
+package de.htwg.view.gui;
 
-import de.htwg.model.impl.PlayingCard;
+import de.htwg.model.PlayingCard;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -8,7 +8,6 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-import de.htwg.view.gui.IPlayingCardButton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

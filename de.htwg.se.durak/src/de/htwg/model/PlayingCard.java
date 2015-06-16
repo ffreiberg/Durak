@@ -1,7 +1,5 @@
-package de.htwg.model.impl;
+package de.htwg.model;
 
-
-import de.htwg.model.IPlayingCard;
 
 /**
  * Created by fafreibe on 10.04.2015.

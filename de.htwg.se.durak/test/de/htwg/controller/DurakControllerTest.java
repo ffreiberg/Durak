@@ -1,8 +1,7 @@
 package de.htwg.controller;
 
-import de.htwg.model.impl.*;
+import de.htwg.model.*;
 import org.hamcrest.CoreMatchers;
-import de.htwg.controller.impl.DurakController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

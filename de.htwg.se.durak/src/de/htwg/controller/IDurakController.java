@@ -1,8 +1,8 @@
 package de.htwg.controller;
 
-import de.htwg.model.impl.Player;
-import de.htwg.model.impl.PlayingCard;
-import de.htwg.model.impl.PlayingCardColor;
+import de.htwg.model.Player;
+import de.htwg.model.PlayingCard;
+import de.htwg.model.PlayingCardColor;
 
 import java.util.List;
 import util.*;

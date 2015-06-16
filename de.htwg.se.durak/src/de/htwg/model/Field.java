@@ -1,6 +1,4 @@
-package de.htwg.model.impl;
-
-import de.htwg.model.IField;
+package de.htwg.model;
 
 import java.util.LinkedList;
 import java.util.List;

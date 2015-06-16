@@ -1,7 +1,5 @@
 package de.htwg.model;
 
-import de.htwg.model.impl.PlayingCard;
-
 import java.util.List;
 
 /**

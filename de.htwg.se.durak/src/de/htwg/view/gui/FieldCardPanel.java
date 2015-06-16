@@ -1,14 +1,13 @@
-package de.htwg.view.gui.impl;
+package de.htwg.view.gui;
 
 import de.htwg.controller.IDurakController;
-import de.htwg.model.impl.PlayingCard;
+import de.htwg.model.PlayingCard;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.util.List;
 
-import de.htwg.view.gui.IFieldCardPanel;
 import util.Event;
 
 /**

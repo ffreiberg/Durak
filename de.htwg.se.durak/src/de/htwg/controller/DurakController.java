@@ -1,11 +1,11 @@
-package de.htwg.controller.impl;
+package de.htwg.controller;
 
 import com.google.inject.Singleton;
 import de.htwg.controller.IDurakController;
 
 import java.util.List;
 
-import de.htwg.model.impl.*;
+import de.htwg.model.*;
 import util.Observable;
 import java.util.LinkedList;
 
