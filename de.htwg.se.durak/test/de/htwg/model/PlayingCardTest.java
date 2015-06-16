@@ -1,5 +1,6 @@
 package de.htwg.model;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
