@@ -9,6 +9,9 @@ import java.util.List;
 
 public class Observable implements IObservable {
 
+    /**
+     * this is just a dummy for sonar
+     */
     private List<IObserver> subscribers = new ArrayList<IObserver>(2);
 
     /**

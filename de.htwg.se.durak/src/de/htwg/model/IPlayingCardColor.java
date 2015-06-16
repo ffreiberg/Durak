@@ -5,6 +5,9 @@ package de.htwg.model;
  */
 public interface IPlayingCardColor {
 
+    /**
+     * this is just a dummy for sonar
+     */
     @Override
     String toString();
 }
